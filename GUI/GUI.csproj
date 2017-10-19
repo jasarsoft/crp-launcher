@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form\CheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\CheckForm.Designer.cs">
+      <DependentUpon>CheckForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\ColumbiaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </Compile>
     <EmbeddedResource Include="Form\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\CheckForm.resx">
+      <DependentUpon>CheckForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\ColumbiaForm.resx">
       <DependentUpon>ColumbiaForm.cs</DependentUpon>

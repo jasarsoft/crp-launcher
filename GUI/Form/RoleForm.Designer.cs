@@ -36,13 +36,11 @@ namespace Jasarsoft.ColumbiaGUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoleForm));
             this.buttonClose = new Syncfusion.Windows.Forms.ButtonAdv();
             this.textDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            this.pictureMain = new System.Windows.Forms.PictureBox();
             this.comboRole = new Syncfusion.Windows.Forms.Tools.ComboBoxAdv();
+            this.horizonalLine = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.textDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboRole)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,22 +52,22 @@ namespace Jasarsoft.ColumbiaGUI
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.IsBackStageButton = false;
-            this.buttonClose.Location = new System.Drawing.Point(12, 331);
+            this.buttonClose.Location = new System.Drawing.Point(12, 257);
             this.buttonClose.MetroColor = System.Drawing.Color.Firebrick;
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(340, 56);
-            this.buttonClose.TabIndex = 3;
+            this.buttonClose.TabIndex = 4;
             this.buttonClose.Text = "ZATVORI";
             // 
             // textDescription
             // 
             this.textDescription.BackColor = System.Drawing.Color.White;
-            this.textDescription.BeforeTouchSize = new System.Drawing.Size(340, 140);
+            this.textDescription.BeforeTouchSize = new System.Drawing.Size(340, 190);
             this.textDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textDescription.ForeColor = System.Drawing.Color.Black;
-            this.textDescription.Location = new System.Drawing.Point(12, 185);
+            this.textDescription.Location = new System.Drawing.Point(12, 48);
             this.textDescription.MaxLength = 1024;
             this.textDescription.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textDescription.MinimumSize = new System.Drawing.Size(10, 6);
@@ -77,18 +75,9 @@ namespace Jasarsoft.ColumbiaGUI
             this.textDescription.Name = "textDescription";
             this.textDescription.ReadOnly = true;
             this.textDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textDescription.Size = new System.Drawing.Size(340, 140);
+            this.textDescription.Size = new System.Drawing.Size(340, 190);
             this.textDescription.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.textDescription.TabIndex = 2;
-            // 
-            // pictureMain
-            // 
-            this.pictureMain.Image = ((System.Drawing.Image)(resources.GetObject("pictureMain.Image")));
-            this.pictureMain.Location = new System.Drawing.Point(12, 12);
-            this.pictureMain.Name = "pictureMain";
-            this.pictureMain.Size = new System.Drawing.Size(340, 140);
-            this.pictureMain.TabIndex = 11;
-            this.pictureMain.TabStop = false;
             // 
             // comboRole
             // 
@@ -97,12 +86,21 @@ namespace Jasarsoft.ColumbiaGUI
             this.comboRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboRole.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboRole.ForeColor = System.Drawing.Color.Black;
-            this.comboRole.Location = new System.Drawing.Point(12, 158);
+            this.comboRole.Location = new System.Drawing.Point(12, 21);
             this.comboRole.MaxLength = 1024;
             this.comboRole.Name = "comboRole";
             this.comboRole.Size = new System.Drawing.Size(340, 21);
             this.comboRole.Style = Syncfusion.Windows.Forms.VisualStyle.Metro;
             this.comboRole.TabIndex = 1;
+            // 
+            // horizonalLine
+            // 
+            this.horizonalLine.AutoSize = false;
+            this.horizonalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.horizonalLine.Location = new System.Drawing.Point(12, 252);
+            this.horizonalLine.Name = "horizonalLine";
+            this.horizonalLine.Size = new System.Drawing.Size(340, 2);
+            this.horizonalLine.TabIndex = 3;
             // 
             // RoleForm
             // 
@@ -117,9 +115,9 @@ namespace Jasarsoft.ColumbiaGUI
             this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(364, 399);
+            this.ClientSize = new System.Drawing.Size(364, 325);
+            this.Controls.Add(this.horizonalLine);
             this.Controls.Add(this.comboRole);
-            this.Controls.Add(this.pictureMain);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.textDescription);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -137,7 +135,6 @@ namespace Jasarsoft.ColumbiaGUI
             this.Text = "SAMP Columbia RolePlay | RolePlay Pravila";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.textDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboRole)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -147,7 +144,7 @@ namespace Jasarsoft.ColumbiaGUI
         #endregion
         private Syncfusion.Windows.Forms.ButtonAdv buttonClose;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textDescription;
-        private System.Windows.Forms.PictureBox pictureMain;
         private Syncfusion.Windows.Forms.Tools.ComboBoxAdv comboRole;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel horizonalLine;
     }
 }

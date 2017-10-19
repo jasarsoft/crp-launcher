@@ -63,19 +63,20 @@ namespace Jasarsoft.ColumbiaGUI
             // textboxDescription
             // 
             this.textboxDescription.BackColor = System.Drawing.Color.White;
-            this.textboxDescription.BeforeTouchSize = new System.Drawing.Size(214, 22);
+            this.textboxDescription.BeforeTouchSize = new System.Drawing.Size(340, 190);
             this.textboxDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxDescription.ForeColor = System.Drawing.Color.Black;
             this.textboxDescription.Location = new System.Drawing.Point(12, 189);
             this.textboxDescription.MaxLength = 1024;
             this.textboxDescription.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDescription.Multiline = true;
             this.textboxDescription.Name = "textboxDescription";
             this.textboxDescription.ReadOnly = true;
-            this.textboxDescription.Size = new System.Drawing.Size(340, 48);
+            this.textboxDescription.Size = new System.Drawing.Size(340, 49);
             this.textboxDescription.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textboxDescription.TabIndex = 27;
+            this.textboxDescription.TabIndex = 13;
             this.textboxDescription.Text = "SAMP Columbia RolePlay Launcher napravljen u cilju lakšeg korištenja, bezbjednog " +
     "pristupa te automatski ažuriranja SAMP Columbia RolePlay moda za GTA San Andreas" +
     " Multiplayer.";
@@ -86,17 +87,18 @@ namespace Jasarsoft.ColumbiaGUI
             this.labelVersion.Location = new System.Drawing.Point(12, 49);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(120, 22);
-            this.labelVersion.TabIndex = 16;
+            this.labelVersion.TabIndex = 2;
             this.labelVersion.Text = "Verzija sofvera:";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textboxDeveloper
             // 
             this.textboxDeveloper.BackColor = System.Drawing.Color.White;
-            this.textboxDeveloper.BeforeTouchSize = new System.Drawing.Size(214, 22);
+            this.textboxDeveloper.BeforeTouchSize = new System.Drawing.Size(340, 190);
             this.textboxDeveloper.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDeveloper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxDeveloper.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxDeveloper.ForeColor = System.Drawing.Color.Black;
             this.textboxDeveloper.Location = new System.Drawing.Point(138, 161);
             this.textboxDeveloper.MaxLength = 128;
             this.textboxDeveloper.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -105,7 +107,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.textboxDeveloper.ReadOnly = true;
             this.textboxDeveloper.Size = new System.Drawing.Size(214, 22);
             this.textboxDeveloper.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textboxDeveloper.TabIndex = 26;
+            this.textboxDeveloper.TabIndex = 12;
             this.textboxDeveloper.Text = "Edin (jasarsoft) Jašareviæ";
             this.textboxDeveloper.WordWrap = false;
             // 
@@ -115,7 +117,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.labelData.Location = new System.Drawing.Point(12, 77);
             this.labelData.Name = "labelData";
             this.labelData.Size = new System.Drawing.Size(120, 22);
-            this.labelData.TabIndex = 17;
+            this.labelData.TabIndex = 3;
             this.labelData.Text = "Datum izmjene:";
             this.labelData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -126,7 +128,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.labelDeveloper.Location = new System.Drawing.Point(12, 161);
             this.labelDeveloper.Name = "labelDeveloper";
             this.labelDeveloper.Size = new System.Drawing.Size(120, 22);
-            this.labelDeveloper.TabIndex = 20;
+            this.labelDeveloper.TabIndex = 6;
             this.labelDeveloper.Text = "Programer i dizajner:";
             this.labelDeveloper.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -136,17 +138,18 @@ namespace Jasarsoft.ColumbiaGUI
             this.labelCopyright.Location = new System.Drawing.Point(12, 105);
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(120, 22);
-            this.labelCopyright.TabIndex = 18;
+            this.labelCopyright.TabIndex = 4;
             this.labelCopyright.Text = "Autorsko pravo:";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textboxLicense
             // 
             this.textboxLicense.BackColor = System.Drawing.Color.White;
-            this.textboxLicense.BeforeTouchSize = new System.Drawing.Size(214, 22);
+            this.textboxLicense.BeforeTouchSize = new System.Drawing.Size(340, 190);
             this.textboxLicense.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxLicense.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxLicense.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxLicense.ForeColor = System.Drawing.Color.Black;
             this.textboxLicense.Location = new System.Drawing.Point(138, 133);
             this.textboxLicense.MaxLength = 128;
             this.textboxLicense.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -154,17 +157,18 @@ namespace Jasarsoft.ColumbiaGUI
             this.textboxLicense.ReadOnly = true;
             this.textboxLicense.Size = new System.Drawing.Size(214, 22);
             this.textboxLicense.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textboxLicense.TabIndex = 25;
+            this.textboxLicense.TabIndex = 11;
             this.textboxLicense.Text = "Vlasnièki softver";
             this.textboxLicense.WordWrap = false;
             // 
             // textboxCopyright
             // 
             this.textboxCopyright.BackColor = System.Drawing.Color.White;
-            this.textboxCopyright.BeforeTouchSize = new System.Drawing.Size(214, 22);
+            this.textboxCopyright.BeforeTouchSize = new System.Drawing.Size(340, 190);
             this.textboxCopyright.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxCopyright.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxCopyright.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxCopyright.ForeColor = System.Drawing.Color.Black;
             this.textboxCopyright.Location = new System.Drawing.Point(138, 105);
             this.textboxCopyright.MaxLength = 128;
             this.textboxCopyright.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -172,17 +176,18 @@ namespace Jasarsoft.ColumbiaGUI
             this.textboxCopyright.ReadOnly = true;
             this.textboxCopyright.Size = new System.Drawing.Size(214, 22);
             this.textboxCopyright.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textboxCopyright.TabIndex = 24;
+            this.textboxCopyright.TabIndex = 10;
             this.textboxCopyright.Text = "Columbia Team";
             this.textboxCopyright.WordWrap = false;
             // 
             // textboxDate
             // 
             this.textboxDate.BackColor = System.Drawing.Color.White;
-            this.textboxDate.BeforeTouchSize = new System.Drawing.Size(214, 22);
+            this.textboxDate.BeforeTouchSize = new System.Drawing.Size(340, 190);
             this.textboxDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxDate.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxDate.ForeColor = System.Drawing.Color.Black;
             this.textboxDate.Location = new System.Drawing.Point(138, 77);
             this.textboxDate.MaxLength = 128;
             this.textboxDate.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -190,8 +195,8 @@ namespace Jasarsoft.ColumbiaGUI
             this.textboxDate.ReadOnly = true;
             this.textboxDate.Size = new System.Drawing.Size(214, 22);
             this.textboxDate.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textboxDate.TabIndex = 23;
-            this.textboxDate.Text = "19.10.2017.";
+            this.textboxDate.TabIndex = 9;
+            this.textboxDate.Text = "20. oktobar 2017";
             this.textboxDate.WordWrap = false;
             // 
             // labelLicense
@@ -201,17 +206,18 @@ namespace Jasarsoft.ColumbiaGUI
             this.labelLicense.Location = new System.Drawing.Point(12, 133);
             this.labelLicense.Name = "labelLicense";
             this.labelLicense.Size = new System.Drawing.Size(120, 22);
-            this.labelLicense.TabIndex = 19;
+            this.labelLicense.TabIndex = 5;
             this.labelLicense.Text = "Licenca korištenja:";
             this.labelLicense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textboxVersion
             // 
             this.textboxVersion.BackColor = System.Drawing.Color.White;
-            this.textboxVersion.BeforeTouchSize = new System.Drawing.Size(214, 22);
+            this.textboxVersion.BeforeTouchSize = new System.Drawing.Size(340, 190);
             this.textboxVersion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxVersion.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxVersion.ForeColor = System.Drawing.Color.Black;
             this.textboxVersion.Location = new System.Drawing.Point(138, 49);
             this.textboxVersion.MaxLength = 128;
             this.textboxVersion.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -219,17 +225,18 @@ namespace Jasarsoft.ColumbiaGUI
             this.textboxVersion.ReadOnly = true;
             this.textboxVersion.Size = new System.Drawing.Size(214, 22);
             this.textboxVersion.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textboxVersion.TabIndex = 22;
+            this.textboxVersion.TabIndex = 8;
             this.textboxVersion.Text = "1.0.0.0 Build 1 Alpha";
             this.textboxVersion.WordWrap = false;
             // 
             // textboxTitle
             // 
             this.textboxTitle.BackColor = System.Drawing.Color.White;
-            this.textboxTitle.BeforeTouchSize = new System.Drawing.Size(214, 22);
+            this.textboxTitle.BeforeTouchSize = new System.Drawing.Size(340, 190);
             this.textboxTitle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxTitle.ForeColor = System.Drawing.Color.Black;
             this.textboxTitle.Location = new System.Drawing.Point(138, 21);
             this.textboxTitle.MaxLength = 128;
             this.textboxTitle.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
@@ -237,7 +244,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.textboxTitle.ReadOnly = true;
             this.textboxTitle.Size = new System.Drawing.Size(214, 22);
             this.textboxTitle.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textboxTitle.TabIndex = 21;
+            this.textboxTitle.TabIndex = 7;
             this.textboxTitle.Text = "SAMP Columbia RolePlay Launcher";
             this.textboxTitle.WordWrap = false;
             // 
@@ -247,7 +254,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.labelTitle.Location = new System.Drawing.Point(12, 21);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(120, 22);
-            this.labelTitle.TabIndex = 15;
+            this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "Naziv softvera:";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -255,24 +262,24 @@ namespace Jasarsoft.ColumbiaGUI
             // 
             this.horizonalLine.AutoSize = false;
             this.horizonalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.horizonalLine.Location = new System.Drawing.Point(12, 249);
+            this.horizonalLine.Location = new System.Drawing.Point(12, 252);
             this.horizonalLine.Name = "horizonalLine";
             this.horizonalLine.Size = new System.Drawing.Size(340, 2);
-            this.horizonalLine.TabIndex = 28;
+            this.horizonalLine.TabIndex = 14;
             // 
             // buttonClose
             // 
             this.buttonClose.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
             this.buttonClose.BackColor = System.Drawing.Color.Firebrick;
-            this.buttonClose.BeforeTouchSize = new System.Drawing.Size(340, 59);
+            this.buttonClose.BeforeTouchSize = new System.Drawing.Size(340, 56);
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.IsBackStageButton = false;
-            this.buttonClose.Location = new System.Drawing.Point(12, 254);
+            this.buttonClose.Location = new System.Drawing.Point(12, 257);
             this.buttonClose.MetroColor = System.Drawing.Color.Firebrick;
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(340, 59);
-            this.buttonClose.TabIndex = 29;
+            this.buttonClose.Size = new System.Drawing.Size(340, 56);
+            this.buttonClose.TabIndex = 15;
             this.buttonClose.Text = "ZATVORI";
             // 
             // AboutForm

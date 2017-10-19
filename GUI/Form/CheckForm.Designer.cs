@@ -46,7 +46,7 @@ namespace Jasarsoft.ColumbiaGUI
             // 
             this.labelName.AutoSize = false;
             this.labelName.ForeColor = System.Drawing.Color.DimGray;
-            this.labelName.Location = new System.Drawing.Point(12, 115);
+            this.labelName.Location = new System.Drawing.Point(12, 124);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(340, 22);
             this.labelName.TabIndex = 1;
@@ -72,7 +72,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.progressLoad.ForegroundImage = null;
             this.progressLoad.GradientEndColor = System.Drawing.Color.DarkRed;
             this.progressLoad.GradientStartColor = System.Drawing.Color.IndianRed;
-            this.progressLoad.Location = new System.Drawing.Point(12, 140);
+            this.progressLoad.Location = new System.Drawing.Point(12, 149);
             this.progressLoad.MultipleColors = new System.Drawing.Color[] {
         System.Drawing.Color.Empty};
             this.progressLoad.Name = "progressLoad";
@@ -108,7 +108,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(364, 174);
+            this.ClientSize = new System.Drawing.Size(364, 183);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelName);

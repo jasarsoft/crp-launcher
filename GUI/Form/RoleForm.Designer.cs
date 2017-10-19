@@ -79,8 +79,6 @@ namespace Jasarsoft.ColumbiaGUI
             this.textDescription.Size = new System.Drawing.Size(340, 140);
             this.textDescription.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.textDescription.TabIndex = 2;
-            this.textDescription.Text = "line1\r\nline2\r\nline3\r\nline4\r\nline5\r\nline6\r\nline7\r\nline8\r\nline9\r\nline10\r\nline11\r\nli" +
-    "ne12\r\nline13\r\nline14";
             // 
             // pictureMain
             // 

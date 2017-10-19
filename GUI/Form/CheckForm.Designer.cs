@@ -63,15 +63,15 @@ namespace Jasarsoft.ColumbiaGUI
             this.progressLoad.BackSegments = false;
             this.progressLoad.BackTubeEndColor = System.Drawing.Color.White;
             this.progressLoad.BackTubeStartColor = System.Drawing.Color.LightGray;
-            this.progressLoad.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(149)))), ((int)(((byte)(152)))));
+            this.progressLoad.BorderColor = System.Drawing.Color.DarkGray;
             this.progressLoad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.progressLoad.CustomText = null;
             this.progressLoad.CustomWaitingRender = false;
             this.progressLoad.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.progressLoad.FontColor = System.Drawing.Color.WhiteSmoke;
             this.progressLoad.ForegroundImage = null;
-            this.progressLoad.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
-            this.progressLoad.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.progressLoad.GradientEndColor = System.Drawing.Color.DarkRed;
+            this.progressLoad.GradientStartColor = System.Drawing.Color.IndianRed;
             this.progressLoad.Location = new System.Drawing.Point(12, 140);
             this.progressLoad.MultipleColors = new System.Drawing.Color[] {
         System.Drawing.Color.Empty};
@@ -100,12 +100,14 @@ namespace Jasarsoft.ColumbiaGUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BorderColor = System.Drawing.Color.Firebrick;
             this.BorderThickness = 4;
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.CaptionBarColor = System.Drawing.Color.DodgerBlue;
-            this.CaptionBarHeight = 30;
+            this.CaptionBarColor = System.Drawing.Color.Firebrick;
+            this.CaptionBarHeight = 24;
+            this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(364, 174);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
@@ -115,7 +117,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MetroColor = System.Drawing.Color.DodgerBlue;
+            this.MetroColor = System.Drawing.Color.Firebrick;
             this.MinimizeBox = false;
             this.Name = "CheckForm";
             this.ShowIcon = false;

@@ -49,12 +49,13 @@ namespace Jasarsoft.ColumbiaGUI
             // buttonClose
             // 
             this.buttonClose.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
-            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.buttonClose.BackColor = System.Drawing.Color.Firebrick;
             this.buttonClose.BeforeTouchSize = new System.Drawing.Size(340, 56);
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.IsBackStageButton = false;
             this.buttonClose.Location = new System.Drawing.Point(12, 331);
+            this.buttonClose.MetroColor = System.Drawing.Color.Firebrick;
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(340, 56);
             this.buttonClose.TabIndex = 3;
@@ -108,21 +109,24 @@ namespace Jasarsoft.ColumbiaGUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BorderColor = System.Drawing.Color.Firebrick;
             this.BorderThickness = 4;
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.CaptionBarColor = System.Drawing.Color.DodgerBlue;
-            this.CaptionBarHeight = 30;
+            this.CaptionBarColor = System.Drawing.Color.Firebrick;
+            this.CaptionBarHeight = 24;
+            this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(364, 399);
             this.Controls.Add(this.comboRole);
             this.Controls.Add(this.pictureMain);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.textDescription);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MetroColor = System.Drawing.Color.DodgerBlue;
+            this.MetroColor = System.Drawing.Color.Firebrick;
             this.MinimizeBox = false;
             this.Name = "RoleForm";
             this.ShowIcon = false;

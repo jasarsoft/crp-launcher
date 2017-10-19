@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Jasarsoft.ColumbiaGUI
 {
-    static class Program
+    static class MainClass
     {
         /// <summary>
         /// The main entry point for the application.

@@ -63,7 +63,7 @@ namespace Jasarsoft.ColumbiaGUI
             // textboxDescription
             // 
             this.textboxDescription.BackColor = System.Drawing.Color.White;
-            this.textboxDescription.BeforeTouchSize = new System.Drawing.Size(340, 190);
+            this.textboxDescription.BeforeTouchSize = new System.Drawing.Size(214, 22);
             this.textboxDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -94,7 +94,7 @@ namespace Jasarsoft.ColumbiaGUI
             // textboxDeveloper
             // 
             this.textboxDeveloper.BackColor = System.Drawing.Color.White;
-            this.textboxDeveloper.BeforeTouchSize = new System.Drawing.Size(340, 190);
+            this.textboxDeveloper.BeforeTouchSize = new System.Drawing.Size(214, 22);
             this.textboxDeveloper.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDeveloper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxDeveloper.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -145,7 +145,7 @@ namespace Jasarsoft.ColumbiaGUI
             // textboxLicense
             // 
             this.textboxLicense.BackColor = System.Drawing.Color.White;
-            this.textboxLicense.BeforeTouchSize = new System.Drawing.Size(340, 190);
+            this.textboxLicense.BeforeTouchSize = new System.Drawing.Size(214, 22);
             this.textboxLicense.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxLicense.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxLicense.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -164,7 +164,7 @@ namespace Jasarsoft.ColumbiaGUI
             // textboxCopyright
             // 
             this.textboxCopyright.BackColor = System.Drawing.Color.White;
-            this.textboxCopyright.BeforeTouchSize = new System.Drawing.Size(340, 190);
+            this.textboxCopyright.BeforeTouchSize = new System.Drawing.Size(214, 22);
             this.textboxCopyright.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxCopyright.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxCopyright.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -183,7 +183,7 @@ namespace Jasarsoft.ColumbiaGUI
             // textboxDate
             // 
             this.textboxDate.BackColor = System.Drawing.Color.White;
-            this.textboxDate.BeforeTouchSize = new System.Drawing.Size(340, 190);
+            this.textboxDate.BeforeTouchSize = new System.Drawing.Size(214, 22);
             this.textboxDate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxDate.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -213,7 +213,7 @@ namespace Jasarsoft.ColumbiaGUI
             // textboxVersion
             // 
             this.textboxVersion.BackColor = System.Drawing.Color.White;
-            this.textboxVersion.BeforeTouchSize = new System.Drawing.Size(340, 190);
+            this.textboxVersion.BeforeTouchSize = new System.Drawing.Size(214, 22);
             this.textboxVersion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxVersion.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -232,7 +232,7 @@ namespace Jasarsoft.ColumbiaGUI
             // textboxTitle
             // 
             this.textboxTitle.BackColor = System.Drawing.Color.White;
-            this.textboxTitle.BeforeTouchSize = new System.Drawing.Size(340, 190);
+            this.textboxTitle.BeforeTouchSize = new System.Drawing.Size(214, 22);
             this.textboxTitle.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -291,7 +291,6 @@ namespace Jasarsoft.ColumbiaGUI
             this.BorderThickness = 4;
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
-            this.CaptionBarHeight = 24;
             this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;

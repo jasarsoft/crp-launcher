@@ -39,11 +39,31 @@ namespace Jasarsoft.ColumbiaGUI
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMain = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            this.labelName = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.labelPassword = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.textPassword = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.textName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            this.labelName = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.buttonLogin = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.meniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.linkoviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.provjeraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ažuriranjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.nToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.youTubeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facebookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.teamSpeak3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rolePlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.launcherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.columbiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prijavaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.zatvoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelMain)).BeginInit();
             this.panelMain.SuspendLayout();
@@ -53,6 +73,11 @@ namespace Jasarsoft.ColumbiaGUI
             // 
             // menuMain
             // 
+            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.meniToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.linkoviToolStripMenuItem,
+            this.pomocToolStripMenuItem});
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
             this.menuMain.Size = new System.Drawing.Size(364, 24);
@@ -79,23 +104,13 @@ namespace Jasarsoft.ColumbiaGUI
             this.panelMain.Size = new System.Drawing.Size(340, 85);
             this.panelMain.TabIndex = 2;
             // 
-            // labelName
-            // 
-            this.labelName.AutoSize = false;
-            this.labelName.Location = new System.Drawing.Point(12, 12);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(110, 22);
-            this.labelName.TabIndex = 1;
-            this.labelName.Text = "Korisnièko ime:";
-            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = false;
             this.labelPassword.Location = new System.Drawing.Point(12, 49);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(110, 22);
-            this.labelPassword.TabIndex = 6;
+            this.labelPassword.TabIndex = 4;
             this.labelPassword.Text = "Lozinka pristupa:";
             this.labelPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -114,7 +129,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.textPassword.PasswordChar = '*';
             this.textPassword.Size = new System.Drawing.Size(198, 22);
             this.textPassword.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textPassword.TabIndex = 5;
+            this.textPassword.TabIndex = 6;
             this.textPassword.Text = "textBoxExt2";
             // 
             // textName
@@ -131,8 +146,18 @@ namespace Jasarsoft.ColumbiaGUI
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(198, 22);
             this.textName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            this.textName.TabIndex = 4;
+            this.textName.TabIndex = 5;
             this.textName.Text = "Ime_Prezime";
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = false;
+            this.labelName.Location = new System.Drawing.Point(12, 12);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(110, 22);
+            this.labelName.TabIndex = 3;
+            this.labelName.Text = "Korisnièko ime:";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonLogin
             // 
@@ -145,8 +170,138 @@ namespace Jasarsoft.ColumbiaGUI
             this.buttonLogin.Location = new System.Drawing.Point(12, 233);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(340, 56);
-            this.buttonLogin.TabIndex = 4;
+            this.buttonLogin.TabIndex = 7;
             this.buttonLogin.Text = "PRIJAVI SE";
+            // 
+            // meniToolStripMenuItem
+            // 
+            this.meniToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.prijavaToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.zatvoriToolStripMenuItem});
+            this.meniToolStripMenuItem.Name = "meniToolStripMenuItem";
+            this.meniToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.meniToolStripMenuItem.Text = "&Meni";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.provjeraToolStripMenuItem,
+            this.ažuriranjeToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.nToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(43, 20);
+            this.toolStripMenuItem1.Text = "&Alati";
+            // 
+            // linkoviToolStripMenuItem
+            // 
+            this.linkoviToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.forumToolStripMenuItem,
+            this.youTubeToolStripMenuItem,
+            this.facebookToolStripMenuItem,
+            this.teamSpeak3ToolStripMenuItem});
+            this.linkoviToolStripMenuItem.Name = "linkoviToolStripMenuItem";
+            this.linkoviToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.linkoviToolStripMenuItem.Text = "&Linkovi";
+            // 
+            // pomocToolStripMenuItem
+            // 
+            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rolePlayToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.launcherToolStripMenuItem,
+            this.columbiaToolStripMenuItem});
+            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.pomocToolStripMenuItem.Text = "&Pomoæ";
+            // 
+            // provjeraToolStripMenuItem
+            // 
+            this.provjeraToolStripMenuItem.Name = "provjeraToolStripMenuItem";
+            this.provjeraToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.provjeraToolStripMenuItem.Text = "&Provjera";
+            // 
+            // ažuriranjeToolStripMenuItem
+            // 
+            this.ažuriranjeToolStripMenuItem.Name = "ažuriranjeToolStripMenuItem";
+            this.ažuriranjeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ažuriranjeToolStripMenuItem.Text = "&Ažuriranje";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // nToolStripMenuItem
+            // 
+            this.nToolStripMenuItem.Name = "nToolStripMenuItem";
+            this.nToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nToolStripMenuItem.Text = "&Nadogradnja";
+            // 
+            // forumToolStripMenuItem
+            // 
+            this.forumToolStripMenuItem.Name = "forumToolStripMenuItem";
+            this.forumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.forumToolStripMenuItem.Text = "&Forum";
+            // 
+            // youTubeToolStripMenuItem
+            // 
+            this.youTubeToolStripMenuItem.Name = "youTubeToolStripMenuItem";
+            this.youTubeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.youTubeToolStripMenuItem.Text = "&YouTube";
+            // 
+            // facebookToolStripMenuItem
+            // 
+            this.facebookToolStripMenuItem.Name = "facebookToolStripMenuItem";
+            this.facebookToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.facebookToolStripMenuItem.Text = "&Facebook";
+            // 
+            // teamSpeak3ToolStripMenuItem
+            // 
+            this.teamSpeak3ToolStripMenuItem.Name = "teamSpeak3ToolStripMenuItem";
+            this.teamSpeak3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.teamSpeak3ToolStripMenuItem.Text = "&TeamSpeak 3";
+            // 
+            // rolePlayToolStripMenuItem
+            // 
+            this.rolePlayToolStripMenuItem.Name = "rolePlayToolStripMenuItem";
+            this.rolePlayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rolePlayToolStripMenuItem.Text = "&RolePlay";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // launcherToolStripMenuItem
+            // 
+            this.launcherToolStripMenuItem.Name = "launcherToolStripMenuItem";
+            this.launcherToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.launcherToolStripMenuItem.Text = "&Launcher";
+            // 
+            // columbiaToolStripMenuItem
+            // 
+            this.columbiaToolStripMenuItem.Name = "columbiaToolStripMenuItem";
+            this.columbiaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.columbiaToolStripMenuItem.Text = "&Columbia";
+            // 
+            // prijavaToolStripMenuItem
+            // 
+            this.prijavaToolStripMenuItem.Name = "prijavaToolStripMenuItem";
+            this.prijavaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.prijavaToolStripMenuItem.Text = "&Prijava";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
+            // 
+            // zatvoriToolStripMenuItem
+            // 
+            this.zatvoriToolStripMenuItem.Name = "zatvoriToolStripMenuItem";
+            this.zatvoriToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zatvoriToolStripMenuItem.Text = "&Zatvori";
             // 
             // MainForm
             // 
@@ -177,6 +332,8 @@ namespace Jasarsoft.ColumbiaGUI
             this.ShowMaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SAMP Columbia State Launcher";
+            this.menuMain.ResumeLayout(false);
+            this.menuMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelMain)).EndInit();
             this.panelMain.ResumeLayout(false);
@@ -198,5 +355,24 @@ namespace Jasarsoft.ColumbiaGUI
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textName;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelName;
         private Syncfusion.Windows.Forms.ButtonAdv buttonLogin;
+        private System.Windows.Forms.ToolStripMenuItem meniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem linkoviToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prijavaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem zatvoriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem provjeraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ažuriranjeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem nToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forumToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem youTubeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facebookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem teamSpeak3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rolePlayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem launcherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem columbiaToolStripMenuItem;
     }
 }

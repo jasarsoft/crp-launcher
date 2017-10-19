@@ -134,7 +134,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State | RolePlay Pravila";
+            this.Text = "SAMP Columbia RolePlay | RolePlay Pravila";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.textDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMain)).EndInit();

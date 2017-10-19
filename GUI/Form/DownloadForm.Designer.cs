@@ -178,7 +178,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State | Ažuriranje...";
+            this.Text = "SAMP Columbia RolePlay | Ažuriranje...";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.progressAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressOne)).EndInit();

@@ -123,7 +123,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State | Provjera...";
+            this.Text = "SAMP Columbia RolePlay | Provjera...";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.progressLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -334,7 +334,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.ShowIcon = false;
             this.ShowMaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State Launcher";
+            this.Text = "SAMP Columbia RolePlay | Launcher";
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

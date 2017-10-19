@@ -76,9 +76,9 @@ namespace Jasarsoft.ColumbiaGUI
             this.textboxDescription.Size = new System.Drawing.Size(340, 48);
             this.textboxDescription.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.textboxDescription.TabIndex = 27;
-            this.textboxDescription.Text = "SAMP Columbia State Launcher napravljen u cilju lakšeg korištenja, bezbjednog pri" +
-    "stupa te automatski ažuriranja SAMP Columbia State moda za GTA San Andreas Multi" +
-    "player.";
+            this.textboxDescription.Text = "SAMP Columbia RolePlay Launcher napravljen u cilju lakšeg korištenja, bezbjednog " +
+    "pristupa te automatski ažuriranja SAMP Columbia RolePlay moda za GTA San Andreas" +
+    " Multiplayer.";
             // 
             // labelVersion
             // 
@@ -238,7 +238,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.textboxTitle.Size = new System.Drawing.Size(214, 22);
             this.textboxTitle.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
             this.textboxTitle.TabIndex = 21;
-            this.textboxTitle.Text = "SAMP Columbia State Launcher";
+            this.textboxTitle.Text = "SAMP Columbia RolePlay Launcher";
             this.textboxTitle.WordWrap = false;
             // 
             // labelTitle
@@ -316,7 +316,7 @@ namespace Jasarsoft.ColumbiaGUI
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State | Launcher";
+            this.Text = "SAMP Columbia RolePlay | Launcher";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.textboxDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textboxDeveloper)).EndInit();

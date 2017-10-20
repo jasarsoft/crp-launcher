@@ -88,15 +88,15 @@ namespace Jasarsoft.Columbia.Launcher
         //    this.BeginInvoke((MethodInvoker)delegate
         //    {
         //        double bytesIn = double.Parse(e.BytesReceived.ToString());
-        //        double totalBytes = double.Parse(NovaMahala.Size[this.id[number]].ToString());
+        //        double totalBytes = double.Parse(Launcher.Size[this.id[number]].ToString());
         //        double percentage = bytesIn / totalBytes * 100;
         //        progressOne.Value = int.Parse(Math.Truncate(percentage).ToString());
 
         //        int temp = number * 100;
         //        progressAll.Value = progressOne.Value + temp;
 
-        //        labelName.Text = String.Format("Fajl {0}/{1}: {2}", number + 1, this.id.Count, NovaMahala.Name[this.id[number]]);
-        //        if (NovaMahala.Size[this.id[number]] < 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
+        //        labelName.Text = String.Format("Fajl {0}/{1}: {2}", number + 1, this.id.Count, Launcher.Name[this.id[number]]);
+        //        if (Launcher.Size[this.id[number]] < 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
         //            labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", Math.Truncate((bytesIn / 1024) * 100) / 100, Math.Truncate((totalBytes / 1024) * 100) / 100);
         //        else
         //            labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", Math.Truncate((bytesIn / 1048576) * 100) / 100, Math.Truncate((totalBytes / 1048576) * 100) / 100);
@@ -105,7 +105,7 @@ namespace Jasarsoft.Columbia.Launcher
 
         //private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         //{
-        //    if (HashFile.GetMD5(NovaMahala.Name[this.id[number]]) != NovaMahala.Hash[this.id[number]])
+        //    if (HashFile.GetMD5(Launcher.Name[this.id[number]]) != Launcher.Hash[this.id[number]])
         //    {
         //        this.wrong++;
         //    }
@@ -185,8 +185,8 @@ namespace Jasarsoft.Columbia.Launcher
                         
 
                     var request = service.Files.Get(Launcher.Link[number]);
-                    //GoogleFile file = service.Files.Get(NovaMahala.Link[i]).Execute();
-                    //new DownloadForm("aa").DownloadFile(service, NovaMahala.Name[i], file.DownloadUrl).Wait();
+                    //GoogleFile file = service.Files.Get(Launcher.Link[i]).Execute();
+                    //new DownloadForm("aa").DownloadFile(service, Launcher.Name[i], file.DownloadUrl).Wait();
                     
                     if (Launcher.Size[number] > 1048576)
                         request.MediaDownloader.ChunkSize = 1024 * 512;
@@ -199,10 +199,10 @@ namespace Jasarsoft.Columbia.Launcher
                     //    progressAll.Value = value;
                     //    labelValue.Text = String.Empty;
 
-                    //    if (NovaMahala.Name[number].Length > 30)
-                    //        labelName.Text = String.Format("Fajl {0}/{1}: {2}", i + 1, this.id.Count, String.Format("...{0}", NovaMahala.Name[number].Substring(NovaMahala.Name[number].Length - 24)));
+                    //    if (Launcher.Name[number].Length > 30)
+                    //        labelName.Text = String.Format("Fajl {0}/{1}: {2}", i + 1, this.id.Count, String.Format("...{0}", Launcher.Name[number].Substring(Launcher.Name[number].Length - 24)));
                     //    else
-                    //        labelName.Text = String.Format("Fajl {0}/{1}: {2}", i + 1, this.id.Count, NovaMahala.Name[number]);
+                    //        labelName.Text = String.Format("Fajl {0}/{1}: {2}", i + 1, this.id.Count, Launcher.Name[number]);
                     //});
 
                     using (FileStream fs = new FileStream(Launcher.Name[number], FileMode.Create, FileAccess.Write))
@@ -216,7 +216,7 @@ namespace Jasarsoft.Columbia.Launcher
                                     this.BeginInvoke((MethodInvoker)delegate
                                     {
                                         //double bytesIn = double.Parse(progress.BytesDownloaded.ToString());
-                                        //double totalBytes = double.Parse(NovaMahala.Size[number].ToString());
+                                        //double totalBytes = double.Parse(Launcher.Size[number].ToString());
                                         //double percentage = bytesIn / totalBytes * 100;
                                         //progressOne.Value = int.Parse(Math.Truncate(percentage).ToString());
 
@@ -271,9 +271,9 @@ namespace Jasarsoft.Columbia.Launcher
                     } 
 
                     //number = i;
-                    //fileName = NovaMahala.Name[this.id[i]];
-                    //address = new Uri(String.Format("https://drive.google.com/uc?export=download&confirm=iBg2&id={0}", NovaMahala.Link[this.id[i]]));
-                    ////address = new Uri(String.Format("https://drive.google.com/uc?id={0}", NovaMahala.Link[this.id[i]]));
+                    //fileName = Launcher.Name[this.id[i]];
+                    //address = new Uri(String.Format("https://drive.google.com/uc?export=download&confirm=iBg2&id={0}", Launcher.Link[this.id[i]]));
+                    ////address = new Uri(String.Format("https://drive.google.com/uc?id={0}", Launcher.Link[this.id[i]]));
 
                     //using (WebClient client = new WebClient())
                     //{
@@ -292,7 +292,7 @@ namespace Jasarsoft.Columbia.Launcher
                     //    while (client.IsBusy) Thread.Sleep(1000);
 
                         //fileStream.Clear();
-                        //for (int j = 0; j <= i; j++) fileStream.Add(new FileStream(NovaMahala.Name[this.id[i]], FileMode.Open, FileAccess.Read, FileShare.Read));
+                        //for (int j = 0; j <= i; j++) fileStream.Add(new FileStream(Launcher.Name[this.id[i]], FileMode.Open, FileAccess.Read, FileShare.Read));
                    // }
                 }
 
@@ -403,10 +403,10 @@ namespace Jasarsoft.Columbia.Launcher
             progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100);
             //this.BeginInvoke((MethodInvoker)delegate
             //{
-            //    progressOne.Value = (int)(((double)obj.BytesDownloaded / NovaMahala.Size[number]) * 100);
+            //    progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100);
             //    progressAll.Value = progressOne.Value + value;
 
-            //    if (NovaMahala.Size[number] > 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
+            //    if (Launcher.Size[number] > 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
             //        labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", obj.BytesDownloaded / 1048576.0, size);
             //    else
             //        labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", obj.BytesDownloaded / 1024.0, size);
@@ -427,11 +427,11 @@ namespace Jasarsoft.Columbia.Launcher
                     labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", e.BytesReceived / 1024.0, size);
 
                 //double bytesIn = double.Parse(e.BytesReceived.ToString());
-                //double totalBytes = double.Parse(NovaMahala.Size[number].ToString());
+                //double totalBytes = double.Parse(Launcher.Size[number].ToString());
                 //double percentage = bytesIn / totalBytes * 100;
                 //progressOne.Value = int.Parse(Math.Truncate(percentage).ToString());
 
-                //if (NovaMahala.Size[number] < 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
+                //if (Launcher.Size[number] < 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
                 //    labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", Math.Truncate((bytesIn / 1024) * 100) / 100, Math.Truncate((totalBytes / 1024) * 100) / 100);
                 //else
                 //    labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", Math.Truncate((bytesIn / 1048576) * 100) / 100, Math.Truncate((totalBytes / 1048576) * 100) / 100);

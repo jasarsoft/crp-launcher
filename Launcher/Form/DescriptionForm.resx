@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textboxDescription.Text" xml:space="preserve">
+    <value>SAMP NovaMahala je RolePlay server koji je nastao 01.05.2016. godine. Ideja da se pokrene ova zajednica je nastala od strane Carl Johnsona još davno vruće ljeto 2015. godine. Kao vjerovatno i većina ostalih vlasnika drugih servera, koji su ranije igrali a onda odlučili formirati svoju zajedicu s razlogom. Razlog zbog kojeg pokrenut server je što tadašnji RolePlay serveri nisu pružali ono što bih trebao imati jedan RP server.
+
+U tom početnom vremenu dolazi tehnička pomoć od Lunje Johansona, međutim zbog neprofesionalnosti i neodogovornosti Lunjo napušta zajednicu. Uprkos svemu NovaMahala biva javno otvorena sljedeće godine 01.05.2016. godine od strane Carl-a.
+
+Tokom sljedeći mjeseci NovaMahala dobija niz ažuriranja koje su igrači sa oduševljenjem prihvatili i zajedno načinili korak više za NM zajednicu. Početkom avgusta iste godine Lunjo ponovo ulazi u projekat na razvoju nove verzije (v2.0), novih koncepata i implementacije novih ideja. Na žalost, nakon dobro odrađene iste verzije Lunjo se povlači zbog privatnih obaveza u daljenjem razvoju. Ali svakom prilikom je tu da pruži pomoć ukoliko je ona potrebna za izgradnju SAMP NovaMahala-e.
+
+Serveru se nakon nekog vremena pridružio Fuki coelho kao suvlasnik te produžio život NovaMahala-i. Zbog zaštite servera i igrača od strane prevaranata, cheat-era i nepoželjni korisnika insistiralo se na razvijanju aplikacije/launcher-a. Zadatak preuzima Lunjo i u nešto manje od mjesec dana dolazi prva inicijalizovana verzija launcher-a, koji poprimi veće razmjere pa SAMP NovaMahala postane i lokalna modifikacija.  </value>
+  </data>
 </root>

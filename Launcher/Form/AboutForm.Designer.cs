@@ -143,7 +143,7 @@ namespace Jasarsoft.Columbia.Launcher
             this.labelLicense.TabIndex = 4;
             this.labelLicense.Text = "Licenca korištenja:";
             this.labelLicense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelLicense.Click += new System.EventHandler(this.labelLicense_Click);
+            this.labelLicense.Click += new System.EventHandler(this.LabelLicense_Click);
             // 
             // textboxDate
             // 
@@ -201,7 +201,7 @@ namespace Jasarsoft.Columbia.Launcher
             this.textboxLicense.TabIndex = 10;
             this.textboxLicense.Text = "Vlasnièki softver";
             this.textboxLicense.WordWrap = false;
-            this.textboxLicense.Click += new System.EventHandler(this.textboxLicense_Click);
+            this.textboxLicense.Click += new System.EventHandler(this.TextboxLicense_Click);
             // 
             // labelCopyright
             // 
@@ -223,7 +223,7 @@ namespace Jasarsoft.Columbia.Launcher
             this.labelDeveloper.TabIndex = 5;
             this.labelDeveloper.Text = "Programer i dizajner:";
             this.labelDeveloper.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelDeveloper.Click += new System.EventHandler(this.labelDeveloper_Click);
+            this.labelDeveloper.Click += new System.EventHandler(this.LabelDeveloper_Click);
             // 
             // labelData
             // 
@@ -254,8 +254,8 @@ namespace Jasarsoft.Columbia.Launcher
             this.textboxDeveloper.TabIndex = 11;
             this.textboxDeveloper.Text = "Edin (jasarsoft) Jašareviæ";
             this.textboxDeveloper.WordWrap = false;
-            this.textboxDeveloper.Click += new System.EventHandler(this.textboxDeveloper_Click);
-            this.textboxDeveloper.MouseHover += new System.EventHandler(this.textboxDeveloper_MouseHover);
+            this.textboxDeveloper.Click += new System.EventHandler(this.TextboxDeveloper_Click);
+            this.textboxDeveloper.MouseHover += new System.EventHandler(this.TextboxDeveloper_MouseHover);
             // 
             // labelVersion
             // 

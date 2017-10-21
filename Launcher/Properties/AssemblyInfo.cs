@@ -8,10 +8,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Columbia State Launcher")]
 [assembly: AssemblyDescription("SAMP Columbia State Launcher")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Jasarsoft")]
+[assembly: AssemblyCompany("Columbia State Team")]
 [assembly: AssemblyProduct("columbia.exe")]
-[assembly: AssemblyCopyright("Copyright ©  2017 Edin (jasarsoft) Jašarević")]
-[assembly: AssemblyTrademark("Columbia Team")]
+[assembly: AssemblyCopyright("Copyright ©  2017 Columbia State Team")]
+[assembly: AssemblyTrademark("Columbia State Team")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4dcd86f2-2be0-4681-91fb-4212b35988a3")]
+[assembly: Guid("6b452457-0808-4eda-b32b-e3e263bdf163")]
 
 // Version information for an assembly consists of the following four values:
 //

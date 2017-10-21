@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Jasarsoft.ColumbiaGUI
+namespace Test
 {
-    static class MainClass
+    static class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -15,7 +15,7 @@ namespace Jasarsoft.ColumbiaGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new Form1());
         }
     }
 }

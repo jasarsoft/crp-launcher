@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Jasarsoft.Columbia.Library;
 
 namespace Jasarsoft.Columbia.Launcher
 {

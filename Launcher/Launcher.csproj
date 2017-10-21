@@ -67,7 +67,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>nm_icon.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>47C846CC820E86B69D356C11F505BBD6D2A5410F</ManifestCertificateThumbprint>
@@ -366,7 +366,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Image\nm_cover.png" />
+    <None Include="Image\cover.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library\Library.csproj">
@@ -387,8 +387,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="nm_icon.ico" />
-    <Resource Include="Resources\launcher_cover.png" />
+    <Content Include="icon.ico" />
+    <Resource Include="Resources\cover.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

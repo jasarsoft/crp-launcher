@@ -1,10 +1,3 @@
-#region Copyright Syncfusion Inc. 2001 - 2016
-// Copyright Syncfusion Inc. 2001 - 2016. All rights reserved.
-// Use of this code is subject to the terms of our license.
-// A copy of the current license can be obtained at any time by e-mailing
-// licensing@syncfusion.com. Any infringement will be prosecuted under
-// applicable laws. 
-#endregion
 using Syncfusion.Windows.Forms;
 using System;
 using System.Collections.Generic;
@@ -15,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using Jasarsoft.Columbia.Library;
 
 namespace Jasarsoft.Columbia.Launcher
 {

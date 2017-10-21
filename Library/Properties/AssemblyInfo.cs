@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SAMP Columbia State Library")]
-[assembly: AssemblyDescription("SAMP Columbia State Library")]
+[assembly: AssemblyTitle("Columbia State Launcher Library")]
+[assembly: AssemblyDescription("GTA SA:MP Columbia State Launcher Class Library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Edin (jasarsoft) Jašarević")]
+[assembly: AssemblyCompany("Columbia State Team")]
 [assembly: AssemblyProduct("Jasarsoft.ColumbiaLib")]
-[assembly: AssemblyCopyright("Copyright ©  2017 Edin (jasarsoft) Jašarević")]
-[assembly: AssemblyTrademark("Columbia Team")]
+[assembly: AssemblyCopyright("Copyright ©  2017 Columbia State Team")]
+[assembly: AssemblyTrademark("Columbia State")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f82445a0-f035-49cd-957c-c6cbe7877750")]
+[assembly: Guid("3575d8d4-f7c4-41da-90bf-082d125d5e8f")]
 
 // Version information for an assembly consists of the following four values:
 //

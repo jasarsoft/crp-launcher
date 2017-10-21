@@ -98,14 +98,14 @@ namespace Jasarsoft.Columbia.Library
 
         private string GetPassword()
         {
-            string result = "";
+            long result = 1;
 
-            for (int i = 1, j = 1; i < 100; i*=2, j *= 3)
+            for (int i = 1, j = i; i < 64; i++, j *= ++i)
             {
-                result = String.Format("{0}{1}{2}", result, i, j);
+                result += i * j;
             }
 
-            return result;
+            return result.ToString();
         }
     }
 }

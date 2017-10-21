@@ -373,10 +373,6 @@
       <Project>{8837409e-a4f0-486f-9867-fd20db07b7ed}</Project>
       <Name>NovaMahala Library</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Host\Host.csproj">
-      <Project>{a297c2f5-ce78-4615-afc5-f1df97d4ea86}</Project>
-      <Name>NovaMahala Host</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

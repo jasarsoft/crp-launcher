@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jasarsoft.ColumbiaLib
+namespace Jasarsoft.Columbia.Library
 {
     public class About
     {
@@ -15,13 +15,13 @@ namespace Jasarsoft.ColumbiaLib
 
         public About()
         {
-            this.title = "SAMP Columbia State Launcher";
-            this.version = "1.0 Beta";
-            this.date = "20.10.2017.";
+            this.title = "Columbia State Launcher";
+            this.version = "1.0.0.0 Alpha";
+            this.date = "21. oktobar 2017";
             this.license = "Vlasnički softver";
             this.copyright = "Columbia State Team";
             this.developer = "Edin (jasarsoft) Jašarević";
-            this.description = "SAMP Columbia State Launcher napravljen u cilju lakšeg korištenja, bezbjednog pristupa te automatskog ažuriranja SAMP Columbia State moda za GTA San Andreas Multiplayer.";
+            this.description = "Columbia State Launcher napravljen u cilju lakšeg korištenja, bezbjednog pristupa te automatskog ažuriranja Columbia State moda za GTA San Andreas Multiplayer.";
         }
 
         public string Title

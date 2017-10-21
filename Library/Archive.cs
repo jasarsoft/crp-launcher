@@ -1,11 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Security.Cryptography;
 
-namespace Jasarsoft.ColumbiaLib
+namespace Jasarsoft.Columbia.Library
 {
     public class Archive
     {
@@ -13,14 +11,11 @@ namespace Jasarsoft.ColumbiaLib
         private string[] skip;
         private string[,] data;
         private const string path = @".\";
-        Dictionary<string, string> files;
 
 
         //default constructor
         public Archive()
         {
-            files = new Dictionary<string, string>();
-
             skip = new string[]
             {
                 path + @"SAMPUninstall.exe"
@@ -497,7 +492,7 @@ namespace Jasarsoft.ColumbiaLib
                                 }
                         }
                     }
-
+                    
                 }
 
                 if (result == false)
@@ -507,5 +502,4 @@ namespace Jasarsoft.ColumbiaLib
             return result;
         }
     }
-}
 }

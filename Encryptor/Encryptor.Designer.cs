@@ -1,6 +1,6 @@
 ﻿namespace Encryptor
 {
-    partial class Form1
+    partial class Encryptor
     {
         /// <summary>
         /// Required designer variable.
@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnProcess = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -87,18 +88,30 @@
             // 
             // btnProcess
             // 
-            this.btnProcess.Location = new System.Drawing.Point(281, 127);
+            this.btnProcess.Location = new System.Drawing.Point(351, 127);
             this.btnProcess.Name = "btnProcess";
-            this.btnProcess.Size = new System.Drawing.Size(210, 38);
+            this.btnProcess.Size = new System.Drawing.Size(140, 38);
             this.btnProcess.TabIndex = 6;
-            this.btnProcess.Text = "Enkripcija";
+            this.btnProcess.Text = "Deskripcija";
             this.btnProcess.UseVisualStyleBackColor = true;
+            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
             // 
-            // Form1
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(205, 127);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 38);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Enkripcija";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Encryptor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 177);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -109,9 +122,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+            this.Name = "Encryptor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "String Encryptor";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,6 +140,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnProcess;
+        private System.Windows.Forms.Button button1;
     }
 }
 

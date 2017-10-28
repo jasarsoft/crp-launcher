@@ -8,6 +8,7 @@ namespace Jasarsoft.Columbia.Library
     {
         private List<bool> valid;
         private List<string> name;
+        private List<string> path;
         private List<long> size;
         private List<string> hash;
         private List<string> link;
@@ -31,6 +32,11 @@ namespace Jasarsoft.Columbia.Library
         public List<string> Name
         {
             get { return this.name; }
+        }
+
+        public List<string> Path
+        {
+            get { return this.path; }
         }
 
         public List<long> Size
@@ -105,11 +111,12 @@ namespace Jasarsoft.Columbia.Library
 
         public bool Read()
         {
-            ColumnBase column = new ColumnBase();
+            BaseColumn column = new BaseColumn();
             
             this.valid = new List<bool>();
-            this.hash = new List<string>();
             this.name = new List<string>();
+            this.path = new List<string>();
+            this.hash = new List<string>();            
             this.size = new List<long>();
             this.link = new List<string>();
 
@@ -124,8 +131,13 @@ namespace Jasarsoft.Columbia.Library
 
                 while (reader.Read())
                 {
-                    this.valid.Add(Boolean.Parse(reader[column.Valid].ToString()));
+                    if (reader[column.Valid].ToString() == "0")
+                        this.valid.Add(false);
+                    else
+                        this.valid.Add(true);
+                    //this.valid.Add(Boolean.Parse(reader[column.Valid].ToString()));
                     this.name.Add(reader[column.Name].ToString());
+                    this.path.Add(reader[column.Path].ToString());
                     this.size.Add(Int64.Parse(reader[column.Size].ToString()));
                     this.hash.Add(reader[column.Hash].ToString());
                     this.link.Add(reader[column.Link].ToString());

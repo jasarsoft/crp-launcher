@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Jasarsoft.ColumbiaGUI.Properties {
+namespace Jasarsoft.ColumbiaState.Host.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Jasarsoft.ColumbiaGUI.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Jasarsoft.ColumbiaGUI.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Jasarsoft.ColumbiaState.Host.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,26 @@ namespace Jasarsoft.ColumbiaGUI.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cover {
+            get {
+                object obj = ResourceManager.GetObject("cover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon red_c {
+            get {
+                object obj = ResourceManager.GetObject("red_c", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

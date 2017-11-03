@@ -45,15 +45,15 @@ namespace Jasarsoft.MySQLInserter
                             }
                             else
                             {
-                                Console.WriteLine("ID:{0} HASH:{1} FILE:{2} SIZE:{3}",file.Id, file.Md5Checksum, file.Title, file.FileSize);
+                                Console.WriteLine(file.Title);
                                 command = mysql.CreateCommand();
                                 mysql.Open();
-                                command.CommandText = "INSERT INTO test2(name, path, size, hash, fileid) VALUES(@name, @path, @size, @hash, @fileid)";
-                                command.Parameters.AddWithValue("@name", file.Title);
-                                command.Parameters.AddWithValue("@path", path);
+                                command.CommandText = "INSERT INTO test3(name, size, hash, fileid, url) VALUES(@name, @size, @hash, @fileid, @url)";
+                                command.Parameters.AddWithValue("@name", path + file.Title);
                                 command.Parameters.AddWithValue("@size", file.FileSize);
                                 command.Parameters.AddWithValue("@hash", file.Md5Checksum);
                                 command.Parameters.AddWithValue("@fileid", file.Id);
+                                command.Parameters.AddWithValue("@url", file.DownloadUrl);
                                 command.ExecuteNonQuery();
                                 mysql.Close();
                             }
@@ -79,7 +79,7 @@ namespace Jasarsoft.MySQLInserter
 
         static void Main(string[] args)
         {
-            ConstBase cb = new ConstBase();
+            BaseConst cb = new BaseConst();
             PrivateData pd = new PrivateData();
 
             //Google Drive scopes Documentation:   https://developers.google.com/drive/web/scopes
@@ -109,13 +109,13 @@ namespace Jasarsoft.MySQLInserter
             {
                 command = mysql.CreateCommand();
                 mysql.Open();
-                command.CommandText = @"CREATE TABLE columbia.test2(id INT(9) NOT NULL AUTO_INCREMENT,
+                command.CommandText = @"CREATE TABLE columbia.test3(id INT(9) NOT NULL AUTO_INCREMENT,
                                         valid SMALLINT(1) DEFAULT 1,
                                         name VARCHAR(64) DEFAULT 'filename.ext',
-                                        path VARCHAR(128) DEFAULT '.\\',
                                         size INT(15) DEFAULT 0,
                                         hash VARCHAR(64) DEFAULT 'MD5',
-                                        fileid VARCHAR(64) DEFAULT 'file id',                                        
+                                        fileid VARCHAR(64) DEFAULT 'file id',
+                                        url VARCHAR(256) DEFAULT 'https://...',                                        
                                         PRIMARY KEY (id))";
                 command.ExecuteNonQuery();
                 Console.WriteLine("Tabela napraavljena");
@@ -123,7 +123,7 @@ namespace Jasarsoft.MySQLInserter
 
                 
 
-                service = GoogleAccount.AuthenticateServiceAccount("columbia-state@columbia-state.iam.gserviceaccount.com", "Columbia State-99db1bd2a00e.json", scopes);
+                service = GDriveAccount.Authenticate("columbia-state@columbia-state.iam.gserviceaccount.com", "Columbia State-99db1bd2a00e.json", scopes);
 
                 if (service == null)
                 {

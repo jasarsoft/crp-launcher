@@ -9,7 +9,8 @@ namespace Jasarsoft.Columbia.Library
         private readonly string size;
         private readonly string hash;
         private readonly string link;
-        
+        private readonly string url;
+
 
         public BaseColumn()
         {
@@ -19,6 +20,7 @@ namespace Jasarsoft.Columbia.Library
             this.size = "size";
             this.hash = "hash";
             this.link = "fileid";
+            this.url = "url";
             
         }
 
@@ -51,6 +53,11 @@ namespace Jasarsoft.Columbia.Library
         public string Link
         {
             get { return this.link; }
+        }
+
+        public string Url
+        {
+            get { return this.url; }
         }
     }
 }

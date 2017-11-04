@@ -14,6 +14,7 @@ using Google.Apis.Drive.v2;
 using GoogleFile = Google.Apis.Drive.v2.Data.File;
 using System.Threading.Tasks;
 using Jasarsoft.Columbia.Library;
+using Google.Apis.Auth.OAuth2;
 
 namespace Jasarsoft.Columbia.Launcher
 {
@@ -25,6 +26,8 @@ namespace Jasarsoft.Columbia.Launcher
         private double size;
         private List<int> id;
         private ErrorResult errorResult;
+
+        delegate void ProgressSet(long bytesDownload);
 
         enum ErrorResult
         {
@@ -111,6 +114,24 @@ namespace Jasarsoft.Columbia.Launcher
         //    }
         //}
 
+        private const int KB = 0x400;
+        private const int DownloadChunkSize = 256 * KB;
+
+        private Thread demoThread = null;
+
+
+        
+
+        /*private async Task Run()
+        {
+            DriveService service = GDriveAccount.Authenticate("columbia-state@columbia-state.iam.gserviceaccount.com", "Columbia State-99db1bd2a00e.json", new string[] { DriveService.Scope.DriveReadonly, DriveService.Scope.DriveMetadataReadonly });
+            for (int i = 0; i < this.id.Count; i++)
+            {
+                await DownloadFile(service, Launcher.Url[number]);
+            }
+        }*/
+
+
         private void DownloadForm_Shown(object sender, EventArgs e)
         {
             this.progressOne.Maximum = 100;
@@ -124,8 +145,13 @@ namespace Jasarsoft.Columbia.Launcher
                 Thread.Sleep(1000);
                 errorResult = ErrorResult.None;
                 List<FileStream> fileStream = new List<FileStream>();
+                
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    labelName.Text = "Spajanje na servis za preuzimanje...";                    
+                });
 
-                DriveService service = Authentication.AuthenticateServiceAccount(api.Email, api.Key);
+                DriveService service = new GDriveAccount().Authenticate();
                 if (service == null) errorResult = ErrorResult.Service;
 
                 for (int i = 0; i < this.id.Count; i++)
@@ -163,7 +189,7 @@ namespace Jasarsoft.Columbia.Launcher
                   
                     Uri address = new Uri(String.Format("https://drive.google.com/uc?export=download&id={0}", Launcher.Link[number]));
 
-                    using (WebClient client = new WebClient())
+                    /*using (WebClient client = new WebClient())
                     {
                         client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
                         //client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
@@ -181,12 +207,10 @@ namespace Jasarsoft.Columbia.Launcher
                         }
 
                         continue;
-                    }
+                    }*/
                         
 
                     var request = service.Files.Get(Launcher.Link[number]);
-                    //GoogleFile file = service.Files.Get(Launcher.Link[i]).Execute();
-                    //new DownloadForm("aa").DownloadFile(service, Launcher.Name[i], file.DownloadUrl).Wait();
                     
                     if (Launcher.Size[number] > 1048576)
                         request.MediaDownloader.ChunkSize = 1024 * 512;
@@ -258,7 +282,7 @@ namespace Jasarsoft.Columbia.Launcher
                         request.Download(fs);
                     }
 
-                    if (HashFile.GetMD5(Launcher.Name[number]) != Launcher.Hash[number])
+                    if (HashFile.GetMD5(Launcher.Name[number]) != Launcher.Hash[number].ToUpper())
                     {
                         errorResult = ErrorResult.Download;
                         break;
@@ -364,43 +388,46 @@ namespace Jasarsoft.Columbia.Launcher
             thread.Start();
         }
 
-        private async Task DownloadFile(DriveService service, string fileName, string url)
+        private async Task Run()
+        {
+            number = this.id[0];
+            DriveService service = new GDriveAccount().Authenticate();
+
+            
+            await DownloadFile(service, Launcher.Url[number]);
+        }
+
+        private async Task DownloadFile(DriveService service, string url)
         {
             var downloader = new MediaDownloader(service);
-            downloader.ChunkSize = 1024 * 256;
+            downloader.ChunkSize = DownloadChunkSize;
             // add a delegate for the progress changed event for writing to console on changes
-            downloader.ProgressChanged += Download_ProgressChanged;
+            downloader.ProgressChanged += DownloadProgressChanged1;
 
+            // figure out the right file type base on UploadFileName extension
+            var fileName = Launcher.Name[number];
 
-            using (var fileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Create, System.IO.FileAccess.Write))
+            using (var fileStream = new System.IO.FileStream(fileName,
+                System.IO.FileMode.Create, System.IO.FileAccess.Write))
             {
                 var progress = await downloader.DownloadAsync(url, fileStream);
-                //var progress = downloader.Download(url, fileStream);
-
                 if (progress.Status == DownloadStatus.Completed)
                 {
-                    this.BeginInvoke((MethodInvoker)delegate
-                    {
-                        progressOne.Value = 100;
-                        progressAll.Value = progressOne.Value + value;
-                    });
-                    Thread.Sleep(100);
-
-                    MessageBox.Show("compete");
+                    //Console.WriteLine(fileName + " was downloaded successfully");
                 }
                 else
                 {
-                    string text = String.Format("Download {0} was interpreted in the middle. Only {1} were downloaded.", fileName, progress.BytesDownloaded);
-                    MessageBox.Show(text);
+                    progressOne.Value = (int)(((double)progress.BytesDownloaded / Launcher.Size[number]) * 100);
                 }
             }
         }
 
         private void Download_ProgressChanged(IDownloadProgress obj)
         {
-            
+
             //MessageBox.Show("a");
             progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100);
+
             //this.BeginInvoke((MethodInvoker)delegate
             //{
             //    progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100);
@@ -425,6 +452,53 @@ namespace Jasarsoft.Columbia.Launcher
                     labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", e.BytesReceived / 1048576.0, size);
                 else
                     labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", e.BytesReceived / 1024.0, size);
+
+                //double bytesIn = double.Parse(e.BytesReceived.ToString());
+                //double totalBytes = double.Parse(Launcher.Size[number].ToString());
+                //double percentage = bytesIn / totalBytes * 100;
+                //progressOne.Value = int.Parse(Math.Truncate(percentage).ToString());
+
+                //if (Launcher.Size[number] < 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
+                //    labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", Math.Truncate((bytesIn / 1024) * 100) / 100, Math.Truncate((totalBytes / 1024) * 100) / 100);
+                //else
+                //    labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", Math.Truncate((bytesIn / 1048576) * 100) / 100, Math.Truncate((totalBytes / 1048576) * 100) / 100);
+            });
+        }
+
+        private void ThreadProgressOne(long bytes)
+        {
+            this.SetProgressOne(bytes);
+        }
+
+        private void SetProgressOne(long bytes)
+        {
+            if (this.progressOne.InvokeRequired)
+            {
+                ProgressSet p = new ProgressSet(SetProgressOne);
+                this.Invoke(p, new object[] { bytes });
+            }
+            else
+            {
+                progressOne.Value = (int)(((double)bytes / Launcher.Size[number]) * 100);
+            }
+        }
+
+        public void DoProcessing(IProgress<int> progress)
+        {
+            for (int i = 0; i != 100; ++i)
+            {
+                Thread.Sleep(100); // CPU-bound work
+                if (progress != null)
+                    progress.Report(i);
+            }
+        }
+
+        private void DownloadProgressChanged1(IDownloadProgress obj)
+        {
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100);
+                
 
                 //double bytesIn = double.Parse(e.BytesReceived.ToString());
                 //double totalBytes = double.Parse(Launcher.Size[number].ToString());

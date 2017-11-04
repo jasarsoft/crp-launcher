@@ -56,6 +56,7 @@ namespace Jasarsoft.Columbia.Launcher
                 @".\Zlib.Portable.dll",
                 
                 //Microsoft Library
+                @".\stdole.dll",
                 @".\EnvDTE.dll",
                 @".\Microsoft.Threading.Tasks.dll",
                 @".\Microsoft.Threading.Tasks.Extensions.dll",
@@ -150,6 +151,8 @@ namespace Jasarsoft.Columbia.Launcher
                 @".\Zlib.Portable.xml",
                 
                 //Microsoft Library
+                @".\stdole.pdb",
+                @".\stdole.xml",
                 @".\EnvDTE.pdb",
                 @".\EnvDTE.xml",
                 @".\Microsoft.Threading.Tasks.pdb",
@@ -240,6 +243,7 @@ namespace Jasarsoft.Columbia.Launcher
                 "0068F1CF5939866A00E649CF169EFF20", //@".\Zlib.Portable.dll",
                 
                 //Microsoft Library
+                "28B577084E20032953ADC31F27B1A81D", //@".\stdole.dll",
                 "F4B84B1EB2711575D6AB68576A1C9027", //@".\EnvDTE.dll",
                 "D01819BFE03222DFA9E35A36555B6B6C", //@".\Microsoft.Threading.Tasks.dll",
                 "6AA2393FF1FDE1A61D0CF51730428F74", //@".\Microsoft.Threading.Tasks.Extensions.dll",

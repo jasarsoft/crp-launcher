@@ -13,6 +13,7 @@ namespace Jasarsoft.Columbia.Launcher
         private static long[] size;
         private static string[] hash;
         private static string[] link;
+        private static string[] url;
 
         private static bool locked;
         private static bool worked;
@@ -53,6 +54,12 @@ namespace Jasarsoft.Columbia.Launcher
         {
             get { return link; }
             set { link = value; }
+        }
+
+        public static string[] Url
+        {
+            get { return url; }
+            set { url = value; }
         }
 
 

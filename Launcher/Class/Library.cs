@@ -1,7 +1,4 @@
-﻿//#define DEBUGMODE
-
-using System;
-using System.IO;
+﻿using System.IO;
 
 
 namespace Jasarsoft.Columbia.Launcher

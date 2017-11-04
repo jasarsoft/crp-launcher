@@ -47,6 +47,7 @@ namespace Jasarsoft.Columbia.Launcher
             // 
             // pictureLogo
             // 
+            this.pictureLogo.Image = global::Jasarsoft.Columbia.Launcher.Properties.Resources.cover;
             this.pictureLogo.Location = new System.Drawing.Point(12, 12);
             this.pictureLogo.Name = "pictureLogo";
             this.pictureLogo.Size = new System.Drawing.Size(340, 85);

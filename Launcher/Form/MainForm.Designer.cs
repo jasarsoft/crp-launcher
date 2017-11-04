@@ -111,7 +111,7 @@ namespace Jasarsoft.Columbia.Launcher
             this.textPassword.Location = new System.Drawing.Point(128, 49);
             this.textPassword.MaxLength = 128;
             this.textPassword.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.textPassword.MinimumSize = new System.Drawing.Size(6, 2);
+            this.textPassword.MinimumSize = new System.Drawing.Size(6, 4);
             this.textPassword.Name = "textPassword";
             this.textPassword.PasswordChar = '*';
             this.textPassword.Size = new System.Drawing.Size(198, 22);
@@ -131,7 +131,7 @@ namespace Jasarsoft.Columbia.Launcher
             this.textName.Location = new System.Drawing.Point(129, 12);
             this.textName.MaxLength = 24;
             this.textName.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
-            this.textName.MinimumSize = new System.Drawing.Size(6, 2);
+            this.textName.MinimumSize = new System.Drawing.Size(6, 4);
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(198, 22);
             this.textName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
@@ -175,7 +175,7 @@ namespace Jasarsoft.Columbia.Launcher
             // menuFileClient
             // 
             this.menuFileClient.Name = "menuFileClient";
-            this.menuFileClient.Size = new System.Drawing.Size(152, 22);
+            this.menuFileClient.Size = new System.Drawing.Size(110, 22);
             this.menuFileClient.Text = "&Prijava";
             this.menuFileClient.ToolTipText = "Prijavite se kao klijent";
             this.menuFileClient.Click += new System.EventHandler(this.menuFileClient_Click);
@@ -184,7 +184,7 @@ namespace Jasarsoft.Columbia.Launcher
             // 
             this.menuFileAdmin.Enabled = false;
             this.menuFileAdmin.Name = "menuFileAdmin";
-            this.menuFileAdmin.Size = new System.Drawing.Size(152, 22);
+            this.menuFileAdmin.Size = new System.Drawing.Size(110, 22);
             this.menuFileAdmin.Text = "&Admin";
             this.menuFileAdmin.ToolTipText = "Prijavite se kao admin";
             this.menuFileAdmin.Click += new System.EventHandler(this.menuFileAdmin_Click);
@@ -192,12 +192,12 @@ namespace Jasarsoft.Columbia.Launcher
             // menuFileSeparator
             // 
             this.menuFileSeparator.Name = "menuFileSeparator";
-            this.menuFileSeparator.Size = new System.Drawing.Size(149, 6);
+            this.menuFileSeparator.Size = new System.Drawing.Size(107, 6);
             // 
             // menuFileExit
             // 
             this.menuFileExit.Name = "menuFileExit";
-            this.menuFileExit.Size = new System.Drawing.Size(152, 22);
+            this.menuFileExit.Size = new System.Drawing.Size(110, 22);
             this.menuFileExit.Text = "&Izlaz";
             this.menuFileExit.ToolTipText = "Zatvorite SAMP NovaMahala Launcer";
             this.menuFileExit.Click += new System.EventHandler(this.menuFileExit_Click);
@@ -351,6 +351,7 @@ namespace Jasarsoft.Columbia.Launcher
             // 
             // pictureLogo
             // 
+            this.pictureLogo.Image = global::Jasarsoft.Columbia.Launcher.Properties.Resources.cover;
             this.pictureLogo.Location = new System.Drawing.Point(12, 27);
             this.pictureLogo.Name = "pictureLogo";
             this.pictureLogo.Size = new System.Drawing.Size(340, 85);

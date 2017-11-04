@@ -125,10 +125,10 @@ namespace Jasarsoft.Columbia.Launcher
         static void Main()
         {
             #if !DEBUG
-            Launcher lan = new Launcher();
+            Jasarsoft.Columbia.Library.Launcher lan = new Jasarsoft.Columbia.Library.Launcher();
             if (lan.Read())
             {
-                if(HashFile.GetMD5("samp-nm.exe") != lan.Hash)
+                if(HashFile.GetMD5("columbia.exe") != lan.Hash)
                 {
                     MessageTitle title = new MessageTitle();
                     string text = "Columbia State Launcher nije validan.";

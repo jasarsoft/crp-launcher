@@ -261,7 +261,7 @@ namespace Jasarsoft.Columbia.Launcher
                 processInfo.Arguments = String.Format("{0} {1}", Launcher.Address, Launcher.Password);
                 Process.Start(processInfo);
 
-                Process.Start("host.exe");
+                Process.Start("host-cs.exe");
                 workerCheck.RunWorkerAsync();
                 workerHost.RunWorkerAsync();
                 workerGame.RunWorkerAsync();

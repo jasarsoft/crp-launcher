@@ -12,6 +12,11 @@ using Syncfusion.Windows.Forms;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
 using Jasarsoft.Columbia.Library;
+using Google.Apis.Download;
+using Google.Apis.Drive.v2;
+using Google.Apis.Drive.v2.Data;
+using GoogleFile = Google.Apis.Drive.v2.Data.File;
+
 
 namespace Jasarsoft.Columbia.Launcher
 {
@@ -27,6 +32,7 @@ namespace Jasarsoft.Columbia.Launcher
             None,
             Edit,
             Work,
+            Service,
             Network,
             Database,
             Unknown,
@@ -38,11 +44,21 @@ namespace Jasarsoft.Columbia.Launcher
             InitializeComponent();
 
             MessageBoxAdv.MessageBoxStyle = MessageBoxAdv.Style.Metro;
+            MessageBoxAdv.MetroColorTable.OKButtonBackColor = Color.Firebrick;
+            MessageBoxAdv.MetroColorTable.OKButtonForeColor = Color.WhiteSmoke;
+            MessageBoxAdv.MetroColorTable.NoButtonBackColor = Color.Firebrick;
+            MessageBoxAdv.MetroColorTable.NoButtonForeColor = Color.WhiteSmoke;
+            MessageBoxAdv.MetroColorTable.YesButtonBackColor = Color.Firebrick;
+            MessageBoxAdv.MetroColorTable.YesButtonForeColor = Color.WhiteSmoke;
+            MessageBoxAdv.MetroColorTable.CancelButtonBackColor = Color.Firebrick;
+            MessageBoxAdv.MetroColorTable.CancelButtonForeColor = Color.WhiteSmoke;
             MessageBoxAdv.MetroColorTable.BackColor = Color.WhiteSmoke;
-            MessageBoxAdv.MetroColorTable.ForeColor = Color.FromArgb(52, 52, 52);
-            MessageBoxAdv.MetroColorTable.BorderColor = Color.FromArgb(17, 158, 218);
-            MessageBoxAdv.MetroColorTable.CaptionForeColor = Color.FromArgb(52, 52, 52);
-            MessageBoxAdv.MetroColorTable.CaptionBarColor = Color.FromArgb(17, 158, 218);
+            MessageBoxAdv.MetroColorTable.ForeColor = Color.Black;
+            MessageBoxAdv.MetroColorTable.BorderColor = Color.Firebrick;
+            MessageBoxAdv.MetroColorTable.CaptionForeColor = Color.WhiteSmoke;
+            MessageBoxAdv.MetroColorTable.CaptionBarColor = Color.Firebrick;
+            MessageBoxAdv.MetroColorTable.CloseButtonColor = Color.WhiteSmoke;
+            MessageBoxAdv.MetroColorTable.CloseButtonHoverColor = Color.RoyalBlue;
         }
 
 
@@ -51,23 +67,25 @@ namespace Jasarsoft.Columbia.Launcher
             workerLoad.RunWorkerAsync();
         }
 
+
         private void workerLoad_DoWork(object sender, DoWorkEventArgs e)
         {
             mainForm = new MainForm();
 
-            Process[] process = Process.GetProcessesByName("samp-nm");
+#if(!DEBUG)
+            Process[] process = Process.GetProcessesByName("columbia");
             if (process.Length > 1)
             {
                 e.Result = ErrorResult.Work;
                 return;
             }
 
-            //if (Path.GetFileName(Application.ExecutablePath) != "samp-nm.exe")
-            //{
-            //    e.Result = ErrorResult.Edit;
-            //    return;
-            //}
-
+            if (Path.GetFileName(Application.ExecutablePath) != "columbia.exe")
+            {
+                e.Result = ErrorResult.Edit;
+                return;
+            }
+#endif
             //Process[] hostNm = Process.GetProcessesByName("host-nm");
             //if (hostNm.Length > 0)
             //{
@@ -90,30 +108,6 @@ namespace Jasarsoft.Columbia.Launcher
             }
             e.Result = ErrorResult.None;
 
-
-            BaseFile bf = new BaseFile();
-            if (bf.Read())
-            {
-                Launcher.Valid = new bool[bf.Valid.Count];
-                Launcher.Name = new string[bf.Name.Count];
-                Launcher.Size = new long[bf.Size.Count];
-                Launcher.Hash = new string[bf.Hash.Count];
-                Launcher.Link = new string[bf.Link.Count];
-
-                bf.Valid.CopyTo(Launcher.Valid);
-                bf.Name.CopyTo(Launcher.Name);
-                bf.Size.CopyTo(Launcher.Size);
-                bf.Hash.CopyTo(Launcher.Hash);
-                bf.Link.CopyTo(Launcher.Link);
-
-                e.Result = ErrorResult.None;
-            }
-            else
-            {
-                e.Result = ErrorResult.Database;
-                return;
-            }
-
             Server s = new Server();
             if (s.Read())
             {
@@ -135,9 +129,37 @@ namespace Jasarsoft.Columbia.Launcher
                 return;
             }
 
-            
-            Library dll = new Library();
+            if(s.Working)
+            {
+                BaseFile bf = new BaseFile();
+                if (bf.Read())
+                {
+                    Launcher.Valid = new bool[bf.Valid.Count];
+                    Launcher.Name = new string[bf.Name.Count];
+                    Launcher.Size = new long[bf.Size.Count];
+                    Launcher.Hash = new string[bf.Hash.Count];
+                    Launcher.Link = new string[bf.Link.Count];
+                    Launcher.Url = new string[bf.Url.Count];
+
+                    bf.Valid.CopyTo(Launcher.Valid);
+                    bf.Name.CopyTo(Launcher.Name);
+                    bf.Size.CopyTo(Launcher.Size);
+                    bf.Hash.CopyTo(Launcher.Hash);
+                    bf.Link.CopyTo(Launcher.Link);
+                    bf.Url.CopyTo(Launcher.Url);
+
+                    e.Result = ErrorResult.None;
+                }
+                else
+                {
+                    e.Result = ErrorResult.Database;
+                    return;
+                }
+            }
+
             DataFile dataFile = new DataFile();
+#if(!DEBUG)
+            Library dll = new Library();
             this.unknownFiles = new List<string>();
             dataFile.ReadUnknown(Launcher.Name, dll.Name);
             if (dataFile.UnknownFiles.Count > 0)
@@ -146,7 +168,7 @@ namespace Jasarsoft.Columbia.Launcher
                 e.Result = ErrorResult.Unknown;
                 return;
             }
-
+#endif
             this.missedFiles = new List<int>();
             dataFile.ReadMissed(Launcher.Name);
             if (dataFile.MissedFiles.Count > 0)
@@ -154,7 +176,7 @@ namespace Jasarsoft.Columbia.Launcher
                 foreach (int missed in dataFile.MissedFiles) this.missedFiles.Add(missed);
                 e.Result = ErrorResult.Missed;
                 return;
-            }  
+            }
         }
 
         private void workerLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -164,8 +186,15 @@ namespace Jasarsoft.Columbia.Launcher
 
             if (e.Result.ToString() == ErrorResult.Work.ToString())
             {
-                string text = "Imate veæ pokrenutu instancu Columbia State launchera.";
+                string text = "Imate veæ pokrenutu instancu Columbia State launchera.\nPokretanje više instanci moda nije dozvoljeno i nepreporuèljivo je.";
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                Application.Exit();
+                return;
+            }
+            else if(e.Result.ToString() == ErrorResult.Service.ToString())
+            {
+                string text = "Prijava na servis Columbia State moda nije uspjesno izvrsena.\nPokušajte ponovo ili evidentirajte vašu grešku na forum.";
+                MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }
@@ -205,7 +234,7 @@ namespace Jasarsoft.Columbia.Launcher
                 {
                     try
                     {
-                        foreach (string name in this.unknownFiles) File.Delete(name);
+                        foreach (string name in this.unknownFiles) System.IO.File.Delete(name);
 
                         text = "Nepoznati fajlovi su uspješno uklonjeni, pokrenite ponovo aplikaciju.";
                         MessageBoxAdv.Show(text, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);

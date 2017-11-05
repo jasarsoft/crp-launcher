@@ -109,7 +109,7 @@ namespace Jasarsoft.Columbia.Library
         //methods
         public bool Read()
         {
-            ConstBase cb = new ConstBase();
+            BaseConst cb = new BaseConst();
             PrivateData pd = new PrivateData();
 
             string query = String.Format("{0}={1};{2}={3};{4}={5};{6}={7};",

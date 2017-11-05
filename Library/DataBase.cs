@@ -20,7 +20,7 @@ namespace Jasarsoft.Columbia.Library
 
         public DataBase()
         {
-            ConstBase cb = new ConstBase();
+            BaseConst cb = new BaseConst();
             PrivateData pd = new PrivateData();
 
             string query = String.Format("{0}={1};{2}={3};{4}={5};{6}={7};", 
@@ -126,7 +126,7 @@ namespace Jasarsoft.Columbia.Library
         public bool Select()
         {
             string query = "SELECT * FROM `files`";
-            ColumnBase column = new ColumnBase();
+            BaseColumn column = new BaseColumn();
 
             this.valid = new List<bool>();
             this.hash = new List<string>();

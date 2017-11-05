@@ -19,7 +19,7 @@ namespace Jasarsoft.Columbia.Library
 
         public bool Connect()
         {
-            ConstBase cb = new ConstBase();
+            BaseConst cb = new BaseConst();
             PrivateData pd = new PrivateData();
 
             query = String.Format("{0}={1};{2}={3};{4}={5};{6}={7};",

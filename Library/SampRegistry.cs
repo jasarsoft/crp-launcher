@@ -23,7 +23,7 @@ namespace Jasarsoft.Columbia.Library
             this.pathName = String.Empty;
             this.playerName = String.Empty;
             //this.subKey = @"Software\SAMP"; //original
-            this.subKey = @"Software\SANM";
+            this.subKey = @"Software\CSRP";
         }
 
         public string PathName

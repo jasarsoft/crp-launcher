@@ -107,15 +107,13 @@
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data, Version=6.10.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.0\MySql.Data.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>bin\x86\Debug\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Web, Version=6.10.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.0\MySql.Web.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>bin\x86\Debug\MySql.Web.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -173,20 +171,21 @@
     <Compile Include="About.cs" />
     <Compile Include="Archive.cs" />
     <Compile Include="Authentication.cs" />
-    <Compile Include="BaseFile.cs" />
-    <Compile Include="ColumnBase.cs" />
-    <Compile Include="ConstBase.cs" />
+    <Compile Include="Base\BaseFile.cs" />
+    <Compile Include="Base\BaseColumn.cs" />
+    <Compile Include="Base\BaseConst.cs" />
     <Compile Include="DataFile.cs" />
     <Compile Include="DataFileOld.cs" />
     <Compile Include="DataOld.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="GDrive\GDrivePrivate.cs" />
+    <Compile Include="GDrive\GDriveAccount.cs" />
     <Compile Include="GoogleApi.cs" />
+    <Compile Include="GoogleMethod.cs" />
     <Compile Include="Launcher.cs" />
-    <Compile Include="Library.cs" />
     <Compile Include="MySql.cs" />
     <Compile Include="MysqlDll.cs" />
     <Compile Include="Download.cs" />
-    <Compile Include="ConfigData.cs" />
     <Compile Include="HashFile.cs" />
     <Compile Include="IData.cs" />
     <Compile Include="MessageTitle.cs" />
@@ -204,7 +203,6 @@
     <Compile Include="SampRegistry.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="StringCipher.cs" />
-    <Compile Include="SyncfusionDll.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -213,12 +211,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\launcher_cover.png" />
+    <None Include="Config\app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Config\packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

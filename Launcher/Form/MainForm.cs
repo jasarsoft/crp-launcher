@@ -7,7 +7,6 @@ using System.Diagnostics;
 
 using System.Text;
 using System.Windows.Forms;
-using Jasarsoft.Columbia.Library;
 using System.IO;
 using System.Security.Cryptography;
 using System.Threading;
@@ -16,7 +15,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     public partial class MainForm : Syncfusion.Windows.Forms.MetroForm
     {

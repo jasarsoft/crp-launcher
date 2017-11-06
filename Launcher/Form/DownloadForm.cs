@@ -13,10 +13,9 @@ using Google.Apis.Download;
 using Google.Apis.Drive.v2;
 using GoogleFile = Google.Apis.Drive.v2.Data.File;
 using System.Threading.Tasks;
-using Jasarsoft.Columbia.Library;
 using Google.Apis.Auth.OAuth2;
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     public partial class DownloadForm : Syncfusion.Windows.Forms.MetroForm
     {

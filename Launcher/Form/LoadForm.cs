@@ -11,14 +11,13 @@ using System.Windows.Forms;
 using Syncfusion.Windows.Forms;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
-using Jasarsoft.Columbia.Library;
 using Google.Apis.Download;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
 using GoogleFile = Google.Apis.Drive.v2.Data.File;
 
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     public partial class LoadForm : Syncfusion.Windows.Forms.MetroForm
     {

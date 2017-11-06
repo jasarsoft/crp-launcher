@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     public partial class DescriptionForm : Syncfusion.Windows.Forms.MetroForm
     {

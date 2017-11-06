@@ -16,15 +16,13 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Jasarsoft.Columbia.Library;
-
 using GoogleFile = Google.Apis.Drive.v2.Data.File;
 using System.Collections;
 using Google.Apis.Drive.v2.Data;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     public partial class UpdateForm : Syncfusion.Windows.Forms.MetroForm
     {

@@ -8,9 +8,8 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Jasarsoft.Columbia.Library;
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     public partial class CheckForm : Syncfusion.Windows.Forms.MetroForm
     {

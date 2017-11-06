@@ -5,7 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     partial class ValidForm
     {

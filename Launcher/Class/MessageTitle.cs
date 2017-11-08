@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     internal class MessageTitle
     {

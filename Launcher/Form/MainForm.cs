@@ -274,12 +274,12 @@ namespace Jasarsoft.Columbia
 
         private void buttonLogin_MouseHover(object sender, EventArgs e)
         {
-            this.buttonLogin.BackColor = Color.ForestGreen;
+            this.buttonLogin.BackColor = Color.DarkBlue;
         }
 
         private void buttonLogin_MouseLeave(object sender, EventArgs e)
         {
-            this.buttonLogin.BackColor = Color.FromArgb(22, 165, 220);
+            this.buttonLogin.BackColor = Color.Firebrick;
         }
 
         private void MainForm_Shown(object sender, EventArgs e)

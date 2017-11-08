@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     internal static class HashFile
     {

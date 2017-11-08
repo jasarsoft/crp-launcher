@@ -1,7 +1,7 @@
 ﻿using System.IO;
 
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     internal class Library
     {
@@ -17,9 +17,6 @@ namespace Jasarsoft.Columbia.Launcher
                 @".\columbia.exe",
                 @".\host-cs.exe",
                 @".\columbia.exe.config",
-                
-                //Jasarsoft Library
-                @".\Jasarsoft.ColumbiaLib.dll",
                 
                 //MySql Library
                 @".\MySql.Data.dll",
@@ -93,11 +90,7 @@ namespace Jasarsoft.Columbia.Launcher
                 @".\app.publish\columbia.exe",
                 @".\host-cs.pdb",
                 @".\host-cs.xml",
-                
-                //Jasarsoft Library
-                @".\Jasarsoft.ColumbiaLib.pdb",
-                @".\Jasarsoft.ColumbiaLib.xml",
-                
+                                
                 //MySql Library
                 @".\MySql.Data.pdb",
                 @".\MySql.Data.xml",
@@ -202,12 +195,9 @@ namespace Jasarsoft.Columbia.Launcher
             {
                 //application
                 "", //@".\columbia.exe",
-                "0123582A211E304FFB5E70EBB95606AA", //@".\host-cs.exe",
-                "1EC96787B036C7EBFA6367BB17B8A674", //@".\columbia.exe.config",
-                
-                //Jasarsoft Library
-                "3D34995470712D75D66C5A49D6786A84", //@".\Jasarsoft.ColumbiaLib.dll",
-                
+                "47E1F9B671A35DCD6077C2B4DF2D4992", //@".\host-cs.exe",
+                "94CA33F20B4130229C5419FC9F67E871", //@".\columbia.exe.config",
+                                
                 //MySql Library
                 "17B4BDDED1D6D8F5B02D6A60C8BADF27", //@".\MySql.Data.dll",
                 "9430D3A9517A5D9D001E0CA2E9523FD1", //@".\MySql.Web.dll",
@@ -284,7 +274,11 @@ namespace Jasarsoft.Columbia.Launcher
             foreach (string name in this.name)
             {
                 if (!File.Exists(name))
+                {
+                    //System.Windows.Forms.MessageBox.Show(name);
                     return false;
+                }
+                    
             }
 
             return true;
@@ -297,7 +291,11 @@ namespace Jasarsoft.Columbia.Launcher
             for (int i = 1; i < name.Length; i++ )
             {
                 if (HashFile.GetMD5(this.name[i]) != this.hash[i])
+                {
+                    System.Windows.Forms.MessageBox.Show(name[i]);
                     return false;
+                }
+                    
             }
 
             return true;   

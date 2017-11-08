@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-namespace Jasarsoft.Columbia.Launcher
+namespace Jasarsoft.Columbia
 {
     internal static class Launcher
     {
@@ -124,8 +124,8 @@ namespace Jasarsoft.Columbia.Launcher
         [STAThread]
         static void Main()
         {
-            #if !DEBUG
-            Jasarsoft.Columbia.Library.Launcher lan = new Jasarsoft.Columbia.Library.Launcher();
+#if !DEBUG
+            MySqlLauncher lan = new MySqlLauncher();
             if (lan.Read())
             {
                 if(HashFile.GetMD5("columbia.exe") != lan.Hash)
@@ -155,7 +155,7 @@ namespace Jasarsoft.Columbia.Launcher
 
             lan = null;
             lib = null;
-            #endif
+#endif
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

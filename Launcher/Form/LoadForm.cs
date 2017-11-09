@@ -138,14 +138,14 @@ namespace Jasarsoft.Columbia
                     Launcher.Size = new long[bf.Size.Count];
                     Launcher.Hash = new string[bf.Hash.Count];
                     Launcher.Link = new string[bf.Link.Count];
-                    Launcher.Url = new string[bf.Url.Count];
+                    //Launcher.Url = new string[bf.Url.Count];
 
                     bf.Valid.CopyTo(Launcher.Valid);
                     bf.Name.CopyTo(Launcher.Name);
                     bf.Size.CopyTo(Launcher.Size);
                     bf.Hash.CopyTo(Launcher.Hash);
                     bf.Link.CopyTo(Launcher.Link);
-                    bf.Url.CopyTo(Launcher.Url);
+                    //bf.Url.CopyTo(Launcher.Url);
 
                     e.Result = ErrorResult.None;
                 }

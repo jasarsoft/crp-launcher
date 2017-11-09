@@ -62,8 +62,13 @@ namespace Jasarsoft.Columbia
                 
                 Thread.Sleep(1000);
                 errorResult = ErrorResult.None;
-                
-                DriveService service = Authentication.AuthenticateServiceAccount(api.Email, api.Key);
+
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    labelName.Text = "Spajanje na servis za preuzimanje...";
+                });
+
+                DriveService service = new GDriveAccount().Authenticate();
                 if (service == null) errorResult = ErrorResult.Service;
 
                 for (int i = 0; i < Launcher.Name.Length; i++)
@@ -84,7 +89,7 @@ namespace Jasarsoft.Columbia
 
                     bool exist = System.IO.File.Exists(Launcher.Name[i]);
 
-                    if (!exist || Launcher.Valid[i] && HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i])
+                    if (!exist || Launcher.Valid[i] && HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i].ToUpper())
                     {
                         number = i;
                         if (!net.Available())
@@ -101,18 +106,18 @@ namespace Jasarsoft.Columbia
                         else
                             size = Launcher.Size[number] / 1024.0;
 
-                        Uri address = new Uri(String.Format("https://drive.google.com/uc?export=download&id={0}", Launcher.Link[i]));
-
-                        using (WebClient client = new WebClient())
-                        {
-                            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
-                            //client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
-
-                            client.DownloadFileAsync(address, Launcher.Name[i]);
-                            while (client.IsBusy) Thread.Sleep(500);
-                        }
-
-                        if (HashFile.GetMD5(Launcher.Name[i]) == Launcher.Hash[i]) continue;
+                        //Uri address = new Uri(String.Format("https://drive.google.com/uc?export=download&id={0}", Launcher.Link[i]));
+                        //
+                        //using (WebClient client = new WebClient())
+                        //{
+                        //   client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
+                        //    //client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
+                        //
+                        //    client.DownloadFileAsync(address, Launcher.Name[i]);
+                        //    while (client.IsBusy) Thread.Sleep(500);
+                        //}
+                        //
+                        //if (HashFile.GetMD5(Launcher.Name[i]) == Launcher.Hash[i]) continue;
 
 
                         //google drive api download
@@ -204,7 +209,7 @@ namespace Jasarsoft.Columbia
                             request.Download(fs);
                         }
 
-                        if (HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i]) errorResult = ErrorResult.Download;
+                        if (HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i].ToUpper()) errorResult = ErrorResult.Download;
 
 
 
@@ -278,6 +283,12 @@ namespace Jasarsoft.Columbia
                         text = "Vaša internet konekcija ne radi ili je prekinuta.";
                         MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    else if (errorResult == ErrorResult.Service)
+                    {
+                        text = "Autentifikacija sa fajlovima nije validna, ažuriranje je prekinuto.";
+                        MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        this.DialogResult = System.Windows.Forms.DialogResult.Abort;
+                    }
                     else if (errorResult == ErrorResult.Download)
                     {
                         text = String.Format("Došlo je do pogreške prilikom ažuriranja na fajlu: {0}", Path.GetFileName(Launcher.Name[number]));
@@ -322,7 +333,7 @@ namespace Jasarsoft.Columbia
         {
             int i = number;
 
-            if (HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i])
+            if (HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i].ToUpper())
             {
                 errorResult = ErrorResult.Download;
             }

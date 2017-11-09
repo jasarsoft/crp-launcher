@@ -81,7 +81,7 @@ namespace Jasarsoft.Columbia
                         return;
                     }
 
-                    if (hash != Launcher.Hash[i])
+                    if (hash != Launcher.Hash[i].ToUpper())
                     {
                         this.id.Add(i);
                         continue;
@@ -113,7 +113,7 @@ namespace Jasarsoft.Columbia
         private void WorkerFile_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.progressLoad.Value = e.ProgressPercentage;
-            this.labelName.Text = String.Format("Fajl {0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length,  Launcher.Name[e.ProgressPercentage]);
+            this.labelName.Text = String.Format("Fajl {0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length, Launcher.Name[e.ProgressPercentage]);
         }
 
         private void WorkerFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

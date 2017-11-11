@@ -195,7 +195,7 @@ namespace Jasarsoft.Columbia
             {
                 //application
                 "", //@".\columbia.exe",
-                "47E1F9B671A35DCD6077C2B4DF2D4992", //@".\host-cs.exe",
+                "AE31D46818C772D684FA27F720ABB3E5", //@".\host-cs.exe",
                 "94CA33F20B4130229C5419FC9F67E871", //@".\columbia.exe.config",
                                 
                 //MySql Library
@@ -292,7 +292,7 @@ namespace Jasarsoft.Columbia
             {
                 if (HashFile.GetMD5(this.name[i]) != this.hash[i])
                 {
-                    System.Windows.Forms.MessageBox.Show(name[i]);
+                    //System.Windows.Forms.MessageBox.Show(name[i]);
                     return false;
                 }
                     

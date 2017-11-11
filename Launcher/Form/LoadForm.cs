@@ -172,7 +172,15 @@ namespace Jasarsoft.Columbia
             dataFile.ReadMissed(Launcher.Name);
             if (dataFile.MissedFiles.Count > 0)
             {
-                foreach (int missed in dataFile.MissedFiles) this.missedFiles.Add(missed);
+                
+                foreach (int missed in dataFile.MissedFiles)
+                {
+#if DEBUG
+                    MessageBox.Show(Launcher.Name[missed]);
+#endif
+                    this.missedFiles.Add(missed);
+                }
+                    
                 e.Result = ErrorResult.Missed;
                 return;
             }

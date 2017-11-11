@@ -419,7 +419,7 @@ namespace Jasarsoft.Columbia
 
         private void workerHost_DoWork(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             Process[] process = Process.GetProcessesByName("host-cs");
             if (process.Length != 1) e.Cancel = true;
         }

@@ -21,6 +21,7 @@ namespace Jasarsoft.Columbia
             Validated
         };
 
+
         public CheckForm()
         {
             InitializeComponent();
@@ -63,7 +64,7 @@ namespace Jasarsoft.Columbia
                 workerFile.ReportProgress(i);
 
                 if (Launcher.Valid[i])
-                    if (HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i])
+                    if (HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i].ToUpper())
                     {
                         e.Result = ErrorResult.Validated;
                         return;

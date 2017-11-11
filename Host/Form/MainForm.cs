@@ -56,8 +56,8 @@ namespace Jasarsoft.ColumbiaState.Host
                 ProcessKiller pk = new ProcessKiller();
                 MessageTitle title = new MessageTitle();
 
-                pk.Samp();
                 pk.GtaSa();
+                pk.Samp();
                 pk.SampNm();
 
                 string text = "Columbia State Host aplikacija je neovlašteno izmjenjena!";
@@ -73,8 +73,8 @@ namespace Jasarsoft.ColumbiaState.Host
                 ProcessKiller pk = new ProcessKiller();
                 MessageTitle title = new MessageTitle();
 
-                pk.Samp();
                 pk.GtaSa();
+                pk.Samp();
                 pk.SampNm();
                 
                 string text = "Columbia State glavna aplikacija ne postoji ili je preimenovana!";

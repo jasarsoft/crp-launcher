@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Launcher\Launcher.csproj", "{AC167293-D999-4448-9B79-F43FB939F714}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherApp", "Launcher\LauncherApp.csproj", "{AC167293-D999-4448-9B79-F43FB939F714}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{8837409E-A4F0-486F-9867-FD20DB07B7ED}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Download", "Test Download\Test Download.csproj", "{14B94EA9-0B63-4EFD-BB8E-394DD08E93AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Download GUI", "Test Download GUI\Test Download GUI.csproj", "{94250B09-EBED-4FDA-9DDB-D269F3133924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateApp", "UpdateApp\UpdateApp.csproj", "{5422A8F1-7C43-44DC-A02D-061A3D218FE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -193,6 +195,24 @@ Global
 		{94250B09-EBED-4FDA-9DDB-D269F3133924}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{94250B09-EBED-4FDA-9DDB-D269F3133924}.Release|x86.ActiveCfg = Release|Any CPU
 		{94250B09-EBED-4FDA-9DDB-D269F3133924}.Release|x86.Build.0 = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Debug|x86.Build.0 = Debug|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Obfucated|Any CPU.ActiveCfg = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Obfucated|Any CPU.Build.0 = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Obfucated|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Obfucated|Mixed Platforms.Build.0 = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Obfucated|x86.ActiveCfg = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Obfucated|x86.Build.0 = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Release|x86.ActiveCfg = Release|Any CPU
+		{5422A8F1-7C43-44DC-A02D-061A3D218FE6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

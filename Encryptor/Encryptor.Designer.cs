@@ -1,4 +1,4 @@
-﻿namespace Encryptor
+﻿namespace Jasarsoft.StringEncryptor
 {
     partial class Encryptor
     {

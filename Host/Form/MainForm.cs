@@ -58,7 +58,7 @@ namespace Jasarsoft.ColumbiaState.Host
 
                 pk.GtaSa();
                 pk.Samp();
-                pk.SampNm();
+                pk.SampColumbia();
 
                 string text = "Columbia State Host aplikacija je neovlašteno izmjenjena!";
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -75,7 +75,7 @@ namespace Jasarsoft.ColumbiaState.Host
 
                 pk.GtaSa();
                 pk.Samp();
-                pk.SampNm();
+                pk.SampColumbia();
                 
                 string text = "Columbia State glavna aplikacija ne postoji ili je preimenovana!";
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -99,7 +99,7 @@ namespace Jasarsoft.ColumbiaState.Host
 
                 pk.Samp();
                 pk.GtaSa();
-                pk.SampNm();
+                pk.SampColumbia();
 
                 string text = "Columbia State launcher pokrenut je sa više instanci!";
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -122,7 +122,7 @@ namespace Jasarsoft.ColumbiaState.Host
 
                 pk.Samp();
                 pk.GtaSa();
-                pk.SampNm();
+                pk.SampColumbia();
 
                 string text = "Columbia State host ne pokreæite Vi!";
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -139,6 +139,7 @@ namespace Jasarsoft.ColumbiaState.Host
             this.fileStream.Clear();
             foreach (string name in this.allFiles)
             {
+                if (name.Contains("modloader.log")) continue;
                 if (!File.Exists(name))
                 {
                     e.Cancel = true;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Collections.Generic;
 
 
 namespace Jasarsoft.ColumbiaState.Host
@@ -9,15 +8,15 @@ namespace Jasarsoft.ColumbiaState.Host
     {
         private readonly string samp;
         private readonly string gtasa;
-        private readonly string sampnm;
-        private readonly string hostnm;
+        private readonly string sampcs;
+        private readonly string hostcs;
         
         public ProcessKiller()
         {
             this.samp = "gtasamp";
             this.gtasa = "gtasa";
-            this.sampnm = "columbia";
-            this.hostnm = "host-cs";
+            this.sampcs = "columbia";
+            this.hostcs = "host-cs";
         }
 
 
@@ -34,6 +33,16 @@ namespace Jasarsoft.ColumbiaState.Host
                     } while (tempProcess.HasExited == false);
                 }
             }
+
+            //provjera
+            allProcess = Process.GetProcessesByName(processName);
+            if (allProcess.Length > 0)
+            {
+                string msg = "Zatvaranje procesa '" + processName + "' nije uspješno izvršeno.\n";
+                msg += "Kontaktirajte administraciju na forumu o vašoj pogrešsci";
+                throw new MethodAccessException(msg);
+            }
+            
         }
 
         public void Samp()
@@ -46,14 +55,14 @@ namespace Jasarsoft.ColumbiaState.Host
             this.Killer(this.gtasa);
         }
 
-        public void SampNm()
+        public void SampColumbia()
         {
-            this.Killer(this.sampnm);
+            this.Killer(this.sampcs);
         }
 
-        public void HostNm()
+        public void HostColumbia()
         {
-            this.Killer(this.hostnm);
+            this.Killer(this.hostcs);
         }
     }
 }

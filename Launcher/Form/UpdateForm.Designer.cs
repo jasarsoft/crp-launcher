@@ -163,12 +163,11 @@ namespace Jasarsoft.Columbia
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
             this.CaptionBarHeight = 24;
-            this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.CaptionButtonHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.CaptionButtonColor = System.Drawing.Color.Black;
+            this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(364, 196);
-            this.ControlBox = false;
             this.Controls.Add(this.labelValue);
             this.Controls.Add(this.progressAll);
             this.Controls.Add(this.progressOne);
@@ -182,12 +181,10 @@ namespace Jasarsoft.Columbia
             this.MinimizeBox = false;
             this.Name = "UpdateForm";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SAMP Columbia State | Ažuriranje...";
-            this.TopMost = true;
             this.Shown += new System.EventHandler(this.UpdateForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.progressAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressOne)).EndInit();

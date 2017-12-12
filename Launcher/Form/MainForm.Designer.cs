@@ -102,7 +102,7 @@ namespace Jasarsoft.Columbia
             // textPassword
             // 
             this.textPassword.BackColor = System.Drawing.Color.White;
-            this.textPassword.BeforeTouchSize = new System.Drawing.Size(198, 22);
+            this.textPassword.BeforeTouchSize = new System.Drawing.Size(340, 133);
             this.textPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textPassword.CornerRadius = 1;
@@ -122,7 +122,7 @@ namespace Jasarsoft.Columbia
             // textName
             // 
             this.textName.BackColor = System.Drawing.Color.White;
-            this.textName.BeforeTouchSize = new System.Drawing.Size(198, 22);
+            this.textName.BeforeTouchSize = new System.Drawing.Size(340, 133);
             this.textName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textName.CornerRadius = 1;
@@ -380,8 +380,8 @@ namespace Jasarsoft.Columbia
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
             this.CaptionBarHeight = 24;
-            this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.CaptionButtonHoverColor = System.Drawing.Color.RoyalBlue;
+            this.CaptionButtonColor = System.Drawing.Color.Black;
+            this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(364, 286);

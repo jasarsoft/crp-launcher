@@ -115,12 +115,11 @@ namespace Jasarsoft.Columbia
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
             this.CaptionBarHeight = 24;
-            this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.CaptionButtonHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.CaptionButtonColor = System.Drawing.Color.Black;
+            this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(364, 168);
-            this.ControlBox = false;
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.progressLoad);
             this.Controls.Add(this.pictureLogo);
@@ -132,12 +131,10 @@ namespace Jasarsoft.Columbia
             this.MinimizeBox = false;
             this.Name = "CheckForm";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SAMP Columbia State | Provjera...";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.CheckForm_Load);
             this.Shown += new System.EventHandler(this.CheckForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.progressLoad)).EndInit();

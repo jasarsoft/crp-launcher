@@ -71,7 +71,7 @@ namespace Jasarsoft.Columbia
             // textboxDescription
             // 
             this.textboxDescription.BackColor = System.Drawing.Color.White;
-            this.textboxDescription.BeforeTouchSize = new System.Drawing.Size(340, 214);
+            this.textboxDescription.BeforeTouchSize = new System.Drawing.Size(183, 22);
             this.textboxDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -98,11 +98,12 @@ namespace Jasarsoft.Columbia
             this.BorderThickness = 6;
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
-            this.CaptionBarHeight = 30;
+            this.CaptionBarHeight = 24;
+            this.CaptionButtonColor = System.Drawing.Color.Black;
+            this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(364, 325);
-            this.ControlBox = false;
             this.Controls.Add(this.textboxDescription);
             this.Controls.Add(this.horizonalLine);
             this.Controls.Add(this.buttonClose);
@@ -114,12 +115,10 @@ namespace Jasarsoft.Columbia
             this.MinimizeBox = false;
             this.Name = "DescriptionForm";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SAMP Columbia State RolePlay | Opis";
-            this.TopMost = true;
             this.Shown += new System.EventHandler(this.DescriptionForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.textboxDescription)).EndInit();
             this.ResumeLayout(false);

@@ -119,14 +119,15 @@ namespace Jasarsoft.Columbia
             this.hash = new List<string>();            
             this.size = new List<long>();
             this.link = new List<string>();
-            this.url = new List<string>();
+            //this.url = new List<string>();
 
             if (!this.Connect()) return false;
 
             try
             {
                 mysql.Open();
-                string query = "SELECT * FROM files";
+                //games
+                string query = "SELECT * FROM games";
                 MySqlCommand sqlcmd = new MySqlCommand(query, mysql);
                 MySqlDataReader reader = sqlcmd.ExecuteReader();
 
@@ -140,7 +141,27 @@ namespace Jasarsoft.Columbia
                     this.size.Add(Int64.Parse(reader[column.Size].ToString()));
                     this.hash.Add(reader[column.Hash].ToString());
                     this.link.Add(reader[column.Link].ToString());
-                    this.url.Add(reader[column.Url].ToString());
+                    //this.url.Add(reader[column.Url].ToString());
+                }
+
+                reader.Close();
+
+                //mods
+                query = "SELECT * FROM mods";
+                sqlcmd = new MySqlCommand(query, mysql);
+                reader = sqlcmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader[column.Valid].ToString() == "0")
+                        this.valid.Add(false);
+                    else
+                        this.valid.Add(true);
+                    this.name.Add(reader[column.Name].ToString());
+                    this.size.Add(Int64.Parse(reader[column.Size].ToString()));
+                    this.hash.Add(reader[column.Hash].ToString());
+                    this.link.Add(reader[column.Link].ToString());
+                    //this.url.Add(reader[column.Url].ToString());
                 }
 
                 reader.Close();

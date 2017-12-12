@@ -69,7 +69,8 @@ namespace Test_Download_GUI
             });
 
             // uploaded succeeded
-            await DownloadFile(service, "https://doc-0c-7o-docs.googleusercontent.com/docs/securesc/bq8oq8h3l68rlgehm8u6cvhlru1c2c5b/48ortuv2d80sl6ji3ddqol603omk19rv/1509213600000/12017929765300884506/09884659862440838168/0Byi5ne7d961QcGpCN3VDZE5jSWM?e=download&gd=true");
+            //await DownloadFile(service, "https://doc-0c-7o-docs.googleusercontent.com/docs/securesc/bq8oq8h3l68rlgehm8u6cvhlru1c2c5b/48ortuv2d80sl6ji3ddqol603omk19rv/1509213600000/12017929765300884506/09884659862440838168/0Byi5ne7d961QcGpCN3VDZE5jSWM?e=download&gd=true");
+            await DownloadFile(service, "https://drive.google.com/open?id=1oy1ATuAFDWVqUMM9w0nZTuzzO622dwGA");
         }
 
         private async Task DownloadFile(DriveService service, string url)

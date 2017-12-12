@@ -195,7 +195,7 @@ namespace Jasarsoft.Columbia
             {
                 //application
                 "", //@".\columbia.exe",
-                "AE31D46818C772D684FA27F720ABB3E5", //@".\host-cs.exe",
+                "4A53E5B900392E278786E4204E3791E9", //@".\host-cs.exe",
                 "94CA33F20B4130229C5419FC9F67E871", //@".\columbia.exe.config",
                                 
                 //MySql Library

@@ -13,6 +13,14 @@ namespace Jasarsoft.Columbia
 {
     public partial class CheckForm : Syncfusion.Windows.Forms.MetroForm
     {
+        private ButtonStatus buttonWork;
+
+        private enum ButtonStatus
+        {
+            ButtonStart,
+            ButtonCancel
+        };
+
         private enum ErrorResult
         {
             None,
@@ -20,7 +28,6 @@ namespace Jasarsoft.Columbia
             Unknown,            
             Validated
         };
-
 
         public CheckForm()
         {
@@ -30,28 +37,19 @@ namespace Jasarsoft.Columbia
         private void CheckForm_Load(object sender, EventArgs e)
         {
             this.progressLoad.Value = 0;
+            this.buttonWork = ButtonStatus.ButtonStart;
             this.progressLoad.Maximum = Launcher.Name.Length - 1;
-            this.labelName.Text = "Provjera æe uskoro zapoèeti...";
-        }
-
-        private void CheckForm_Shown(object sender, EventArgs e)
-        {
-            workerFile.RunWorkerAsync();
+            this.labelName.Text = "Molimo vas kliknite na Poèni da pokrente provjeru.";
         }
 
         private void workerFile_DoWork(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(1000);
             e.Result = ErrorResult.None;
-            
+            // Get the BackgroundWorker that raised this event.
+            BackgroundWorker worker = sender as BackgroundWorker;
+
             Library lib = new Library();
             DataFile df = new DataFile();
-
-            if (df.CheckUnknown(Launcher.Name, lib.Name))
-            {
-                e.Result = ErrorResult.Unknown;
-                return;
-            }
 
             if (df.CheckMissed(Launcher.Name))
             {
@@ -59,8 +57,32 @@ namespace Jasarsoft.Columbia
                 return;
             }
 
+            if (worker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            if (df.CheckUnknown(Launcher.Name, lib.Name))
+            {
+                e.Result = ErrorResult.Unknown;
+                return;
+            }
+
+            if (worker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             for (int i = 0; i < Launcher.Name.Length; i++)
             {
+                if (worker.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
                 workerFile.ReportProgress(i);
 
                 if (Launcher.Valid[i])
@@ -81,9 +103,17 @@ namespace Jasarsoft.Columbia
         private void workerFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.Hide();
+            buttonStart.Enabled = true;
 
             string text;
             MessageTitle title = new MessageTitle();
+
+            if(e.Cancelled)
+            {
+                text = "Provjera datoteka od Columbia State modifikacije je prekunita.\n";
+                text += "Za više informacija o upustvima i provjeri posjetite naš forum.";
+                MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             if (e.Result.ToString() == ErrorResult.None.ToString())
             {
@@ -108,6 +138,23 @@ namespace Jasarsoft.Columbia
 
             //GC.Collect();
             this.Close();
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            buttonStart.Enabled = false;
+
+            if (workerFile.IsBusy)
+            {
+                buttonStart.Text = "Poèni";
+                workerFile.CancelAsync();
+            }   
+            else
+            {
+                buttonStart.Text = "Prekini";
+                workerFile.RunWorkerAsync();
+                buttonStart.Enabled = true;
+            }     
         }
     }
 }

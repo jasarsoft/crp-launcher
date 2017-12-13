@@ -53,7 +53,7 @@ namespace Jasarsoft.Columbia
             // 
             this.labelName.AutoSize = false;
             this.labelName.ForeColor = System.Drawing.Color.DimGray;
-            this.labelName.Location = new System.Drawing.Point(12, 186);
+            this.labelName.Location = new System.Drawing.Point(12, 201);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(340, 22);
             this.labelName.TabIndex = 3;
@@ -79,7 +79,7 @@ namespace Jasarsoft.Columbia
             this.progressLoad.ForegroundImage = null;
             this.progressLoad.GradientEndColor = System.Drawing.Color.DarkRed;
             this.progressLoad.GradientStartColor = System.Drawing.Color.IndianRed;
-            this.progressLoad.Location = new System.Drawing.Point(12, 211);
+            this.progressLoad.Location = new System.Drawing.Point(12, 226);
             this.progressLoad.MultipleColors = new System.Drawing.Color[] {
         System.Drawing.Color.Empty};
             this.progressLoad.Name = "progressLoad";
@@ -96,10 +96,10 @@ namespace Jasarsoft.Columbia
             // 
             // pictureLogo
             // 
-            this.pictureLogo.Image = global::Jasarsoft.Columbia.Properties.Resources.cover;
+            this.pictureLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureLogo.Image")));
             this.pictureLogo.Location = new System.Drawing.Point(12, 12);
             this.pictureLogo.Name = "pictureLogo";
-            this.pictureLogo.Size = new System.Drawing.Size(340, 85);
+            this.pictureLogo.Size = new System.Drawing.Size(340, 100);
             this.pictureLogo.TabIndex = 6;
             this.pictureLogo.TabStop = false;
             // 
@@ -115,7 +115,7 @@ namespace Jasarsoft.Columbia
             // 
             this.labelDescription.AutoSize = false;
             this.labelDescription.ForeColor = System.Drawing.Color.DimGray;
-            this.labelDescription.Location = new System.Drawing.Point(12, 100);
+            this.labelDescription.Location = new System.Drawing.Point(12, 115);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(340, 75);
             this.labelDescription.TabIndex = 1;
@@ -127,7 +127,7 @@ namespace Jasarsoft.Columbia
             this.labelHorizontalLine.AutoSize = false;
             this.labelHorizontalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelHorizontalLine.ForeColor = System.Drawing.Color.DimGray;
-            this.labelHorizontalLine.Location = new System.Drawing.Point(12, 175);
+            this.labelHorizontalLine.Location = new System.Drawing.Point(12, 190);
             this.labelHorizontalLine.Name = "labelHorizontalLine";
             this.labelHorizontalLine.Size = new System.Drawing.Size(340, 2);
             this.labelHorizontalLine.TabIndex = 2;
@@ -141,12 +141,13 @@ namespace Jasarsoft.Columbia
             this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonStart.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.buttonStart.IsBackStageButton = false;
-            this.buttonStart.Location = new System.Drawing.Point(130, 249);
+            this.buttonStart.Location = new System.Drawing.Point(130, 264);
             this.buttonStart.MetroColor = System.Drawing.Color.Firebrick;
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(108, 36);
             this.buttonStart.TabIndex = 5;
-            this.buttonStart.Text = "Zapoèni";
+            this.buttonStart.Text = "Poèni";
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // buttonClose
             // 
@@ -156,12 +157,12 @@ namespace Jasarsoft.Columbia
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonClose.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.buttonClose.IsBackStageButton = false;
-            this.buttonClose.Location = new System.Drawing.Point(244, 249);
+            this.buttonClose.Location = new System.Drawing.Point(244, 264);
             this.buttonClose.MetroColor = System.Drawing.Color.Firebrick;
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(108, 36);
             this.buttonClose.TabIndex = 6;
-            this.buttonClose.Text = "Odustani";
+            this.buttonClose.Text = "Zatvori";
             // 
             // CheckForm
             // 
@@ -177,7 +178,7 @@ namespace Jasarsoft.Columbia
             this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(364, 297);
+            this.ClientSize = new System.Drawing.Size(364, 312);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.labelHorizontalLine);
@@ -198,7 +199,6 @@ namespace Jasarsoft.Columbia
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SAMP Columbia State | Provjera...";
             this.Load += new System.EventHandler(this.CheckForm_Load);
-            this.Shown += new System.EventHandler(this.CheckForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.progressLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             this.ResumeLayout(false);

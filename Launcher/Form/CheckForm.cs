@@ -51,6 +51,7 @@ namespace Jasarsoft.Columbia
             Library lib = new Library();
             DataFile df = new DataFile();
 
+#if !DEBUG
             //provjera nedostajucih fajlova
             if (df.CheckMissed(Launcher.Name))
             {
@@ -75,6 +76,7 @@ namespace Jasarsoft.Columbia
                 e.Cancel = true;
                 return;
             }
+#endif
 
             //provjera hash fajlova koji su oznaceni za provjeru (valid)
             for (int i = 0; i < Launcher.Name.Length; i++)
@@ -87,6 +89,9 @@ namespace Jasarsoft.Columbia
                 }
 
                 workerFile.ReportProgress(i);
+#if DEBUG
+                Thread.Sleep(250);
+#endif
 
                 if (Launcher.Valid[i])
                     if (HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i].ToUpper())
@@ -100,9 +105,9 @@ namespace Jasarsoft.Columbia
         private void workerFile_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.progressLoad.Value = e.ProgressPercentage;
-            if (Launcher.Name[e.ProgressPercentage].Length > 47)
+            if (Launcher.Name[e.ProgressPercentage].Length > 45)
             {
-                string filename = String.Format("...{0}", Launcher.Name[e.ProgressPercentage].Substring(Launcher.Name[e.ProgressPercentage].Length - 47));
+                string filename = String.Format(@"...{0}", Launcher.Name[e.ProgressPercentage].Substring(Launcher.Name[e.ProgressPercentage].Length - 40));
                 this.labelName.Text = String.Format("{0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length, filename);
             }
             else
@@ -112,7 +117,10 @@ namespace Jasarsoft.Columbia
         private void workerFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //this.Hide();
+            buttonStart.Text = "Poèni";
             buttonStart.Enabled = true;
+            this.progressLoad.Value = 0;
+            this.labelName.Text = "Molimo vas kliknite na Poèni da pokrente provjeru.";
 
             string text;
             MessageTitle title = new MessageTitle();
@@ -123,8 +131,7 @@ namespace Jasarsoft.Columbia
                 text += "Za više informacija o upustvima i provjeri posjetite naš forum.";
                 MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            if (e.Result.ToString() == ErrorResult.None.ToString())
+            else if (e.Result.ToString() == ErrorResult.None.ToString())
             {
                 text = "Columbia State mod fajlovi su adekvatni i ažurirani.";
                 MessageBoxAdv.Show(text, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);

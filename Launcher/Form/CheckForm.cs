@@ -51,32 +51,35 @@ namespace Jasarsoft.Columbia
             Library lib = new Library();
             DataFile df = new DataFile();
 
+            //provjera nedostajucih fajlova
             if (df.CheckMissed(Launcher.Name))
             {
                 e.Result = ErrorResult.Missed;
                 return;
             }
-
+            //provjera da li je pritisnut prekid
             if (worker.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
-
+            //provjera nepoznatih fajlova
             if (df.CheckUnknown(Launcher.Name, lib.Name))
             {
                 e.Result = ErrorResult.Unknown;
                 return;
             }
-
+            //provjera da li je pritisnut prekid
             if (worker.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
 
+            //provjera hash fajlova koji su oznaceni za provjeru (valid)
             for (int i = 0; i < Launcher.Name.Length; i++)
             {
+                //provjera da li je pritisnuto za prekid
                 if (worker.CancellationPending)
                 {
                     e.Cancel = true;
@@ -97,12 +100,18 @@ namespace Jasarsoft.Columbia
         private void workerFile_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.progressLoad.Value = e.ProgressPercentage;
-            this.labelName.Text = String.Format("Fajl {0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length, Launcher.Name[e.ProgressPercentage]);
+            if (Launcher.Name[e.ProgressPercentage].Length > 47)
+            {
+                string filename = String.Format("...{0}", Launcher.Name[e.ProgressPercentage].Substring(Launcher.Name[e.ProgressPercentage].Length - 47));
+                this.labelName.Text = String.Format("{0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length, filename);
+            }
+            else
+                this.labelName.Text = String.Format("{0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length, Launcher.Name[e.ProgressPercentage]);
         }
 
         private void workerFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             buttonStart.Enabled = true;
 
             string text;
@@ -137,7 +146,7 @@ namespace Jasarsoft.Columbia
             }
 
             //GC.Collect();
-            this.Close();
+            //this.Close();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)

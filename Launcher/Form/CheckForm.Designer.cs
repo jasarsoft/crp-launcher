@@ -57,7 +57,7 @@ namespace Jasarsoft.Columbia
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(340, 22);
             this.labelName.TabIndex = 3;
-            this.labelName.Text = "Provjera æe uskoro zapoèeti...";
+            this.labelName.Text = "Molimo vas kliknite na Poèni da pokrente provjeru.";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // progressLoad

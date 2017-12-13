@@ -120,4 +120,7 @@
   <metadata name="workerFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="labelDescription.Text" xml:space="preserve">
+    <value>Provjeri će se vaši trenutni fajlovi Columbia State modifikacije sa našim servisnim poslužiteljem i bit ćete informisano o vašem stanju modifikacije nakon provjere. Svaka uspješna provjera vam omogućava sigurno pristpanje serveru bez naknadnih ažuriranja vaši datoteka u toku prijave na server.</value>
+  </data>
 </root>

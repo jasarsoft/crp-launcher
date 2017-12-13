@@ -35,10 +35,16 @@ namespace Jasarsoft.Columbia
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckForm));
             this.labelName = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.progressLoad = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.workerFile = new System.ComponentModel.BackgroundWorker();
+            this.labelDescription = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.labelHorizontalLine = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.buttonStart = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.buttonClose = new Syncfusion.Windows.Forms.ButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.progressLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
@@ -47,10 +53,10 @@ namespace Jasarsoft.Columbia
             // 
             this.labelName.AutoSize = false;
             this.labelName.ForeColor = System.Drawing.Color.DimGray;
-            this.labelName.Location = new System.Drawing.Point(12, 109);
+            this.labelName.Location = new System.Drawing.Point(12, 186);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(340, 22);
-            this.labelName.TabIndex = 8;
+            this.labelName.TabIndex = 3;
             this.labelName.Text = "Provjera æe uskoro zapoèeti...";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -73,7 +79,7 @@ namespace Jasarsoft.Columbia
             this.progressLoad.ForegroundImage = null;
             this.progressLoad.GradientEndColor = System.Drawing.Color.DarkRed;
             this.progressLoad.GradientStartColor = System.Drawing.Color.IndianRed;
-            this.progressLoad.Location = new System.Drawing.Point(12, 134);
+            this.progressLoad.Location = new System.Drawing.Point(12, 211);
             this.progressLoad.MultipleColors = new System.Drawing.Color[] {
         System.Drawing.Color.Empty};
             this.progressLoad.Name = "progressLoad";
@@ -81,7 +87,7 @@ namespace Jasarsoft.Columbia
             this.progressLoad.SegmentWidth = 10;
             this.progressLoad.Size = new System.Drawing.Size(340, 22);
             this.progressLoad.Step = 1;
-            this.progressLoad.TabIndex = 7;
+            this.progressLoad.TabIndex = 4;
             this.progressLoad.ThemesEnabled = false;
             this.progressLoad.TubeEndColor = System.Drawing.Color.Black;
             this.progressLoad.TubeStartColor = System.Drawing.Color.Red;
@@ -105,6 +111,58 @@ namespace Jasarsoft.Columbia
             this.workerFile.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.workerFile_ProgressChanged);
             this.workerFile.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.workerFile_RunWorkerCompleted);
             // 
+            // labelDescription
+            // 
+            this.labelDescription.AutoSize = false;
+            this.labelDescription.ForeColor = System.Drawing.Color.DimGray;
+            this.labelDescription.Location = new System.Drawing.Point(12, 100);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(340, 75);
+            this.labelDescription.TabIndex = 1;
+            this.labelDescription.Text = resources.GetString("labelDescription.Text");
+            this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelHorizontalLine
+            // 
+            this.labelHorizontalLine.AutoSize = false;
+            this.labelHorizontalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelHorizontalLine.ForeColor = System.Drawing.Color.DimGray;
+            this.labelHorizontalLine.Location = new System.Drawing.Point(12, 175);
+            this.labelHorizontalLine.Name = "labelHorizontalLine";
+            this.labelHorizontalLine.Size = new System.Drawing.Size(340, 2);
+            this.labelHorizontalLine.TabIndex = 2;
+            this.labelHorizontalLine.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonStart
+            // 
+            this.buttonStart.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
+            this.buttonStart.BackColor = System.Drawing.Color.Firebrick;
+            this.buttonStart.BeforeTouchSize = new System.Drawing.Size(108, 36);
+            this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonStart.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonStart.IsBackStageButton = false;
+            this.buttonStart.Location = new System.Drawing.Point(130, 249);
+            this.buttonStart.MetroColor = System.Drawing.Color.Firebrick;
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(108, 36);
+            this.buttonStart.TabIndex = 5;
+            this.buttonStart.Text = "Zapoèni";
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
+            this.buttonClose.BackColor = System.Drawing.Color.DimGray;
+            this.buttonClose.BeforeTouchSize = new System.Drawing.Size(108, 36);
+            this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonClose.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonClose.IsBackStageButton = false;
+            this.buttonClose.Location = new System.Drawing.Point(244, 249);
+            this.buttonClose.MetroColor = System.Drawing.Color.Firebrick;
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(108, 36);
+            this.buttonClose.TabIndex = 6;
+            this.buttonClose.Text = "Odustani";
+            // 
             // CheckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,7 +177,11 @@ namespace Jasarsoft.Columbia
             this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(364, 168);
+            this.ClientSize = new System.Drawing.Size(364, 297);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.buttonStart);
+            this.Controls.Add(this.labelHorizontalLine);
+            this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.progressLoad);
             this.Controls.Add(this.pictureLogo);
@@ -149,5 +211,9 @@ namespace Jasarsoft.Columbia
         private Syncfusion.Windows.Forms.Tools.ProgressBarAdv progressLoad;
         private System.Windows.Forms.PictureBox pictureLogo;
         private System.ComponentModel.BackgroundWorker workerFile;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel labelDescription;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel labelHorizontalLine;
+        private Syncfusion.Windows.Forms.ButtonAdv buttonStart;
+        private Syncfusion.Windows.Forms.ButtonAdv buttonClose;
     }
 }

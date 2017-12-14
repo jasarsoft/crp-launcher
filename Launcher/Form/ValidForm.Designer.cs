@@ -91,7 +91,7 @@ namespace Jasarsoft.Columbia
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(340, 22);
             this.labelName.TabIndex = 5;
-            this.labelName.Text = "Provjera æe uskoro zapoèeti...";
+            this.labelName.Text = "Validacija æe automatski zapoèeti...";
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // workerFile

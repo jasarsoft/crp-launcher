@@ -13,6 +13,13 @@ namespace Jasarsoft.Columbia
 {
     public partial class CheckForm : Syncfusion.Windows.Forms.MetroForm
     {
+        private int number;
+        private int fileMissed;
+        private int fileUnknown;
+        private int fileIncorrect;
+        private int fileTotal;
+        private bool errorResult;
+        private List<CheckFile> files;
         private ButtonStatus buttonWork;
 
         private enum ButtonStatus
@@ -32,6 +39,13 @@ namespace Jasarsoft.Columbia
         public CheckForm()
         {
             InitializeComponent();
+
+            this.number = 0;
+            this.fileMissed = 0;
+            this.fileUnknown = 0;
+            this.fileIncorrect = 0;
+            this.fileTotal = 0;
+            this.errorResult = false;
         }
 
         private void CheckForm_Load(object sender, EventArgs e)
@@ -44,6 +58,7 @@ namespace Jasarsoft.Columbia
 
         private void workerFile_DoWork(object sender, DoWorkEventArgs e)
         {
+            files = new List<CheckFile>();
             e.Result = ErrorResult.None;
             // Get the BackgroundWorker that raised this event.
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -51,12 +66,19 @@ namespace Jasarsoft.Columbia
             Library lib = new Library();
             DataFile df = new DataFile();
 
-#if !DEBUG
             //provjera nedostajucih fajlova
             if (df.CheckMissed(Launcher.Name))
             {
-                e.Result = ErrorResult.Missed;
-                return;
+                errorResult = true;
+                //e.Result = ErrorResult.Missed;
+                df.ReadMissed(Launcher.Name);
+                foreach(int id in df.MissedFiles)
+                {
+                    fileMissed++;
+                    files.Add(new CheckFile(++number, Launcher.Name[id], Launcher.Size[id], "Nedostaje"));
+                }
+                    
+                //return;
             }
             //provjera da li je pritisnut prekid
             if (worker.CancellationPending)
@@ -67,8 +89,16 @@ namespace Jasarsoft.Columbia
             //provjera nepoznatih fajlova
             if (df.CheckUnknown(Launcher.Name, lib.Name))
             {
-                e.Result = ErrorResult.Unknown;
-                return;
+                errorResult = true;
+                //e.Result = ErrorResult.Unknown;
+                df.ReadUnknown(Launcher.Name, lib.Name);
+                foreach (string file in df.UnknownFiles)
+                {
+                    fileUnknown++;
+                    long length = new System.IO.FileInfo(file).Length;
+                    files.Add(new CheckFile(++number, file, length, "Nepoznat"));
+                }
+                //return;
             }
             //provjera da li je pritisnut prekid
             if (worker.CancellationPending)
@@ -76,7 +106,6 @@ namespace Jasarsoft.Columbia
                 e.Cancel = true;
                 return;
             }
-#endif
 
             //provjera hash fajlova koji su oznaceni za provjeru (valid)
             for (int i = 0; i < Launcher.Name.Length; i++)
@@ -90,15 +119,20 @@ namespace Jasarsoft.Columbia
 
                 workerFile.ReportProgress(i);
 #if DEBUG
-                Thread.Sleep(250);
+                //Thread.Sleep(250);
 #endif
 
                 if (Launcher.Valid[i])
+                {
                     if (HashFile.GetMD5(Launcher.Name[i]) != Launcher.Hash[i].ToUpper())
                     {
-                        e.Result = ErrorResult.Validated;
-                        return;
-                    }      
+                        fileIncorrect++;
+                        errorResult = true;
+                        files.Add(new CheckFile(++number, Launcher.Name[i], Launcher.Size[i], "Neispravan"));
+                        //e.Result = ErrorResult.Validated;
+                        //return;
+                    }
+                }                                         
             }
         }
 
@@ -116,7 +150,6 @@ namespace Jasarsoft.Columbia
 
         private void workerFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //this.Hide();
             buttonStart.Text = "Poèni";
             buttonStart.Enabled = true;
             this.progressLoad.Value = 0;
@@ -131,29 +164,27 @@ namespace Jasarsoft.Columbia
                 text += "Za više informacija o upustvima i provjeri posjetite naš forum.";
                 MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (e.Result.ToString() == ErrorResult.None.ToString())
+            else if(errorResult)
             {
-                text = "Columbia State mod fajlovi su adekvatni i ažurirani.";
+                text = "Vaša modifikacija sadrži nekoliko pogrešaka sa datotekama.\n";
+                text += "Da li želite detaljno pogledati listu datoteka sa greškom?.";
+                if(MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                {
+                    FileForm ff = new FileForm(files);
+                    ff.FileMissed = this.fileMissed;
+                    ff.FileUnknown = this.fileUnknown;
+                    ff.FileIncorrect = this.fileIncorrect;
+                    ff.FileTotal = Launcher.Name.Length;
+
+                    ff.ShowDialog();
+                }
+            }
+            else
+            {
+                text = "Vaša datoteke su ispravne i korektne sa Columbia State modifikacijom.\n";
+                text += "Sada možete legalno i pravno pristupit našem serveru i uživati u igri.";
                 MessageBoxAdv.Show(text, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (e.Result.ToString() == ErrorResult.Unknown.ToString())
-            {
-                text = "Columbia State mod sadrži nepoznate i/ili strane fajlove.";
-                MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if(e.Result.ToString() == ErrorResult.Missed.ToString())
-            {
-                text = "Columbia State mod nije potpun, neki fajlovi nedostaju.";
-                MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (e.Result.ToString() == ErrorResult.Validated.ToString())
-            {
-                text = "Columbia State mod nije ažuriran na zadnju verziju.";
-                MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            //GC.Collect();
-            //this.Close();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -162,14 +193,20 @@ namespace Jasarsoft.Columbia
 
             if (workerFile.IsBusy)
             {
-                buttonStart.Text = "Poèni";
-                workerFile.CancelAsync();
+                MessageTitle title = new MessageTitle();
+                string text = "Da li ste sigurni da želite prekinuti provjeru vaši datoteka?";
+                if(MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    buttonStart.Text = "Poèni";
+                    workerFile.CancelAsync();
+                }
             }   
             else
             {
                 buttonStart.Text = "Prekini";
                 workerFile.RunWorkerAsync();
                 buttonStart.Enabled = true;
+                this.labelName.Text = "Priprema za provjeru vaši datoteka...";
             }     
         }
     }

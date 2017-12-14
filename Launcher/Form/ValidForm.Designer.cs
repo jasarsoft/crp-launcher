@@ -35,10 +35,16 @@ namespace Jasarsoft.Columbia
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValidForm));
             this.progressLoad = new Syncfusion.Windows.Forms.Tools.ProgressBarAdv();
             this.labelName = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.workerFile = new System.ComponentModel.BackgroundWorker();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
+            this.labelDescription = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.buttonClose = new Syncfusion.Windows.Forms.ButtonAdv();
+            this.labelError = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.labelValue = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.progressLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +68,7 @@ namespace Jasarsoft.Columbia
             this.progressLoad.ForegroundImage = null;
             this.progressLoad.GradientEndColor = System.Drawing.Color.DarkRed;
             this.progressLoad.GradientStartColor = System.Drawing.Color.IndianRed;
-            this.progressLoad.Location = new System.Drawing.Point(12, 134);
+            this.progressLoad.Location = new System.Drawing.Point(12, 261);
             this.progressLoad.MultipleColors = new System.Drawing.Color[] {
         System.Drawing.Color.Empty};
             this.progressLoad.Name = "progressLoad";
@@ -81,7 +87,7 @@ namespace Jasarsoft.Columbia
             // 
             this.labelName.AutoSize = false;
             this.labelName.ForeColor = System.Drawing.Color.DimGray;
-            this.labelName.Location = new System.Drawing.Point(12, 109);
+            this.labelName.Location = new System.Drawing.Point(12, 236);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(340, 22);
             this.labelName.TabIndex = 5;
@@ -98,12 +104,60 @@ namespace Jasarsoft.Columbia
             // 
             // pictureLogo
             // 
-            this.pictureLogo.Image = global::Jasarsoft.Columbia.Properties.Resources.cover;
+            this.pictureLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureLogo.Image")));
             this.pictureLogo.Location = new System.Drawing.Point(12, 12);
             this.pictureLogo.Name = "pictureLogo";
-            this.pictureLogo.Size = new System.Drawing.Size(340, 85);
+            this.pictureLogo.Size = new System.Drawing.Size(340, 100);
             this.pictureLogo.TabIndex = 2;
             this.pictureLogo.TabStop = false;
+            // 
+            // labelDescription
+            // 
+            this.labelDescription.AutoSize = false;
+            this.labelDescription.ForeColor = System.Drawing.Color.DimGray;
+            this.labelDescription.Location = new System.Drawing.Point(12, 115);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(340, 112);
+            this.labelDescription.TabIndex = 6;
+            this.labelDescription.Text = resources.GetString("labelDescription.Text");
+            this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
+            this.buttonClose.BackColor = System.Drawing.Color.Firebrick;
+            this.buttonClose.BeforeTouchSize = new System.Drawing.Size(108, 36);
+            this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonClose.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonClose.IsBackStageButton = false;
+            this.buttonClose.Location = new System.Drawing.Point(244, 289);
+            this.buttonClose.MetroColor = System.Drawing.Color.Firebrick;
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(108, 36);
+            this.buttonClose.TabIndex = 7;
+            this.buttonClose.Text = "Odustani";
+            // 
+            // labelError
+            // 
+            this.labelError.AutoSize = false;
+            this.labelError.ForeColor = System.Drawing.Color.DimGray;
+            this.labelError.Location = new System.Drawing.Point(12, 289);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(95, 36);
+            this.labelError.TabIndex = 8;
+            this.labelError.Text = "Ukupno grešaka:";
+            this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelValue
+            // 
+            this.labelValue.AutoSize = false;
+            this.labelValue.ForeColor = System.Drawing.Color.DimGray;
+            this.labelValue.Location = new System.Drawing.Point(113, 289);
+            this.labelValue.Name = "labelValue";
+            this.labelValue.Size = new System.Drawing.Size(80, 36);
+            this.labelValue.TabIndex = 9;
+            this.labelValue.Text = "0";
+            this.labelValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ValidForm
             // 
@@ -115,11 +169,15 @@ namespace Jasarsoft.Columbia
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
             this.CaptionBarHeight = 24;
-            this.CaptionButtonColor = System.Drawing.Color.Black;
-            this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
+            this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.CaptionButtonHoverColor = System.Drawing.Color.Black;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(364, 168);
+            this.ClientSize = new System.Drawing.Size(364, 337);
+            this.Controls.Add(this.labelValue);
+            this.Controls.Add(this.labelError);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.progressLoad);
             this.Controls.Add(this.pictureLogo);
@@ -135,7 +193,7 @@ namespace Jasarsoft.Columbia
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State | Provjera...";
+            this.Text = "SAMP Columbia State | Validacija...";
             this.Load += new System.EventHandler(this.ValidForm_Load);
             this.Shown += new System.EventHandler(this.ValidForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.progressLoad)).EndInit();
@@ -150,6 +208,9 @@ namespace Jasarsoft.Columbia
         private Syncfusion.Windows.Forms.Tools.ProgressBarAdv progressLoad;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelName;
         private System.ComponentModel.BackgroundWorker workerFile;
-
+        private Syncfusion.Windows.Forms.Tools.AutoLabel labelDescription;
+        private Syncfusion.Windows.Forms.ButtonAdv buttonClose;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel labelError;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel labelValue;
     }
 }

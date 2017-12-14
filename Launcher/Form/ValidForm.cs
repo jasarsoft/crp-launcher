@@ -14,8 +14,8 @@ namespace Jasarsoft.Columbia
 {
     public partial class ValidForm : Syncfusion.Windows.Forms.MetroForm
     {
-        //private int number;
         private List<int> id;
+        private int errorNumber;
         //FileStream[] fileStream;
         List<FileStream> fileStream;
 
@@ -23,6 +23,7 @@ namespace Jasarsoft.Columbia
         {
             InitializeComponent();
 
+            this.errorNumber = 0;
             this.id = new List<int>();
             this.DialogResult = System.Windows.Forms.DialogResult.Abort;
         }
@@ -55,18 +56,21 @@ namespace Jasarsoft.Columbia
 
                 if (df.CheckUnknown(Launcher.Name, lib.Name))
                 {
+                    this.errorNumber++;
                     e.Cancel = true;
                     return;
                 }
 
                 if (df.CheckMissed(Launcher.Name))
                 {
+                    this.errorNumber++;
                     e.Cancel = true;
                     return;
                 }
 
                 if (!File.Exists(Launcher.Name[i]))
                 {
+                    this.errorNumber++;
                     e.Cancel = true;
                     return;
                 }
@@ -77,6 +81,7 @@ namespace Jasarsoft.Columbia
                     
                     if (hash == null)
                     {
+                        this.errorNumber++;
                         e.Cancel = true;
                         return;
                     }

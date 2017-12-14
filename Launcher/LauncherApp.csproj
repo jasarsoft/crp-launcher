@@ -250,6 +250,7 @@
     <Compile Include="Class\GDrive\GDriveAccount.cs" />
     <Compile Include="Class\GDrive\GDrivePrivate.cs" />
     <Compile Include="Class\GDrive\GoogleApi.cs" />
+    <Compile Include="Class\ErrorFile.cs" />
     <Compile Include="Form\FileForm.cs">
       <SubType>Form</SubType>
     </Compile>

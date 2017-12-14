@@ -36,50 +36,50 @@ namespace Jasarsoft.Columbia
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.labelName = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.gridListControl1 = new Syncfusion.Windows.Forms.Grid.GridListControl();
+            this.labelDescription = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.gridListControlFiles = new Syncfusion.Windows.Forms.Grid.GridListControl();
             this.labelUnknown = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.labelMissed = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.labelIncorrect = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.labelTotal = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.buttonOK = new Syncfusion.Windows.Forms.ButtonAdv();
-            ((System.ComponentModel.ISupportInitialize)(this.gridListControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridListControlFiles)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelName
+            // labelDescription
             // 
-            this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelName.AutoSize = false;
-            this.labelName.ForeColor = System.Drawing.Color.DimGray;
-            this.labelName.Gap = 2;
-            this.labelName.Location = new System.Drawing.Point(12, 12);
-            this.labelName.Name = "labelName";
-            this.labelName.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Top;
-            this.labelName.Size = new System.Drawing.Size(604, 28);
-            this.labelName.TabIndex = 1;
-            this.labelName.Text = "Sljedeæa lista sadrži detaljan izvještaj o vašem trenutnom stanju Columbia State " +
+            this.labelDescription.AutoSize = false;
+            this.labelDescription.ForeColor = System.Drawing.Color.DimGray;
+            this.labelDescription.Gap = 2;
+            this.labelDescription.Location = new System.Drawing.Point(12, 12);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Top;
+            this.labelDescription.Size = new System.Drawing.Size(604, 28);
+            this.labelDescription.TabIndex = 1;
+            this.labelDescription.Text = "Sljedeæa lista sadrži detaljan izvještaj o vašem trenutnom stanju Columbia State " +
     "modifikacije:";
-            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // gridListControl1
+            // gridListControlFiles
             // 
-            this.gridListControl1.AlphaBlendSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(94)))), ((int)(((byte)(171)))), ((int)(((byte)(222)))));
-            this.gridListControl1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.gridListControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.gridListControl1.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Metro;
-            this.gridListControl1.HeaderBackColor = System.Drawing.Color.Silver;
-            this.gridListControl1.HeaderTextColor = System.Drawing.Color.Black;
-            this.gridListControl1.ItemHeight = 16;
-            this.gridListControl1.Location = new System.Drawing.Point(12, 46);
-            this.gridListControl1.MultiColumn = true;
-            this.gridListControl1.Name = "gridListControl1";
-            this.gridListControl1.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.gridListControl1.Properties.GridLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            this.gridListControl1.SelectedIndex = -1;
-            this.gridListControl1.Size = new System.Drawing.Size(604, 252);
-            this.gridListControl1.TabIndex = 2;
-            this.gridListControl1.TopIndex = 0;
+            this.gridListControlFiles.AlphaBlendSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(94)))), ((int)(((byte)(171)))), ((int)(((byte)(222)))));
+            this.gridListControlFiles.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.gridListControlFiles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gridListControlFiles.GridVisualStyles = Syncfusion.Windows.Forms.GridVisualStyles.Metro;
+            this.gridListControlFiles.HeaderBackColor = System.Drawing.Color.Silver;
+            this.gridListControlFiles.HeaderTextColor = System.Drawing.Color.Black;
+            this.gridListControlFiles.ItemHeight = 16;
+            this.gridListControlFiles.Location = new System.Drawing.Point(12, 46);
+            this.gridListControlFiles.MultiColumn = true;
+            this.gridListControlFiles.Name = "gridListControlFiles";
+            this.gridListControlFiles.Properties.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.gridListControlFiles.Properties.GridLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.gridListControlFiles.SelectedIndex = -1;
+            this.gridListControlFiles.Size = new System.Drawing.Size(604, 252);
+            this.gridListControlFiles.TabIndex = 2;
+            this.gridListControlFiles.TopIndex = 0;
             // 
             // labelUnknown
             // 
@@ -155,6 +155,7 @@ namespace Jasarsoft.Columbia
             this.buttonOK.Size = new System.Drawing.Size(108, 36);
             this.buttonOK.TabIndex = 7;
             this.buttonOK.Text = "Uredu";
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // FileForm
             // 
@@ -176,8 +177,8 @@ namespace Jasarsoft.Columbia
             this.Controls.Add(this.labelIncorrect);
             this.Controls.Add(this.labelMissed);
             this.Controls.Add(this.labelUnknown);
-            this.Controls.Add(this.labelName);
-            this.Controls.Add(this.gridListControl1);
+            this.Controls.Add(this.labelDescription);
+            this.Controls.Add(this.gridListControlFiles);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ForeColor = System.Drawing.Color.Black;
             this.MaximizeBox = false;
@@ -187,15 +188,15 @@ namespace Jasarsoft.Columbia
             this.ShowMaximizeBox = false;
             this.Text = "SAMP Columbia State | Zapisnik";
             this.Load += new System.EventHandler(this.FileForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridListControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridListControlFiles)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Syncfusion.Windows.Forms.Tools.AutoLabel labelName;
-        private Syncfusion.Windows.Forms.Grid.GridListControl gridListControl1;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel labelDescription;
+        private Syncfusion.Windows.Forms.Grid.GridListControl gridListControlFiles;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelUnknown;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelMissed;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelIncorrect;

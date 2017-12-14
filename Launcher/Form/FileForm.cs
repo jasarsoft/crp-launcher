@@ -23,7 +23,7 @@ namespace Jasarsoft.Columbia
         {
             InitializeComponent();
 
-            gridListControl1.DataSource = data;
+            gridListControlFiles.DataSource = data;
         }
 
         public int FileMissed
@@ -48,10 +48,15 @@ namespace Jasarsoft.Columbia
 
         private void FileForm_Load(object sender, EventArgs e)
         {
-            gridListControl1.Grid.ColWidths[1] = 60;
-            gridListControl1.Grid.ColWidths[2] = 340;
-            gridListControl1.Grid.ColWidths[3] = 100;
-            gridListControl1.Grid.ColWidths[4] = 100;
+            gridListControlFiles.Grid.ColWidths[1] = 60;
+            gridListControlFiles.Grid.ColWidths[2] = 340;
+            gridListControlFiles.Grid.ColWidths[3] = 100;
+            gridListControlFiles.Grid.ColWidths[4] = 100;
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

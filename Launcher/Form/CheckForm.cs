@@ -174,7 +174,7 @@ namespace Jasarsoft.Columbia
             else
             {
                 text = "Vaša datoteke su ispravne i korektne sa Columbia State modifikacijom.\n";
-                text += "Sada možete legalno i pravno pristupit našem serveru i uživati u igri.";
+                text += "Sada provjereno ispunjavate uslove za pristup našem serveru, uživati u igri.";
                 MessageBoxAdv.Show(text, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

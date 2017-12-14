@@ -192,6 +192,10 @@ namespace Jasarsoft.Columbia
                     buttonStart.Text = "Poèni";
                     workerFile.CancelAsync();
                 }
+                else
+                {
+                    buttonStart.Enabled = true;
+                }
             }   
             else
             {

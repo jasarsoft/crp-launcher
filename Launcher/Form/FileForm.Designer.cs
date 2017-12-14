@@ -40,7 +40,7 @@ namespace Jasarsoft.Columbia
             this.gridListControl1 = new Syncfusion.Windows.Forms.Grid.GridListControl();
             this.labelUnknown = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.labelMissed = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            this.labelIncorrect = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            this.labelValid = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.labelTotal = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.buttonOK = new Syncfusion.Windows.Forms.ButtonAdv();
             ((System.ComponentModel.ISupportInitialize)(this.gridListControl1)).BeginInit();
@@ -111,20 +111,20 @@ namespace Jasarsoft.Columbia
             this.labelMissed.Text = "Nedostajuæi: 0";
             this.labelMissed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelIncorrect
+            // labelValid
             // 
-            this.labelIncorrect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelValid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelIncorrect.AutoSize = false;
-            this.labelIncorrect.ForeColor = System.Drawing.Color.DimGray;
-            this.labelIncorrect.Gap = 2;
-            this.labelIncorrect.Location = new System.Drawing.Point(138, 310);
-            this.labelIncorrect.Name = "labelIncorrect";
-            this.labelIncorrect.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Top;
-            this.labelIncorrect.Size = new System.Drawing.Size(120, 18);
-            this.labelIncorrect.TabIndex = 5;
-            this.labelIncorrect.Text = "Neispravnih: 0";
-            this.labelIncorrect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelValid.AutoSize = false;
+            this.labelValid.ForeColor = System.Drawing.Color.DimGray;
+            this.labelValid.Gap = 2;
+            this.labelValid.Location = new System.Drawing.Point(138, 310);
+            this.labelValid.Name = "labelValid";
+            this.labelValid.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Top;
+            this.labelValid.Size = new System.Drawing.Size(120, 18);
+            this.labelValid.TabIndex = 5;
+            this.labelValid.Text = "Validni: 0";
+            this.labelValid.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelTotal
             // 
@@ -138,7 +138,7 @@ namespace Jasarsoft.Columbia
             this.labelTotal.Position = Syncfusion.Windows.Forms.Tools.AutoLabelPosition.Top;
             this.labelTotal.Size = new System.Drawing.Size(120, 18);
             this.labelTotal.TabIndex = 6;
-            this.labelTotal.Text = "Ukupno sve: 0";
+            this.labelTotal.Text = "Ukupno: 0";
             this.labelTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonOK
@@ -173,7 +173,7 @@ namespace Jasarsoft.Columbia
             this.ClientSize = new System.Drawing.Size(628, 358);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelTotal);
-            this.Controls.Add(this.labelIncorrect);
+            this.Controls.Add(this.labelValid);
             this.Controls.Add(this.labelMissed);
             this.Controls.Add(this.labelUnknown);
             this.Controls.Add(this.labelName);
@@ -198,7 +198,7 @@ namespace Jasarsoft.Columbia
         private Syncfusion.Windows.Forms.Grid.GridListControl gridListControl1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelUnknown;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelMissed;
-        private Syncfusion.Windows.Forms.Tools.AutoLabel labelIncorrect;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel labelValid;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelTotal;
         private Syncfusion.Windows.Forms.ButtonAdv buttonOK;
     }

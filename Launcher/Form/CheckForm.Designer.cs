@@ -148,11 +148,13 @@ namespace Jasarsoft.Columbia
             this.buttonStart.TabIndex = 5;
             this.buttonStart.Text = "Poèni";
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            this.buttonStart.MouseLeave += new System.EventHandler(this.buttonStart_MouseLeave);
+            this.buttonStart.MouseHover += new System.EventHandler(this.buttonStart_MouseHover);
             // 
             // buttonClose
             // 
             this.buttonClose.Appearance = Syncfusion.Windows.Forms.ButtonAppearance.Metro;
-            this.buttonClose.BackColor = System.Drawing.Color.DimGray;
+            this.buttonClose.BackColor = System.Drawing.Color.Firebrick;
             this.buttonClose.BeforeTouchSize = new System.Drawing.Size(108, 36);
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonClose.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -163,6 +165,8 @@ namespace Jasarsoft.Columbia
             this.buttonClose.Size = new System.Drawing.Size(108, 36);
             this.buttonClose.TabIndex = 6;
             this.buttonClose.Text = "Zatvori";
+            this.buttonClose.MouseLeave += new System.EventHandler(this.buttonClose_MouseLeave);
+            this.buttonClose.MouseHover += new System.EventHandler(this.buttonClose_MouseHover);
             // 
             // CheckForm
             // 

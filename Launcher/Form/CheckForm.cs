@@ -201,5 +201,25 @@ namespace Jasarsoft.Columbia
                 this.labelName.Text = "Priprema za provjeru vaši datoteka...";
             }     
         }
+
+        private void buttonStart_MouseHover(object sender, EventArgs e)
+        {
+            this.buttonStart.BackColor = Color.IndianRed;
+        }
+
+        private void buttonStart_MouseLeave(object sender, EventArgs e)
+        {
+            this.buttonStart.BackColor = Color.Firebrick;
+        }
+
+        private void buttonClose_MouseHover(object sender, EventArgs e)
+        {
+            this.buttonClose.BackColor = Color.IndianRed;
+        }
+
+        private void buttonClose_MouseLeave(object sender, EventArgs e)
+        {
+            this.buttonClose.BackColor = Color.Firebrick;
+        }
     }
 }

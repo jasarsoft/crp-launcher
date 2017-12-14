@@ -20,13 +20,6 @@ namespace Jasarsoft.Columbia
         private int fileTotal;
         private bool errorResult;
         private List<CheckFile> files;
-        private ButtonStatus buttonWork;
-
-        private enum ButtonStatus
-        {
-            ButtonStart,
-            ButtonCancel
-        };
 
         private enum ErrorResult
         {
@@ -51,7 +44,6 @@ namespace Jasarsoft.Columbia
         private void CheckForm_Load(object sender, EventArgs e)
         {
             this.progressLoad.Value = 0;
-            this.buttonWork = ButtonStatus.ButtonStart;
             this.progressLoad.Maximum = Launcher.Name.Length - 1;
             this.labelName.Text = "Molimo vas kliknite na Poèni da pokrente provjeru.";
         }

@@ -31,7 +31,7 @@ namespace Jasarsoft.Columbia
         {
             this.progressLoad.Value = 0;
             this.progressLoad.Maximum = Launcher.Name.Length - 1;
-            this.labelName.Text = "Validacija æe uskoro zapoèeti...";
+            this.labelName.Text = "Validacija æe automatski zapoèeti...";
         }
 
         private void ValidForm_Shown(object sender, EventArgs e)
@@ -113,7 +113,13 @@ namespace Jasarsoft.Columbia
         private void WorkerFile_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.progressLoad.Value = e.ProgressPercentage;
-            this.labelName.Text = String.Format("Fajl {0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length, Launcher.Name[e.ProgressPercentage]);
+            if(Launcher.Name[e.ProgressPercentage].Length > 45)
+            {
+                string filename = String.Format(@"...{0}", Launcher.Name[e.ProgressPercentage].Substring(Launcher.Name[e.ProgressPercentage].Length - 40));
+                this.labelName.Text = String.Format("{0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length, filename);
+            }
+            else
+                this.labelName.Text = String.Format("{0}/{1}: {2}", e.ProgressPercentage + 1, Launcher.Name.Length, Launcher.Name[e.ProgressPercentage]);
         }
 
         private void WorkerFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

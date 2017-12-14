@@ -165,7 +165,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEAAACxABrSO9dQAASfdJREFUeF7tnQm8lVP3
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDwAACw8BkvkDpQAASfdJREFUeF7tnQm8lVP3
         x8/e59x5FEKoDCGveR4TImTMkDFSREoyJiGVIaIQ9crbIJE0lyYqUTTSrLk0D6g0aLqd/+/7POfpf1zP
         vd3bgM456/NZn3vPfsZznmf/9m+tvdbagXA4nNCEJjShCd0L6tsYy5qQYkmG9GxpRenBNCQkIX7i19fi
         UX0bY1kTUiTJlFaQPmEDgc9DgcAI/V9LGpQmJCF/Eb++Fo/q2xjLmpBCRdgZOE/6tLTHUcbMejEYDF9l
@@ -488,6 +488,6 @@
     <value>17, 17</value>
   </metadata>
   <data name="labelDescription.Text" xml:space="preserve">
-    <value>Provjeri će se vaši trenutni fajlovi Columbia State modifikacije sa našim servisnim poslužiteljem i bit ćete informisano o vašem stanju modifikacije nakon provjere. Svaka uspješna provjera vam omogućava sigurno pristpanje serveru bez naknadnih ažuriranja vaši datoteka u toku prijave na server.</value>
+    <value>Provjeri će se vaši trenutne datoteke Columbia State modifikacije sa našim servisnim poslužiteljem i bit ćete informisano o vašem stanju modifikacije nakon provjere. Svaka uspješna provjera vam omogućava sigurno pristupanje našem serveru bez naknadnih ažuriranja vaši datoteka u toku prijave na server.</value>
   </data>
 </root>

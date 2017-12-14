@@ -58,5 +58,15 @@ namespace Jasarsoft.Columbia
         {
             this.Close();
         }
+
+        private void buttonOK_MouseHover(object sender, EventArgs e)
+        {
+            this.buttonOK.BackColor = Color.IndianRed;
+        }
+
+        private void buttonOK_MouseLeave(object sender, EventArgs e)
+        {
+            this.buttonOK.BackColor = Color.Firebrick;
+        }
     }
 }

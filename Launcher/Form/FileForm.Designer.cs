@@ -156,6 +156,8 @@ namespace Jasarsoft.Columbia
             this.buttonOK.TabIndex = 7;
             this.buttonOK.Text = "Uredu";
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.MouseLeave += new System.EventHandler(this.buttonOK_MouseLeave);
+            this.buttonOK.MouseHover += new System.EventHandler(this.buttonOK_MouseHover);
             // 
             // FileForm
             // 

@@ -165,6 +165,7 @@ namespace Jasarsoft.Columbia
             this.buttonClose.Size = new System.Drawing.Size(108, 36);
             this.buttonClose.TabIndex = 6;
             this.buttonClose.Text = "Zatvori";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             this.buttonClose.MouseLeave += new System.EventHandler(this.buttonClose_MouseLeave);
             this.buttonClose.MouseHover += new System.EventHandler(this.buttonClose_MouseHover);
             // 

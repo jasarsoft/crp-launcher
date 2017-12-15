@@ -50,6 +50,10 @@ namespace Jasarsoft.Columbia
 
         private void workerFile_DoWork(object sender, DoWorkEventArgs e)
         {
+            this.number = 0;
+            this.fileMissed = 0;
+            this.fileUnknown = 0;
+            this.fileIncorrect = 0;
             files = new List<CheckFile>();
             e.Result = ErrorResult.None;
             // Get the BackgroundWorker that raised this event.
@@ -143,7 +147,8 @@ namespace Jasarsoft.Columbia
         private void workerFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             buttonStart.Text = "Poèni";
-            buttonStart.Enabled = true;
+            this.buttonStart.Enabled = true;
+            this.buttonClose.Enabled = true;
             this.progressLoad.Value = 0;
             this.labelName.Text = "Molimo vas kliknite na Poèni da pokrente provjeru.";
 
@@ -181,7 +186,8 @@ namespace Jasarsoft.Columbia
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            buttonStart.Enabled = false;
+            this.buttonStart.Enabled = false;
+            this.buttonClose.Enabled = false;
 
             if (workerFile.IsBusy)
             {
@@ -189,21 +195,28 @@ namespace Jasarsoft.Columbia
                 string text = "Da li ste sigurni da želite prekinuti provjeru vaši datoteka?";
                 if(MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    buttonStart.Text = "Poèni";
+                    //buttonStart.Text = "Poèni";
                     workerFile.CancelAsync();
                 }
                 else
                 {
-                    buttonStart.Enabled = true;
+                    this.buttonStart.Enabled = true;
+                    //this.buttonClose.Enabled = false;
                 }
             }   
             else
             {
-                buttonStart.Text = "Prekini";
                 workerFile.RunWorkerAsync();
-                buttonStart.Enabled = true;
+                this.buttonStart.Text = "Prekini";
+                this.buttonStart.Enabled = true;
+                //this.buttonClose.Enabled = false;
                 this.labelName.Text = "Priprema za provjeru vaši datoteka...";
             }     
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void buttonStart_MouseHover(object sender, EventArgs e)

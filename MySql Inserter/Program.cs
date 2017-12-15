@@ -48,14 +48,14 @@ namespace Jasarsoft.MySQLInserter
                             mysql.Open();
                             command = mysql.CreateCommand();
                             if (numberTable == 1)
-                                command.CommandText = "INSERT INTO games_edit(name, size, hash, fileid) VALUES(@name, @size, @hash, @fileid)";
+                                command.CommandText = "INSERT INTO games_edit(name, size, hash, fileid, url) VALUES(@name, @size, @hash, @fileid, @url)";
                             else
-                                command.CommandText = "INSERT INTO mods_edit(name, size, hash, fileid) VALUES(@name, @size, @hash, @fileid)";
+                                command.CommandText = "INSERT INTO mods_edit(name, size, hash, fileid, url) VALUES(@name, @size, @hash, @fileid, @url)";
                             command.Parameters.AddWithValue("@name", path + file.Title);
                             command.Parameters.AddWithValue("@size", file.FileSize);
                             command.Parameters.AddWithValue("@hash", file.Md5Checksum);
                             command.Parameters.AddWithValue("@fileid", file.Id);
-                            //command.Parameters.AddWithValue("@url", file.DownloadUrl);
+                            command.Parameters.AddWithValue("@url", file.DownloadUrl);
                             command.ExecuteNonQuery();
                             mysql.Close();
                         }
@@ -138,7 +138,8 @@ namespace Jasarsoft.MySQLInserter
                                        name VARCHAR(64) DEFAULT 'filename.ext',
                                        size INT(15) DEFAULT 0,
                                        hash VARCHAR(64) DEFAULT 'MD5',
-                                       fileid VARCHAR(64) DEFAULT 'file id',                                        
+                                       fileid VARCHAR(64) DEFAULT 'file id',
+                                       url VARCHAR(256) DEFAULT 'https://...',                                        
                                        PRIMARY KEY (id))";
                    command.ExecuteNonQuery();
                    Console.WriteLine("INFO: Tabela 'games_edit' je napravljena.");
@@ -155,7 +156,8 @@ namespace Jasarsoft.MySQLInserter
                                        name VARCHAR(64) DEFAULT 'filename.ext',
                                        size INT(15) DEFAULT 0,
                                        hash VARCHAR(64) DEFAULT 'MD5',
-                                       fileid VARCHAR(64) DEFAULT 'file id',                                        
+                                       fileid VARCHAR(64) DEFAULT 'file id',
+                                       url VARCHAR(256) DEFAULT 'https://...',                                       
                                        PRIMARY KEY (id))";
                    command.ExecuteNonQuery();
                    Console.WriteLine("INFO: Tabela 'mods_edit' je napravljena.");

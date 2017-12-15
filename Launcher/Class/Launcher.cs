@@ -161,8 +161,6 @@ namespace Jasarsoft.Columbia
             Application.SetCompatibleTextRenderingDefault(false);
             
             Application.Run(new LoadForm());
-        }
-
-        
+        }   
     }
 }

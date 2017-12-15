@@ -119,7 +119,7 @@ namespace Jasarsoft.Columbia
             this.hash = new List<string>();            
             this.size = new List<long>();
             this.link = new List<string>();
-            //this.url = new List<string>();
+            this.url = new List<string>();
 
             if (!this.Connect()) return false;
 
@@ -141,7 +141,7 @@ namespace Jasarsoft.Columbia
                     this.size.Add(Int64.Parse(reader[column.Size].ToString()));
                     this.hash.Add(reader[column.Hash].ToString());
                     this.link.Add(reader[column.Link].ToString());
-                    //this.url.Add(reader[column.Url].ToString());
+                    this.url.Add(reader[column.Url].ToString());
                 }
 
                 reader.Close();
@@ -161,7 +161,7 @@ namespace Jasarsoft.Columbia
                     this.size.Add(Int64.Parse(reader[column.Size].ToString()));
                     this.hash.Add(reader[column.Hash].ToString());
                     this.link.Add(reader[column.Link].ToString());
-                    //this.url.Add(reader[column.Url].ToString());
+                    this.url.Add(reader[column.Url].ToString());
                 }
 
                 reader.Close();

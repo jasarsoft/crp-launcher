@@ -20,6 +20,7 @@ namespace Test_Download_GUI
 {
     public partial class Form1 : Form
     {
+        long size = 21577541;
         private const int KB = 0x400;
         private const int DownloadChunkSize = 256 * KB;
 
@@ -69,8 +70,10 @@ namespace Test_Download_GUI
             });
 
             // uploaded succeeded
-            //await DownloadFile(service, "https://doc-0c-7o-docs.googleusercontent.com/docs/securesc/bq8oq8h3l68rlgehm8u6cvhlru1c2c5b/48ortuv2d80sl6ji3ddqol603omk19rv/1509213600000/12017929765300884506/09884659862440838168/0Byi5ne7d961QcGpCN3VDZE5jSWM?e=download&gd=true");
-            await DownloadFile(service, "https://drive.google.com/open?id=1oy1ATuAFDWVqUMM9w0nZTuzzO622dwGA");
+            
+            
+            await DownloadFile(service, "https://doc-14-7o-docs.googleusercontent.com/docs/securesc/bq8oq8h3l68rlgehm8u6cvhlru1c2c5b/p7l8nldrtuvf5fniufi77ij8sbft71jf/1510430400000/12017929765300884506/09884659862440838168/143I_uDYBKYbCjri2uXJvok5McY9Ofboc?e=download&gd=true");
+            //await DownloadFile(service, "https://drive.google.com/open?id=1oy1ATuAFDWVqUMM9w0nZTuzzO622dwGA");
         }
 
         private async Task DownloadFile(DriveService service, string url)
@@ -81,10 +84,9 @@ namespace Test_Download_GUI
             downloader.ProgressChanged += Download_ProgressChanged;
 
             // figure out the right file type base on UploadFileName extension
-            var fileName = "####.exe";
+            var fileName = "111111.exe";
 
-            using (var fileStream = new System.IO.FileStream(fileName,
-                System.IO.FileMode.Create, System.IO.FileAccess.Write))
+            using (var fileStream = new System.IO.FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
                 var progress = await downloader.DownloadAsync(url, fileStream);
                 if (progress.Status == DownloadStatus.Completed)
@@ -93,8 +95,7 @@ namespace Test_Download_GUI
                 }
                 else
                 {
-                    //Console.WriteLine("Download {0} was interpreted in the middle. Only {1} were downloaded. ",
-                    //    fileName, progress.BytesDownloaded);
+
                 }
             }
         }
@@ -102,12 +103,10 @@ namespace Test_Download_GUI
 
         private void Download_ProgressChanged(IDownloadProgress progress)
         {
-            //Console.WriteLine(progress.Status + " " + progress.BytesDownloaded);
             label1.Invoke(new Action(() =>
-                label1.Text = progress.BytesDownloaded.ToString()));
+                label1.Text = String.Format("{0:0.00} MB", progress.BytesDownloaded / 1048576.0)));
 
-            //label1.BeginInvoke(delegate { label1.Text = progress.BytesDownloaded.ToString(); });
-            //label1.Text = progress.BytesDownloaded.ToString();
+            //progressBar1.Invoke(new Action(() => progressBar1.Value = (int)(((double)progress.BytesDownloaded / size) * 100)));
         }
     }
 }

@@ -11,12 +11,16 @@ namespace Jasarsoft.StringEncryptor
 {
     public partial class Encryptor : Form
     {
+        StringCipher sc;
+
         public Encryptor()
         {
             InitializeComponent();
+
+            sc = new StringCipher();
         }
 
-        private string GetPassword2()
+        private string GetPassword()
         {
             long result = 1;
 
@@ -30,21 +34,17 @@ namespace Jasarsoft.StringEncryptor
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            StringCipher sc = new StringCipher();
-
             sc.Password = txtPassword.Text;
             txtOutput.Text = sc.Decrypt(txtInput.Text);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            txtPassword.Text = "11234982716813224364729";
+            txtPassword.Text = GetPassword();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StringCipher sc = new StringCipher();
-
             sc.Password = txtPassword.Text;
             txtOutput.Text = sc.Encrypt(txtInput.Text); 
         }

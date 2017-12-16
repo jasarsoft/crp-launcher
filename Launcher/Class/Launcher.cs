@@ -17,6 +17,7 @@ namespace Jasarsoft.Columbia
 
         private static bool locked;
         private static bool worked;
+        private static int slideshow;
         private static string address;
         private static string password;
         private static string teampspeak;
@@ -73,6 +74,12 @@ namespace Jasarsoft.Columbia
         {
             get { return worked; }
             set { worked = value; }
+        }
+
+        public static int SlideShow
+        {
+            get { return slideshow; }
+            set { slideshow = value; }
         }
 
         public static string Address
@@ -159,8 +166,9 @@ namespace Jasarsoft.Columbia
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
             Application.Run(new LoadForm());
+            //Application.Run(new DownloadForm());
         }   
     }
 }

@@ -112,6 +112,7 @@ namespace Jasarsoft.Columbia
             {
                 Launcher.Locked = s.Locked;
                 Launcher.Working = s.Working;
+                Launcher.SlideShow = s.SlideShow;
                 Launcher.Address = s.Address;
                 Launcher.Password = s.Password;
                 Launcher.Teamspeak = s.Teamspeak;
@@ -138,14 +139,14 @@ namespace Jasarsoft.Columbia
                     Launcher.Size = new long[bf.Size.Count];
                     Launcher.Hash = new string[bf.Hash.Count];
                     Launcher.Link = new string[bf.Link.Count];
-                    //Launcher.Url = new string[bf.Url.Count];
+                    Launcher.Url = new string[bf.Url.Count];
 
                     bf.Valid.CopyTo(Launcher.Valid);
                     bf.Name.CopyTo(Launcher.Name);
                     bf.Size.CopyTo(Launcher.Size);
                     bf.Hash.CopyTo(Launcher.Hash);
                     bf.Link.CopyTo(Launcher.Link);
-                    //bf.Url.CopyTo(Launcher.Url);
+                    bf.Url.CopyTo(Launcher.Url);
 
                     e.Result = ErrorResult.None;
                 }
@@ -176,7 +177,7 @@ namespace Jasarsoft.Columbia
                 foreach (int missed in dataFile.MissedFiles)
                 {
 #if DEBUG
-                    MessageBox.Show(Launcher.Name[missed]);
+                    //MessageBox.Show(Launcher.Name[missed]);
 #endif
                     this.missedFiles.Add(missed);
                 }

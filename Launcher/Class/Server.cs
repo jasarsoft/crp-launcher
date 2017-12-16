@@ -8,6 +8,7 @@ namespace Jasarsoft.Columbia
     {
         private bool locked;
         private bool working;
+        private int slideshow;
         private string address;
         private string password;
         private string teamspeak;
@@ -41,6 +42,10 @@ namespace Jasarsoft.Columbia
         public bool Working
         {
             get { return this.working; }
+        }
+        public int SlideShow
+        {
+            get { return this.slideshow; }
         }
         public string Address
         {
@@ -131,6 +136,7 @@ namespace Jasarsoft.Columbia
                 {
                     this.locked = Boolean.Parse(reader["lock"].ToString());
                     this.working = Boolean.Parse(reader["work"].ToString());
+                    this.slideshow = Int32.Parse(reader["slideshow"].ToString());
                     this.address = reader["address"].ToString();
                     this.password = reader["password"].ToString();
                     this.teamspeak = reader["teamspeak"].ToString();

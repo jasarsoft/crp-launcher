@@ -134,15 +134,11 @@ namespace Jasarsoft.Columbia.Host
             }
             else
             {
-                ProcessKiller pk = new ProcessKiller();
                 MessageTitle title = new MessageTitle();
+                string message = "Aplikaciju Columbia State Host ne pokreæete direktno Vi.\n" +
+                                 "Isto narušava trenutni rad pa se pokretanje neæe dozovliti.";
 
-                pk.Samp();
-                pk.SanAndreas();
-                pk.Columbia();
-
-                string text = "Columbia State host ne pokreæite Vi!";
-                MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
                 Application.Exit();
                 return;
@@ -156,14 +152,17 @@ namespace Jasarsoft.Columbia.Host
             this.fileStream.Clear();
             foreach (string name in this.fileList)
             {
-                if (name.Contains("modloader.log")) continue;
                 if (!File.Exists(name))
                 {
-                    e.Cancel = true;
-                    return;
+                    if (name.Contains("VHUD_debug.log")) continue;
+                    if (name.Contains("modloader\\modloader.log")) continue;
+                    this.fileStream.Add(new FileStream(name, FileMode.Open, FileAccess.Read, FileShare.Read));
                 }
-                    
-                this.fileStream.Add(new FileStream(name, FileMode.Open, FileAccess.Read, FileShare.Read));
+                else
+                {
+                    e.Cancel = true;
+                    break;
+                }
             }
         }
 
@@ -171,17 +170,8 @@ namespace Jasarsoft.Columbia.Host
         {
             if (e.Cancelled)
             {
-                Process[] process = Process.GetProcessesByName("columbia");
-                if (process.Length > 0)
-                {
-                    foreach (Process temp in process)
-                    {
-                        do
-                        {
-                            temp.Kill();
-                        } while (temp.HasExited == false);
-                    }
-                }
+                ColumbiaKiller();
+                SanAndreasKiller();
                 workerColumbia.CancelAsync();
                 return;
             }
@@ -217,14 +207,14 @@ namespace Jasarsoft.Columbia.Host
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Thread t1 = new Thread(new ThreadStart(SampKiller));
+            /*Thread t1 = new Thread(new ThreadStart(SampKiller));
             t1.Priority = ThreadPriority.Highest;
             t1.Start();
 
             Thread t2 = new Thread(new ThreadStart(SanAndreasKiller));
             t2.Priority = ThreadPriority.Highest;
             t2.IsBackground = true;
-            t2.Start();
+            t2.Start();*/
         }
 
         private void MessageBoxSettings()
@@ -266,6 +256,22 @@ namespace Jasarsoft.Columbia.Host
         private void SanAndreasKiller()
         {
             Process[] allProcess = Process.GetProcessesByName("gtasa");
+            if (allProcess.Length > 0)
+            {
+                foreach (Process tempProcess in allProcess)
+                {
+                    do
+                    {
+                        tempProcess.Kill();
+                        tempProcess.WaitForExit();
+                    } while (tempProcess.HasExited == false);
+                }
+            }
+        }
+
+        private void ColumbiaKiller()
+        {
+            Process[] allProcess = Process.GetProcessesByName("columbia");
             if (allProcess.Length > 0)
             {
                 foreach (Process tempProcess in allProcess)

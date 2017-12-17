@@ -37,7 +37,7 @@ namespace Jasarsoft.Columbia.Host
         {
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.workerStream = new System.ComponentModel.BackgroundWorker();
-            this.workerNM = new System.ComponentModel.BackgroundWorker();
+            this.workerColumbia = new System.ComponentModel.BackgroundWorker();
             this.labelCopyright = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.SuspendLayout();
@@ -56,11 +56,11 @@ namespace Jasarsoft.Columbia.Host
             this.workerStream.DoWork += new System.ComponentModel.DoWorkEventHandler(this.workerStream_DoWork);
             this.workerStream.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.workerStream_RunWorkerCompleted);
             // 
-            // workerNM
+            // workerColumbia
             // 
-            this.workerNM.WorkerSupportsCancellation = true;
-            this.workerNM.DoWork += new System.ComponentModel.DoWorkEventHandler(this.workerNM_DoWork);
-            this.workerNM.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.workerNM_RunWorkerCompleted);
+            this.workerColumbia.WorkerSupportsCancellation = true;
+            this.workerColumbia.DoWork += new System.ComponentModel.DoWorkEventHandler(this.workerColumbia_DoWork);
+            this.workerColumbia.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.workerColumbia_RunWorkerCompleted);
             // 
             // labelCopyright
             // 
@@ -119,7 +119,7 @@ namespace Jasarsoft.Columbia.Host
 
         private System.Windows.Forms.PictureBox pictureLogo;
         private System.ComponentModel.BackgroundWorker workerStream;
-        private System.ComponentModel.BackgroundWorker workerNM;
+        private System.ComponentModel.BackgroundWorker workerColumbia;
         private Syncfusion.Windows.Forms.Tools.AutoLabel labelCopyright;
     }
 }

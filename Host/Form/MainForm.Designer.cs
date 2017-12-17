@@ -5,7 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-namespace Jasarsoft.ColumbiaState.Host
+namespace Jasarsoft.Columbia.Host
 {
     partial class MainForm
     {
@@ -105,8 +105,9 @@ namespace Jasarsoft.ColumbiaState.Host
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State | Host";
+            this.Text = "SAMP Columbia State RolePlay | Host";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Jasarsoft.ColumbiaState.Host
+namespace Jasarsoft.Columbia.Host
 {
     static class MainHost
     {

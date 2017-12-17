@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 
-namespace Jasarsoft.ColumbiaState.Host
+namespace Jasarsoft.Columbia.Host
 {
     public partial class MainForm : Syncfusion.Windows.Forms.MetroForm
     {
@@ -207,6 +207,11 @@ namespace Jasarsoft.ColumbiaState.Host
             }
 
             workerNM.RunWorkerAsync();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

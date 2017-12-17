@@ -2,7 +2,7 @@
 using System.Diagnostics;
 
 
-namespace Jasarsoft.ColumbiaState.Host
+namespace Jasarsoft.Columbia.Host
 {
     public class ProcessKiller
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jasarsoft.ColumbiaState.Host
+namespace Jasarsoft.Columbia.Host
 {
     internal class MessageTitle
     {
@@ -11,9 +11,9 @@ namespace Jasarsoft.ColumbiaState.Host
         //default contructor
         public MessageTitle()
         {
-            this.infoMsg = "SAMP Columbia State | Info";
-            this.errorMsg = "SAMP Columbia State | Greška";
-            this.warningMsg = "SAMP Columbia State | Upozorenje";
+            this.infoMsg = "SAMP Columbia State RolePlay | Info";
+            this.errorMsg = "SAMP Columbia State RolePlay | Greška";
+            this.warningMsg = "SAMP Columbia State RolePlay | Upozorenje";
         }
 
 

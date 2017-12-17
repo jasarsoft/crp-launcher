@@ -7,7 +7,7 @@
     <ProjectGuid>{A297C2F5-CE78-4615-AFC5-F1DF97D4EA86}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jasarsoft.ColumbiaState.Host</RootNamespace>
+    <RootNamespace>Jasarsoft.Columbia.Host</RootNamespace>
     <AssemblyName>host-cs</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -50,7 +50,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Jasarsoft.ColumbiaState.Host.MainHost</StartupObject>
+    <StartupObject>Jasarsoft.Columbia.Host.MainHost</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>red_c.ico</ApplicationIcon>

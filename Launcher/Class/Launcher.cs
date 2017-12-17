@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Syncfusion.Windows.Forms;
 
 namespace Jasarsoft.Columbia
 {
@@ -129,8 +130,8 @@ namespace Jasarsoft.Columbia
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
-        {
+        static void Main(string[] args)
+        {            
 #if !DEBUG
             MySqlLauncher lan = new MySqlLauncher();
             if (lan.Read())
@@ -162,6 +163,23 @@ namespace Jasarsoft.Columbia
 
             lan = null;
             lib = null;
+
+            if (args.Length > 0)
+            {
+                string message;
+                MessageTitle title = new MessageTitle();
+                if(args[0] == "0")
+                {
+                    message = "Ažuriranje Columbia State Launchera je uspješno urađeno.";
+                    MessageBoxAdv.Show(message, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    message = "Ažuriranje Columbia State Launchera je neuspješno.\n" +
+                              "Detaljnije obrađena poruka u novijim nadogradnjama.";
+                    MessageBoxAdv.Show(message, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }              
+            }
 #endif
 
             Application.EnableVisualStyles();

@@ -216,15 +216,16 @@ namespace Jasarsoft.Columbia
             // menuToolsCheck
             // 
             this.menuToolsCheck.Name = "menuToolsCheck";
-            this.menuToolsCheck.Size = new System.Drawing.Size(143, 22);
+            this.menuToolsCheck.Size = new System.Drawing.Size(152, 22);
             this.menuToolsCheck.Text = "&Provjera";
             this.menuToolsCheck.ToolTipText = "Provjerite valjanost trenutni fajlova";
             this.menuToolsCheck.Click += new System.EventHandler(this.menuToolsCheck_Click);
             // 
             // menuToolsDownload
             // 
+            this.menuToolsDownload.Enabled = false;
             this.menuToolsDownload.Name = "menuToolsDownload";
-            this.menuToolsDownload.Size = new System.Drawing.Size(143, 22);
+            this.menuToolsDownload.Size = new System.Drawing.Size(152, 22);
             this.menuToolsDownload.Text = "&Ažuriranje";
             this.menuToolsDownload.ToolTipText = "Ažurirajte potrebne fajlove najnovim";
             this.menuToolsDownload.Click += new System.EventHandler(this.menuToolsDownload_Click);
@@ -232,15 +233,15 @@ namespace Jasarsoft.Columbia
             // menuToolsSeparator
             // 
             this.menuToolsSeparator.Name = "menuToolsSeparator";
-            this.menuToolsSeparator.Size = new System.Drawing.Size(140, 6);
+            this.menuToolsSeparator.Size = new System.Drawing.Size(149, 6);
             // 
             // menuToolsUpdate
             // 
-            this.menuToolsUpdate.Enabled = false;
             this.menuToolsUpdate.Name = "menuToolsUpdate";
-            this.menuToolsUpdate.Size = new System.Drawing.Size(143, 22);
+            this.menuToolsUpdate.Size = new System.Drawing.Size(152, 22);
             this.menuToolsUpdate.Text = "&Nadogradnja";
             this.menuToolsUpdate.ToolTipText = "Nadogradite Launcher novom verzijom";
+            this.menuToolsUpdate.Click += new System.EventHandler(this.menuToolsUpdate_Click);
             // 
             // menuItemLink
             // 

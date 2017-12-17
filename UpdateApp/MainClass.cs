@@ -8,6 +8,7 @@ using System.IO.Compression;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Jasarsoft.Columbia.Update
 {
@@ -52,17 +53,17 @@ namespace Jasarsoft.Columbia.Update
             else if (args[0] == cipher.Decrypt(modeSilent))
                 messageShow = false;
             else
-                return 1;
+                return ColumbiaRun("1");
 
             MessageHeader();
             MessageInfo("Spajanje na servis za preuzimanje meta podataka...");
-            if (!ReadBase()) return 2;
+            if (!ReadBase()) return ColumbiaRun("2");
 
             //provjera za dostupnost servisa
             if (launcherNumber == 0)
             {
                 MessageWarning();
-                return 3;
+                return ColumbiaRun("3");
             }
 
             MessageInfo("Provjera vasi datoteka sa posljednjim verzijama...");
@@ -75,7 +76,8 @@ namespace Jasarsoft.Columbia.Update
                     Console.Write("\n- Vase datoteke su vec azurirane na zadnje verzije.");
                     Console.ReadKey();
                 }
-                return 0;
+
+                return ColumbiaRun("0");
             }
             else
             {
@@ -84,21 +86,35 @@ namespace Jasarsoft.Columbia.Update
             }
 
             MessageInfo("Priprema temp direktorija za aktivnosti...");
-            if (!PathPrepare()) return 4;
+            if (!PathPrepare()) return ColumbiaRun("4");
 
             MessageInfo("Skidanje zadnjih verzija datoteka...");
-            if (!DownloadFiles()) return 5;
+            if (!DownloadFiles()) return ColumbiaRun("5");
 
             MessageInfo("Raspakivanje skinutih datoteka iz temp direktorija...");
-            if (!ExtractFiles()) return 6;
+            if (!ExtractFiles()) return ColumbiaRun("6");
 
             MessageInfo("Brisanje nepotrebnih datoteka iz temp direktorija...");
-            if (!DeleteFiles()) return 7;
+            if (!DeleteFiles()) return ColumbiaRun("7");
 
             MessageInfo("Validacija novih preuzeti datoteka...");
-            if (!CheckFiles()) return 8;
+            if (!CheckFiles()) return ColumbiaRun("8");
+                
 
             MessageSuccess();
+            return ColumbiaRun("0");
+        }
+
+        static int ColumbiaRun(string arg)
+        {
+            if(File.Exists("columbia.exe"))
+            {
+                ProcessStartInfo info = new ProcessStartInfo();
+                info.FileName = "columbia.exe";
+                info.WorkingDirectory = ".\\";
+                info.Arguments = arg;
+                Process.Start(info);
+            }
 
             return 0;
         }

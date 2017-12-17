@@ -16,6 +16,7 @@ namespace Jasarsoft.Columbia
                 //application
                 @".\columbia.exe",
                 @".\host-cs.exe",
+                @".\update-cs.exe",
                 @".\columbia.exe.config",
                 
                 //MySql Library
@@ -195,8 +196,9 @@ namespace Jasarsoft.Columbia
             {
                 //application
                 "", //@".\columbia.exe",
-                "91A3EFF1A324A435405C9D45714DE1AB", //@".\host-cs.exe",
-                "94CA33F20B4130229C5419FC9F67E871", //@".\columbia.exe.config",
+                "41078C0BECB58C1DEFD7AEFAEC0DC8BE", //@".\host-cs.exe",
+                "F164DDB5C9A563E3184978CBBCDD8E29", // @".\update-cs.exe
+                "A11084C7193365FF484387AD6B27477F", //@".\columbia.exe.config",
                                 
                 //MySql Library
                 "17B4BDDED1D6D8F5B02D6A60C8BADF27", //@".\MySql.Data.dll",
@@ -249,7 +251,7 @@ namespace Jasarsoft.Columbia
                 //"82C421F669774FC14A96691D0FB561CD", //@".\System.Net.dll",
                 //"3002E884C5C15A15B68EAEF3C62FF254", //@".\System.Net.Http.dll",
                 "7F86A47ACD4D810AD673AF81369F2F26", //@".\System.Net.Http.Extensions.dll",
-                "018841345CFBF45EDA4CD1ADB74FD68B", //@".\System.Net.Http.Primitives.dll",
+                "B43FD28DFEC4D3B81D7FA0F10A2FB62C", //@".\System.Net.Http.Primitives.dll",
                 //"1925E1654510EE0914FF3360C6C94765", //@".\System.Net.Http.WebRequest.dll",
                 //"8E4E0EA396B5452BED54E6888CB07CA1", //@".\System.Runtime.dll",
                 //"DCEDE06F6364869AE39220195ED7AF63", //@".\System.Runtime.Serialization.Formatters.Soap.dll",

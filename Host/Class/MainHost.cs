@@ -24,6 +24,16 @@ namespace Jasarsoft.Columbia.Host
                 return;
             }
 
+            string hash = "JlPgBQEZ9//KCcODzs9BP/frWJ3CQYhCizP505rupUQmXUvxaHJS2oRueP9Af78j0A+A4uK0m4h0qAsMVtGv2l5vjBAr1AavGuYekiNm4oydBa8afH4wy/G4GOakoz/enFUMEStUw6ivfHY8sG/t5bbRQfurqIlc99Td2Kl8UPk="; //8643C7CF3B6412682F487CB55859CB4D
+            if(HashFile.GetMD5(cipher.Decrypt(filename)) != cipher.Decrypt(hash))
+            {
+                MessageTitle title = new MessageTitle();
+                string message = "Columbia State Host aplikacijska biblioteka je neopoznata i strana.\n" +
+                                 "Aplikacija ne može biti nastaljvena te se iz sigurnostih razloga gasi.";
+                MessageBox.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

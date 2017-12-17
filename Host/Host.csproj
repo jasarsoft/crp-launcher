@@ -101,6 +101,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\HashFile.cs" />
     <Compile Include="Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

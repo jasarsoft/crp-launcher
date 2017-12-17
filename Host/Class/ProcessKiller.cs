@@ -6,17 +6,18 @@ namespace Jasarsoft.Columbia.Host
 {
     public class ProcessKiller
     {
+        private readonly string gta;
         private readonly string samp;
-        private readonly string gtasa;
-        private readonly string sampcs;
-        private readonly string hostcs;
+        private readonly string host;
+        private readonly string columbia;
         
+
         public ProcessKiller()
         {
+            this.gta = "gtasa";
             this.samp = "gtasamp";
-            this.gtasa = "gtasa";
-            this.sampcs = "columbia";
-            this.hostcs = "host-cs";
+            this.host = "host-cs";
+            this.columbia = "columbia";
         }
 
 
@@ -30,6 +31,7 @@ namespace Jasarsoft.Columbia.Host
                     do
                     {
                         tempProcess.Kill();
+                        tempProcess.WaitForExit();
                     } while (tempProcess.HasExited == false);
                 }
             }
@@ -50,19 +52,19 @@ namespace Jasarsoft.Columbia.Host
             this.Killer(this.samp);
         }
 
-        public void GtaSa()
+        public void SanAndreas()
         {
-            this.Killer(this.gtasa);
+            this.Killer(this.gta);
         }
 
-        public void SampColumbia()
+        public void Columbia()
         {
-            this.Killer(this.sampcs);
+            this.Killer(this.columbia);
         }
 
-        public void HostColumbia()
+        public void Host()
         {
-            this.Killer(this.hostcs);
+            this.Killer(this.host);
         }
     }
 }

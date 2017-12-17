@@ -71,7 +71,7 @@ namespace Jasarsoft.Columbia
             // textboxDescription
             // 
             this.textboxDescription.BackColor = System.Drawing.Color.White;
-            this.textboxDescription.BeforeTouchSize = new System.Drawing.Size(183, 22);
+            this.textboxDescription.BeforeTouchSize = new System.Drawing.Size(340, 214);
             this.textboxDescription.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textboxDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -99,8 +99,8 @@ namespace Jasarsoft.Columbia
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
             this.CaptionBarHeight = 24;
-            this.CaptionButtonColor = System.Drawing.Color.Black;
-            this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
+            this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.CaptionButtonHoverColor = System.Drawing.Color.Black;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(364, 325);

@@ -36,6 +36,7 @@ namespace Jasarsoft.Columbia
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelMain = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             this.autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -57,10 +58,10 @@ namespace Jasarsoft.Columbia
             // 
             // pictureLogo
             // 
-            this.pictureLogo.Image = global::Jasarsoft.Columbia.Properties.Resources.cover;
+            this.pictureLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureLogo.Image")));
             this.pictureLogo.Location = new System.Drawing.Point(12, 12);
             this.pictureLogo.Name = "pictureLogo";
-            this.pictureLogo.Size = new System.Drawing.Size(340, 85);
+            this.pictureLogo.Size = new System.Drawing.Size(340, 100);
             this.pictureLogo.TabIndex = 4;
             this.pictureLogo.TabStop = false;
             // 
@@ -76,7 +77,7 @@ namespace Jasarsoft.Columbia
             this.panelMain.Controls.Add(this.textboxAuthentic);
             this.panelMain.Controls.Add(this.textboxPassword);
             this.panelMain.Controls.Add(this.labelPassword);
-            this.panelMain.Location = new System.Drawing.Point(12, 103);
+            this.panelMain.Location = new System.Drawing.Point(12, 118);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(340, 133);
             this.panelMain.TabIndex = 5;
@@ -192,7 +193,7 @@ namespace Jasarsoft.Columbia
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonLogin.ForeColor = System.Drawing.Color.White;
             this.buttonLogin.IsBackStageButton = false;
-            this.buttonLogin.Location = new System.Drawing.Point(12, 251);
+            this.buttonLogin.Location = new System.Drawing.Point(12, 266);
             this.buttonLogin.MetroColor = System.Drawing.Color.RoyalBlue;
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(222, 59);
@@ -208,7 +209,7 @@ namespace Jasarsoft.Columbia
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.IsBackStageButton = false;
-            this.buttonClose.Location = new System.Drawing.Point(240, 251);
+            this.buttonClose.Location = new System.Drawing.Point(240, 266);
             this.buttonClose.MetroColor = System.Drawing.Color.Firebrick;
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(112, 59);
@@ -225,12 +226,12 @@ namespace Jasarsoft.Columbia
             this.BorderThickness = 6;
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
-            this.CaptionBarHeight = 30;
+            this.CaptionBarHeight = 24;
             this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionButtonHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(364, 322);
+            this.ClientSize = new System.Drawing.Size(364, 337);
             this.ControlBox = false;
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonLogin);
@@ -248,7 +249,7 @@ namespace Jasarsoft.Columbia
             this.ShowInTaskbar = false;
             this.ShowMaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP NovaMahala | Admin Prijava";
+            this.Text = "SAMP Columbia State RolePlay | Admin Prijava";
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelMain)).EndInit();
             this.panelMain.ResumeLayout(false);

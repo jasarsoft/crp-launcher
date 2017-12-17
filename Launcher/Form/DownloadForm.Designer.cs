@@ -288,7 +288,7 @@ namespace Jasarsoft.Columbia
             this.ShowIcon = false;
             this.ShowMaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State | Ažuriranje...";
+            this.Text = "SAMP Columbia State RolePlay | Ažuriranje...";
             this.Shown += new System.EventHandler(this.DownloadForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.progressOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressAll)).EndInit();

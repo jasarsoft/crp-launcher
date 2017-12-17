@@ -36,6 +36,7 @@ namespace Jasarsoft.Columbia
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RulesForm));
             this.textboxDescription = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             this.buttonClose = new Syncfusion.Windows.Forms.ButtonAdv();
             this.horizonalLine = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -55,7 +56,7 @@ namespace Jasarsoft.Columbia
             this.textboxDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textboxDescription.FocusBorderColor = System.Drawing.Color.Firebrick;
             this.textboxDescription.ForeColor = System.Drawing.Color.Black;
-            this.textboxDescription.Location = new System.Drawing.Point(12, 139);
+            this.textboxDescription.Location = new System.Drawing.Point(12, 154);
             this.textboxDescription.Metrocolor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(211)))), ((int)(((byte)(212)))));
             this.textboxDescription.MinimumSize = new System.Drawing.Size(10, 6);
             this.textboxDescription.Multiline = true;
@@ -74,7 +75,7 @@ namespace Jasarsoft.Columbia
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
             this.buttonClose.IsBackStageButton = false;
-            this.buttonClose.Location = new System.Drawing.Point(12, 289);
+            this.buttonClose.Location = new System.Drawing.Point(12, 304);
             this.buttonClose.MetroColor = System.Drawing.Color.Firebrick;
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(340, 59);
@@ -86,7 +87,7 @@ namespace Jasarsoft.Columbia
             // 
             this.horizonalLine.AutoSize = false;
             this.horizonalLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.horizonalLine.Location = new System.Drawing.Point(12, 284);
+            this.horizonalLine.Location = new System.Drawing.Point(12, 299);
             this.horizonalLine.Name = "horizonalLine";
             this.horizonalLine.Size = new System.Drawing.Size(340, 2);
             this.horizonalLine.TabIndex = 2;
@@ -98,7 +99,7 @@ namespace Jasarsoft.Columbia
             this.comboboxRules.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboboxRules.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboboxRules.ForeColor = System.Drawing.Color.Black;
-            this.comboboxRules.Location = new System.Drawing.Point(12, 112);
+            this.comboboxRules.Location = new System.Drawing.Point(12, 127);
             this.comboboxRules.MaxLength = 1024;
             this.comboboxRules.MetroColor = System.Drawing.Color.Firebrick;
             this.comboboxRules.Name = "comboboxRules";
@@ -109,10 +110,10 @@ namespace Jasarsoft.Columbia
             // 
             // pictureLogo
             // 
-            this.pictureLogo.Image = global::Jasarsoft.Columbia.Properties.Resources.cover;
+            this.pictureLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureLogo.Image")));
             this.pictureLogo.Location = new System.Drawing.Point(12, 12);
             this.pictureLogo.Name = "pictureLogo";
-            this.pictureLogo.Size = new System.Drawing.Size(340, 85);
+            this.pictureLogo.Size = new System.Drawing.Size(340, 100);
             this.pictureLogo.TabIndex = 7;
             this.pictureLogo.TabStop = false;
             // 
@@ -126,11 +127,11 @@ namespace Jasarsoft.Columbia
             this.CaptionAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
             this.CaptionBarHeight = 24;
-            this.CaptionButtonColor = System.Drawing.Color.Black;
-            this.CaptionButtonHoverColor = System.Drawing.Color.WhiteSmoke;
+            this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.CaptionButtonHoverColor = System.Drawing.Color.Black;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(364, 360);
+            this.ClientSize = new System.Drawing.Size(364, 375);
             this.Controls.Add(this.pictureLogo);
             this.Controls.Add(this.comboboxRules);
             this.Controls.Add(this.horizonalLine);
@@ -146,8 +147,7 @@ namespace Jasarsoft.Columbia
             this.ShowIcon = false;
             this.ShowMaximizeBox = false;
             this.ShowMinimizeBox = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SAMP Columbia State | RolePlay Pravila";
+            this.Text = "SAMP Columbia State RolePlay | RolePlay Pravila";
             this.Load += new System.EventHandler(this.RulesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textboxDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboboxRules)).EndInit();

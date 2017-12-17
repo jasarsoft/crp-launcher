@@ -35,6 +35,7 @@ namespace Jasarsoft.Columbia
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadForm));
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.labelCopyright = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             this.workerLoad = new System.ComponentModel.BackgroundWorker();
@@ -43,10 +44,10 @@ namespace Jasarsoft.Columbia
             // 
             // pictureLogo
             // 
-            this.pictureLogo.Image = global::Jasarsoft.Columbia.Properties.Resources.cover;
+            this.pictureLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureLogo.Image")));
             this.pictureLogo.Location = new System.Drawing.Point(12, 12);
             this.pictureLogo.Name = "pictureLogo";
-            this.pictureLogo.Size = new System.Drawing.Size(340, 85);
+            this.pictureLogo.Size = new System.Drawing.Size(340, 100);
             this.pictureLogo.TabIndex = 3;
             this.pictureLogo.TabStop = false;
             // 
@@ -55,7 +56,7 @@ namespace Jasarsoft.Columbia
             this.labelCopyright.AutoSize = false;
             this.labelCopyright.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelCopyright.ForeColor = System.Drawing.Color.Gray;
-            this.labelCopyright.Location = new System.Drawing.Point(12, 109);
+            this.labelCopyright.Location = new System.Drawing.Point(12, 124);
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(340, 50);
             this.labelCopyright.TabIndex = 6;
@@ -79,10 +80,10 @@ namespace Jasarsoft.Columbia
             this.CaptionBarColor = System.Drawing.Color.Firebrick;
             this.CaptionBarHeight = 24;
             this.CaptionButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.CaptionButtonHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            this.CaptionButtonHoverColor = System.Drawing.Color.Black;
             this.CaptionFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.CaptionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(364, 168);
+            this.ClientSize = new System.Drawing.Size(364, 183);
             this.ControlBox = false;
             this.Controls.Add(this.labelCopyright);
             this.Controls.Add(this.pictureLogo);

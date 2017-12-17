@@ -14,6 +14,8 @@ using Google.Apis.Drive.v2;
 using GoogleFile = Google.Apis.Drive.v2.Data.File;
 using System.Threading.Tasks;
 using Google.Apis.Auth.OAuth2;
+using System.Resources;
+using Jasarsoft.Columbia.Properties;
 
 namespace Jasarsoft.Columbia
 {
@@ -22,9 +24,28 @@ namespace Jasarsoft.Columbia
         private int value;
         private int number;
         private bool stream;
-        private double size;
+        private double fileSize;
         private List<int> id;
+        private int errorNumber;
+
+        private long downloadSize;
+        private long downloadTotal;
+        private int downloadNumber;
+        private bool downloadWork;
+
+        private bool sizeMB;
+        
         private ErrorResult errorResult;
+
+        private int fileMissed;
+        private int fileUnknown;
+        private int fileIncorrect;
+
+        private const int KB = 0x400;
+        private const int DownloadChunkSize = 256 * KB;
+
+        DriveService service;
+        List<ErrorFile> errorFiles;
 
         delegate void ProgressSet(long bytesDownload);
 
@@ -39,40 +60,34 @@ namespace Jasarsoft.Columbia
         public DownloadForm()
         {
             InitializeComponent();
+         
 
             this.value = 0;
             this.number = 0;
             this.stream = false;
             this.id = new List<int>();
 
-            this.progressOne.Value = 0;
-            this.progressAll.Value = 0;
+            this.errorNumber = 0;
 
-            this.labelValue.Text = String.Empty;
-            this.labelName.Text = "Ažuriranje æe uskoro poèeti...";
+            this.downloadSize = 0;
+            this.downloadTotal = 0;
+            this.downloadNumber = 0;
+            this.downloadWork = false;
 
-            this.DialogResult = System.Windows.Forms.DialogResult.Abort;
-        }
-
-        public DownloadForm(string task)
-        {
-
-        }
-
-        public DownloadForm(bool stream)
-        {
-            InitializeComponent();
-
-            this.value = 0;
-            this.number = 0;
-            this.stream = stream;
-            this.id = new List<int>();
+            this.fileMissed = 0;
+            this.fileUnknown = 0;
+            this.fileIncorrect = 0;
 
             this.progressOne.Value = 0;
             this.progressAll.Value = 0;
 
             this.labelValue.Text = String.Empty;
-            this.labelName.Text = "Ažuriranje æe uskoro poèeti...";
+            this.labelName.Text = "Molimo vas kliknite na Poèni da bih ste zapoèeli process ažuriranja potrebnih datoteka...";
+
+            this.labelError.Text = String.Empty;
+            this.labelErrorValue.Text = String.Empty;
+            this.labelTotal.Text = String.Empty;
+            this.labelTotalValue.Text = String.Empty;
 
             this.DialogResult = System.Windows.Forms.DialogResult.Abort;
         }
@@ -85,58 +100,14 @@ namespace Jasarsoft.Columbia
         }
 
 
-        //private void DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        //{
-        //    this.BeginInvoke((MethodInvoker)delegate
-        //    {
-        //        double bytesIn = double.Parse(e.BytesReceived.ToString());
-        //        double totalBytes = double.Parse(Launcher.Size[this.id[number]].ToString());
-        //        double percentage = bytesIn / totalBytes * 100;
-        //        progressOne.Value = int.Parse(Math.Truncate(percentage).ToString());
-
-        //        int temp = number * 100;
-        //        progressAll.Value = progressOne.Value + temp;
-
-        //        labelName.Text = String.Format("Fajl {0}/{1}: {2}", number + 1, this.id.Count, Launcher.Name[this.id[number]]);
-        //        if (Launcher.Size[this.id[number]] < 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
-        //            labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", Math.Truncate((bytesIn / 1024) * 100) / 100, Math.Truncate((totalBytes / 1024) * 100) / 100);
-        //        else
-        //            labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", Math.Truncate((bytesIn / 1048576) * 100) / 100, Math.Truncate((totalBytes / 1048576) * 100) / 100);
-        //    });
-        //}
-
-        //private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        //{
-        //    if (HashFile.GetMD5(Launcher.Name[this.id[number]]) != Launcher.Hash[this.id[number]])
-        //    {
-        //        this.wrong++;
-        //    }
-        //}
-
-        private const int KB = 0x400;
-        private const int DownloadChunkSize = 256 * KB;
-
-        private Thread demoThread = null;
-
-
-        
-
-        /*private async Task Run()
-        {
-            DriveService service = GDriveAccount.Authenticate("columbia-state@columbia-state.iam.gserviceaccount.com", "Columbia State-99db1bd2a00e.json", new string[] { DriveService.Scope.DriveReadonly, DriveService.Scope.DriveMetadataReadonly });
-            for (int i = 0; i < this.id.Count; i++)
-            {
-                await DownloadFile(service, Launcher.Url[number]);
-            }
-        }*/
-
-
         private void DownloadForm_Shown(object sender, EventArgs e)
         {
             this.progressOne.Maximum = 100;
             this.progressAll.Maximum = 100 * id.Count;
 
-            Thread thread = new Thread(() =>
+            workerSlide.RunWorkerAsync();
+
+            /*Thread thread = new Thread(() =>
             {
                 Network net = new Network();
                 GoogleApi api = new GoogleApi();
@@ -182,31 +153,31 @@ namespace Jasarsoft.Columbia
                     if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
                     if (Launcher.Size[number] > 1048576)
-                        size = Launcher.Size[number] / 1048576.0;
+                        fileSize = Launcher.Size[number] / 1048576.0;
                     else
-                        size = Launcher.Size[number] / 1024.0;
+                        fileSize = Launcher.Size[number] / 1024.0;
                   
                     Uri address = new Uri(String.Format("https://drive.google.com/uc?export=download&id={0}", Launcher.Link[number]));
 
-                    /*using (WebClient client = new WebClient())
-                    {
-                        client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
-                        //client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
-
-                        client.DownloadFileAsync(address, Launcher.Name[number]);
-                        while (client.IsBusy) Thread.Sleep(1000);
-                    }
-
-                    if (HashFile.GetMD5(Launcher.Name[number]) == Launcher.Hash[number])
-                    {
-                        if (stream)
-                        {
-                            fileStream.Clear();
-                            for (int j = 0; j <= i; j++) fileStream.Add(new FileStream(Launcher.Name[number], FileMode.Open, FileAccess.Read, FileShare.Read));
-                        }
-
-                        continue;
-                    }*/
+                    //using (WebClient client = new WebClient())
+                    //{
+                    //    client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
+                    //    //client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
+                    //
+                    //    client.DownloadFileAsync(address, Launcher.Name[number]);
+                    //    while (client.IsBusy) Thread.Sleep(1000);
+                    //}
+                    //
+                    //if (HashFile.GetMD5(Launcher.Name[number]) == Launcher.Hash[number])
+                    //{
+                    //    if (stream)
+                    //    {
+                    //        fileStream.Clear();
+                    //        for (int j = 0; j <= i; j++) fileStream.Add(new FileStream(Launcher.Name[number], FileMode.Open, FileAccess.Read, FileShare.Read));
+                    //    }
+                    //
+                    //    continue;
+                    //}
                         
 
                     var request = service.Files.Get(Launcher.Link[number]);
@@ -249,12 +220,12 @@ namespace Jasarsoft.Columbia
                                         if (Launcher.Size[number] > 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
                                         {
                                             request.MediaDownloader.ChunkSize += 1024;
-                                            labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", progress.BytesDownloaded / 1048576.0, size);
+                                            labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", progress.BytesDownloaded / 1048576.0, fileSize);
                                         }   
                                         else
                                         {
                                             request.MediaDownloader.ChunkSize += 1024;
-                                            labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", progress.BytesDownloaded / 1024.0, size);
+                                            labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", progress.BytesDownloaded / 1024.0, fileSize);
                                         }  
                                     });
 
@@ -384,59 +355,227 @@ namespace Jasarsoft.Columbia
 
             thread.Priority = ThreadPriority.Lowest;
             thread.IsBackground = true;
-            thread.Start();
+            thread.Start();*/
+        }
+
+
+        private DialogResult MessageErrorInternet()
+        {
+            MessageTitle title = new MessageTitle();
+            string text = "Vaša internet konekcija je nedostupna, provjerite vašu spojenost na internet.\n" +
+                          "Trebate biti pravilno spojeni na internet kako bih nastavili sa skidanjem datoteka.\n" +
+                          "Da li želite sada ponovo provjeriti vašu dostupnost internet konekcije i nastaviti?";
+
+            return MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+        }
+
+        private DialogResult MessageErrorService()
+        {
+            MessageTitle title = new MessageTitle();
+            string text = "Spajanje na naš servis za preuzimanje datoteka nije trenutno moguæe ostvariti.\n" +
+                          "Potrebno je uspješno se spojiti na servis kako bih mogli preuzimati datoteke sa njega.\n" +
+                          "Da li želite sada ponovo pokušati se spojiti na naš servis i nastaviti sa preuzimanjem?";
+
+            return MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+        }
+
+        private DialogResult MessageErrorDownload(string file)
+        {
+            MessageTitle title = new MessageTitle();
+            string text = "Skidanje i ažuriranje navedene datoteke nije upotpunosti uspješno izvršeno.\n" +
+                          String.Format("Naziv datoteke: {0}\n", file) +
+                          "Da li želite ponovo pokušati preuzeti istoimenu datoteku ili ne za nastavak preuzimanja?";
+
+            return MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+        }
+
+        private DialogResult MessageErrorLog()
+        {
+            MessageTitle title = new MessageTitle();
+            string text = "Prilikom skidanja datoteka sa servisa došlo je do pogreške na nekima.\n" +
+                          "Da li želite pogledati detaljan izvještaj datoteka koje se nisu ažurirale?";
+
+            return MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+        }
+
+        private DialogResult MessageInfoDownload()
+        {
+            MessageTitle title = new MessageTitle();
+            string text = "Skidanje i ažuriranje datoteka sa download servisa je uspješno izvršeno\n" +
+                          "i sada imate potpunu modifikaciju za pristup našem serveru, prijavite se.\n" +
+                          String.Format("Ukupno je skinuto {0} datoteka èija je ukupna velièina {1:0.00} MB.", downloadNumber, downloadSize / 1048576.0);
+
+            return MessageBoxAdv.Show(text, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        private bool CheckInternet()
+        {
+            Network net = new Network();
+            System.Windows.Forms.DialogResult dialog;
+
+            do
+            {
+                if (net.Available()) return true;
+
+                //ako internet nije dosptupan ide se na ponavljanje
+                //ponavljajuce poruke i provjere interneta
+                dialog = MessageErrorInternet();
+            } while (dialog == DialogResult.Yes);
+
+            return false;
+        }
+
+        private bool CheckService()
+        {
+            System.Windows.Forms.DialogResult dialog;
+
+            do
+            {
+                service = new GDriveAccount().Authenticate();
+                if (service != null) return true;
+                dialog = MessageErrorService();
+            } while (dialog == DialogResult.Yes);
+
+            return false;
+        }
+
+        private async Task RepeatDownloadFile(DriveService service, string url)
+        {
+            System.Windows.Forms.DialogResult dialog;
+
+            do
+            {
+                await DownloadFile(service, url);
+                if (HashFile.GetMD5(Launcher.Name[number]) == Launcher.Hash[number].ToUpper())
+                {
+                    this.downloadNumber++;
+                    this.downloadSize += Launcher.Size[number];
+                    this.labelTotalValue.Text = String.Format("{0:0.00}/{1:0.00} MB", downloadSize / 1048576.0, downloadTotal / 1048576.0);
+                    break;
+                }
+                this.Hide(); //skrivanje forme radi prikaza poruke
+                dialog = MessageErrorDownload(Launcher.Name[number]);
+                this.Show(); //pokazivanje forme nakon poruke
+                
+                if (dialog == DialogResult.No)
+                {
+                    this.errorFiles.Add(new ErrorFile(++errorNumber, Launcher.Name[number], Launcher.Size[number], "Neispravan"));
+                }
+                    
+            } while (dialog == DialogResult.Yes);
+        }
+
+        private void ImageStreamLoad()
+        {
+            /*for(int i = 1; i < 4; i++)
+           {
+               string file = String.Format(".\\screenshots\\{0}.png", i);
+               using (var stream = new System.IO.FileStream(file, FileMode.Open, FileAccess.Read))
+               {
+                   Image img = Image.FromStream(stream);
+                   imageStreamer1.Images.Add(img);
+               }
+           }*/
+
+
+            //WebClient client = new WebClient();
+            for (int i = 1; i < 4; i++)
+            {
+                string address = String.Format("https://columbia-state.com/launcher/screenshots/{0}.png", i);
+                using (var client = new WebClient())
+                {
+                    Stream stream = client.OpenRead(address);
+                    Image img = Image.FromStream(stream);
+                    imageStreamerSlide.Images.Add(img);
+                    stream.Dispose();
+                }
+            }
         }
 
         private async Task Run()
         {
-            number = this.id[0];
-            DriveService service = new GDriveAccount().Authenticate();
+            this.downloadWork = true;
+            if (!CheckInternet()) return;
+            if (!CheckService()) return;
 
-            
-            await DownloadFile(service, Launcher.Url[number]);
+            this.errorNumber = 0;
+            this.downloadSize = 0;
+            this.downloadNumber = 0;
+            this.errorFiles = new List<ErrorFile>();
+            foreach (int id in this.id) downloadTotal += Launcher.Size[id];
+
+            for (int i = 0; i < this.id.Count; i++)
+            {
+                //if (errorResult != ErrorResult.None) break;
+
+                value = i * 100;
+                number = this.id[i];
+                if (!downloadWork) break;
+                this.labelName.Text = String.Format("{0}/{1}: {2}", i + 1, this.id.Count, Launcher.Name[number]);
+
+                if(errorNumber > 0)
+                    this.labelErrorValue.Text = errorNumber.ToString();
+
+                //postavka velicine datoteke u MB ili KB;
+                if (Launcher.Size[number] > 1048576)
+                {
+                    this.sizeMB = true;
+                    fileSize = Launcher.Size[number] / 1048576.0;
+                }   
+                else
+                {
+                    this.sizeMB = false;
+                    fileSize = Launcher.Size[number] / 1024.0;
+                }
+                    
+
+                //kreiranje direktorija ako nepostoji za trenutnu datoteku;
+                string path = Path.GetDirectoryName(Launcher.Name[number]);
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+
+                if (!CheckInternet()) return; //provjea internet konekcije prije download-a;
+                //await DownloadFile(service, Launcher.Url[number]); //skidanje datoteke;
+
+                //provjera hash vrijednosti skinute datoteke;
+                await RepeatDownloadFile(service, Launcher.Url[number]);
+                
+            }
         }
 
         private async Task DownloadFile(DriveService service, string url)
         {
             var downloader = new MediaDownloader(service);
             downloader.ChunkSize = DownloadChunkSize;
-            // add a delegate for the progress changed event for writing to console on changes
-            downloader.ProgressChanged += DownloadProgressChanged1;
+            // add a delegate for the progress changed event
+            downloader.ProgressChanged += Download_ProgressChanged;
 
-            // figure out the right file type base on UploadFileName extension
-            var fileName = Launcher.Name[number];
-
-            using (var fileStream = new System.IO.FileStream(fileName,
-                System.IO.FileMode.Create, System.IO.FileAccess.Write))
+            using (var fileStream = new System.IO.FileStream(Launcher.Name[number], FileMode.Create, FileAccess.Write))
             {
                 var progress = await downloader.DownloadAsync(url, fileStream);
                 if (progress.Status == DownloadStatus.Completed)
                 {
-                    //Console.WriteLine(fileName + " was downloaded successfully");
+                    //this.downloadNumber++;
+                    //this.downloadSize += Launcher.Size[number];
+                    //this.labelTotalValue.Text = String.Format("{0:0.00}/{1:0.00} MB", downloadSize / 1048576.0, downloadTotal / 1048576.0);
+
                 }
-                else
+                else if(progress.Status == DownloadStatus.Failed)
                 {
-                    progressOne.Value = (int)(((double)progress.BytesDownloaded / Launcher.Size[number]) * 100);
+                    
                 }
             }
         }
 
         private void Download_ProgressChanged(IDownloadProgress obj)
         {
+            progressOne.Invoke(new Action(() => progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100)));
+            progressAll.Invoke(new Action(() => progressAll.Value = progressOne.Value + value));
 
-            //MessageBox.Show("a");
-            progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100);
-
-            //this.BeginInvoke((MethodInvoker)delegate
-            //{
-            //    progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100);
-            //    progressAll.Value = progressOne.Value + value;
-
-            //    if (Launcher.Size[number] > 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
-            //        labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", obj.BytesDownloaded / 1048576.0, size);
-            //    else
-            //        labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", obj.BytesDownloaded / 1024.0, size);
-            //});
+            if (sizeMB)
+                labelValue.Invoke(new Action(() => labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", obj.BytesDownloaded / 1048576.0, fileSize)));
+            else
+                labelValue.Invoke(new Action(() => labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", obj.BytesDownloaded / 1024.0, fileSize)));
         } 
 
 
@@ -444,13 +583,17 @@ namespace Jasarsoft.Columbia
         {
             this.BeginInvoke((MethodInvoker)delegate
             {
+                //double bytesIn = double.Parse(e.BytesReceived.ToString());
+                //double totalBytes = double.Parse(Launcher.Size[number].ToString());
+                //double percentage = bytesIn / totalBytes * 100;
+                //progressOne.Value = int.Parse(Math.Truncate(percentage).ToString());
                 progressOne.Value = (int)(((double)e.BytesReceived / Launcher.Size[number]) * 100);
                 progressAll.Value = progressOne.Value + value;
 
                 if (Launcher.Size[number] > 1048576)
-                    labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", e.BytesReceived / 1048576.0, size);
+                    labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", e.BytesReceived / 1048576.0, fileSize);
                 else
-                    labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", e.BytesReceived / 1024.0, size);
+                    labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", e.BytesReceived / 1024.0, fileSize);
 
                 //double bytesIn = double.Parse(e.BytesReceived.ToString());
                 //double totalBytes = double.Parse(Launcher.Size[number].ToString());
@@ -464,51 +607,72 @@ namespace Jasarsoft.Columbia
             });
         }
 
-        private void ThreadProgressOne(long bytes)
-        {
-            this.SetProgressOne(bytes);
-        }
+        
 
-        private void SetProgressOne(long bytes)
+        private async void buttonStart_Click(object sender, EventArgs e)
         {
-            if (this.progressOne.InvokeRequired)
+            if(downloadWork)
             {
-                ProgressSet p = new ProgressSet(SetProgressOne);
-                this.Invoke(p, new object[] { bytes });
+                this.downloadWork = false;
             }
             else
             {
-                progressOne.Value = (int)(((double)bytes / Launcher.Size[number]) * 100);
+                this.labelError.Text = "Ukupno grešaka:";
+                this.labelErrorValue.Text = "-";
+                this.labelTotal.Text = "Ukupno skinuto:";
+                this.labelTotalValue.Text = "-";
+                this.buttonStart.Text = "Prekini";
+                await Run();
+                this.downloadWork = false;
+                if(errorNumber > 0)
+                {
+                    this.DialogResult = DialogResult.Abort;
+                    if (MessageErrorLog() == DialogResult.Yes)
+                    {
+                        this.Hide();
+                        FileForm ff = new FileForm(errorFiles);
+                        ff.FileMissed = 0;
+                        ff.FileUnknown = 0;
+                        ff.FileIncorrect = errorNumber;
+                        ff.FileTotal = this.Id.Count;
+                        
+                        ff.ShowDialog();
+                        this.Show();
+                    }
+                    this.Close();
+                    return;
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Hide();
+                    MessageInfoDownload();
+                    this.Show();
+                    this.Close();
+                }
             }
         }
 
-        public void DoProcessing(IProgress<int> progress)
+        private void workerSlide_DoWork(object sender, DoWorkEventArgs e)
         {
-            for (int i = 0; i != 100; ++i)
+            StringCipher sc = new StringCipher();
+            string address = sc.Decrypt("ZTGL4X6BtPz1U/42i4Ihos3SBIirLnFWzMAR9LisZgGdwRao/JF8a3OKcC5jeZD45hYcjNdSEBYFyX8qMEDABqFfZcW9L01aLFabHiPuoTAMGPHtihQgTa7sEJoTnbCWKvaBG8EuwFuV61hUKCXqe1qmxNskxfaPc7/S2b0MIho=");
+            for (int i = 0; i < Launcher.SlideShow; i++)
             {
-                Thread.Sleep(100); // CPU-bound work
-                if (progress != null)
-                    progress.Report(i);
+                using (var client = new WebClient())
+                {
+                    Stream stream = client.OpenRead(String.Format("{0}{1}.png", address, i));
+                    Image img = Image.FromStream(stream);
+                    imageStreamerSlide.Images.Add(img);
+                    stream.Dispose();
+                }
             }
         }
 
-        private void DownloadProgressChanged1(IDownloadProgress obj)
+        private void workerSlide_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.BeginInvoke((MethodInvoker)delegate
-            {
-                progressOne.Value = (int)(((double)obj.BytesDownloaded / Launcher.Size[number]) * 100);
-                
-
-                //double bytesIn = double.Parse(e.BytesReceived.ToString());
-                //double totalBytes = double.Parse(Launcher.Size[number].ToString());
-                //double percentage = bytesIn / totalBytes * 100;
-                //progressOne.Value = int.Parse(Math.Truncate(percentage).ToString());
-
-                //if (Launcher.Size[number] < 1048576) //1MB = 1B * 1024 * 1024 = 1038576 B
-                //    labelValue.Text = String.Format("{0:0.00}/{1:0.00} KB", Math.Truncate((bytesIn / 1024) * 100) / 100, Math.Truncate((totalBytes / 1024) * 100) / 100);
-                //else
-                //    labelValue.Text = String.Format("{0:0.00}/{1:0.00} MB", Math.Truncate((bytesIn / 1048576) * 100) / 100, Math.Truncate((totalBytes / 1048576) * 100) / 100);
-            });
+            this.pictureLogo.Hide();
+            this.imageStreamerSlide.Show(); 
         }
     }
 }

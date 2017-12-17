@@ -16,7 +16,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using GoogleFile = Google.Apis.Drive.v2.Data.File;
+//using GoogleFile = Google.Apis.Drive.v2.Data.File;
 using System.Collections;
 using Google.Apis.Drive.v2.Data;
 using System.Security.Cryptography.X509Certificates;
@@ -383,7 +383,7 @@ namespace Jasarsoft.Columbia
 
         private static void UploadFile(DriveService service)
         {
-            GoogleFile body = new GoogleFile();
+            Google.Apis.Drive.v2.Data.File body = new Google.Apis.Drive.v2.Data.File();
             body.Title = "test upload";
             body.Description = "test upload";
             body.MimeType = "application/vnd.ms-excel";
@@ -397,7 +397,7 @@ namespace Jasarsoft.Columbia
                 FilesResource.InsertMediaUpload request = service.Files.Insert(body, stream, "application/vnd.google-apps.spreadsheet");
                 request.Upload();
 
-                GoogleFile file = request.ResponseBody;
+                Google.Apis.Drive.v2.Data.File file = request.ResponseBody;
 
                 // Uncomment the following line to print the GoogleFile ID.
                 // Console.WriteLine("GoogleFile ID: " + file.Id);

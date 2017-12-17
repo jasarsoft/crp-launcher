@@ -188,7 +188,7 @@ namespace Jasarsoft.Columbia
             this.Name = "FileForm";
             this.ShowIcon = false;
             this.ShowMaximizeBox = false;
-            this.Text = "SAMP Columbia State | Zapisnik";
+            this.Text = "SAMP Columbia State RolePlay | Zapisnik";
             this.Load += new System.EventHandler(this.FileForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridListControlFiles)).EndInit();
             this.ResumeLayout(false);

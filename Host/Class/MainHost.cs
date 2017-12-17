@@ -19,7 +19,7 @@ namespace Jasarsoft.Columbia.Host
             {
                 MessageTitle title = new MessageTitle();
                 string message = "Columbia State Host aplkacija je neovlašteno i izolovano pokrenuta.\n" +
-                                 "Aplikacija ne može biti nastaljvena iz sigurnostih razloga se gasi.";
+                                 "Aplikacija ne može biti nastaljvena te se iz sigurnostih razloga gasi.";
                 MessageBox.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

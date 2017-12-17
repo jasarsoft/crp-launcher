@@ -13,8 +13,6 @@ namespace Jasarsoft.Columbia.Update
 {
     static internal class MainClass
     {
-        private static string installMode = String.Empty;
-
         private static string ipAddress = String.Empty;
         //files field
         private static long sizeFiles = 0;
@@ -23,6 +21,8 @@ namespace Jasarsoft.Columbia.Update
         private static int launcherNumber;
         private static int launcherUpdate;
         private static string launcherVersion;
+
+        private static StringCipher cipher = new StringCipher();
         //columbia file list
         private static List<ColumbiaFile> dataFileList = new List<ColumbiaFile>();
         private static List<ColumbiaFile> errorFileList = new List<ColumbiaFile>();
@@ -30,33 +30,39 @@ namespace Jasarsoft.Columbia.Update
         //directory filed
         private static string tempDirectory = String.Format("{0}\\Columbia State", Path.GetTempPath());
 
+        private static bool messageShow = false;
+        private const string modeShow = "qMnecXIek9uvqT1kkRrdImyhVkKLKynehXdLAT/ea2s5wubQlFmAWqexMXJvooyqA5+9qjpzFYk8N/mUpMB4rIRdOqGh2fj7uwvYL4q/A4fQ/B8RrxisGrrIDz5CNWXF"; //cs_show
+        private const string modeSilent = "OE605a2s7zg7O9YeMiHqplyB7K3ToWRMCu79Xno4P88FOsSXrWJhDsXUk0C6/MFB5MwJHbrfSBNmWkBryQAt1rU2jNs7hZW48K2hnsU4AdWTaE3vXVOF7fMHh+WVAUSI"; //cs_silent 
+
+        private const string archiveExtension = "KNlp73VxSNGk0e8TWqdopHozwPhdgMd63f3pKVTikkNJRNN7xnGQ1q8BDC8Of+IKWUd3UoUhS6D4pmNwixK0ML8xq5TQ6s5vCAQNolQJIi1z4GoXlTLfOG/h7Irp3p2O"; //.zip
+
         static int Main(string[] args)
         {
+            
             //pogretanje procesa da dobijanje ip adrese
             //Thread t = new Thread(new ThreadStart(IpAddress));
             //t.Priority = ThreadPriority.Lowest;
             //t.IsBackground = true;
             //t.Start();
-            //installMode = args[0];
 
-            Console.Title = "Columbia State Laucnher - Update Service";
-            Console.WriteLine("------------------------------------------------------");
-            Console.WriteLine("SAMP Columbia State RolePlay Launcher - Update Service");
-            Console.WriteLine("Copyright(c) 2017 Columbia State Team, Version 1.0.0.0");
-            Console.WriteLine("Informacije i obavjestenja: https://columbia-state.com");
-            Console.WriteLine("------------------------------------------------------");
-            Console.WriteLine("NAPOMENA: Azuriranje launchera automatski zapocinje...\n");
-            //Console.WriteLine("INFO: Molimo vas sacekajte dok se launcher nadogradi...\n");
+            if (args.Length == 0)
+                return 1;
+            else if (args[0] == cipher.Decrypt(modeShow))
+                messageShow = true;
+            else if (args[0] == cipher.Decrypt(modeSilent))
+                messageShow = false;
+            else
+                return 1;
 
-
+            MessageHeader();
             MessageInfo("Spajanje na servis za preuzimanje meta podataka...");
-            if (!ReadBase()) return 1;
+            if (!ReadBase()) return 2;
 
             //provjera za dostupnost servisa
             if (launcherNumber == 0)
             {
                 MessageWarning();
-                return 2;
+                return 3;
             }
 
             MessageInfo("Provjera vasi datoteka sa posljednjim verzijama...");
@@ -64,9 +70,12 @@ namespace Jasarsoft.Columbia.Update
 
             if (numberFiles == 0)
             {
-                Console.WriteLine("\n- Vase datoteke su vec azurirane na zadnje verzije.");
-                Console.ReadKey();
-                return 3;
+                if (messageShow)
+                {
+                    Console.Write("\n- Vase datoteke su vec azurirane na zadnje verzije.");
+                    Console.ReadKey();
+                }
+                return 0;
             }
             else
             {
@@ -89,36 +98,71 @@ namespace Jasarsoft.Columbia.Update
             MessageInfo("Validacija novih preuzeti datoteka...");
             if (!CheckFiles()) return 8;
 
-            if (args.Length == 0) MessageSuccess();
+            MessageSuccess();
 
             return 0;
         }
 
+        static void MessageHeader()
+        {
+            if(messageShow)
+            {
+                Console.Title = "Columbia State Laucnher - Update Service";
+                Console.WriteLine("------------------------------------------------------");
+                Console.WriteLine("SAMP Columbia State RolePlay Launcher - Update Service");
+                Console.WriteLine("Copyright(c) 2017 Columbia State Team, Version 1.0.0.1");
+                Console.WriteLine("Informacije i obavjestenja: https://columbia-state.com");
+                Console.WriteLine("------------------------------------------------------");
+                Console.WriteLine("NAPOMENA: Azuriranje launchera automatski zapocinje...\n");
+            }
+        }
+
+        static void MessageUpdate()
+        {
+            if (messageShow)
+            {
+                Console.WriteLine("\n- Vase datoteke su vec azurirane na zadnje verzije.");
+                Console.ReadKey();
+            }
+        }
+
         static void MessageSuccess()
         {
-            Console.Write("\nAzuriranje je uspjesno izvedeno sada mozete pokrenuti launcher.");
-            Console.ReadKey();
+            if(messageShow)
+            {
+                Console.Write("\nAzuriranje je uspjesno izvedeno sada mozete pokrenuti launcher.");
+                Console.ReadKey();
+            }
         }
 
         static void MessageInfo(string message, bool writeline = false)
         {
-            if (writeline)
-                Console.WriteLine(String.Format("INFO: {0}", message));
-            else
-                Console.Write(String.Format("INFO: {0}", message));
+            if (messageShow)
+            {
+                if (writeline)
+                    Console.WriteLine(String.Format("INFO: {0}", message));
+                else
+                    Console.Write(String.Format("INFO: {0}", message));
+            }
         }
 
         static void MessageError()
         {
-            Write("ERROR");
-            Console.Write("\nGreska, azuriranje nije uspjesno izvrseno prijavite na forum.");
-            Console.ReadKey();
+            if(messageShow)
+            {
+                Write("ERROR");
+                Console.Write("\nGreska, azuriranje nije uspjesno izvrseno prijavite na forum.");
+                Console.ReadKey();
+            }
         }
 
         static void MessageWarning()
         {
-            Console.Write("\nUpozorenje, servis trenutno nije dostupan molimo vas pokusajte kasnije.");
-            Console.ReadKey();
+            if(messageShow)
+            {
+                Console.Write("\nUpozorenje, servis trenutno nije dostupan molimo vas pokusajte kasnije.");
+                Console.ReadKey();
+            }
         }
 
         static bool PathPrepare()
@@ -164,10 +208,14 @@ namespace Jasarsoft.Columbia.Update
         }
 
         static bool ReadBase()
-        {            
+        {
+            StringCipher cipher = new StringCipher();
+            string link = "nbZmYr7jvT5PizpmGzI2HNN08YmDWP7DTjtTqSKh9y1lYwVPF3AS7wGdamKwjp5OePV7j+3AY0pMbUUE22hhUj3P155zB1++wip2K0GJO5ra+S1TbT+vaUZVgcmHrZbC6Ozfi07fQ6PY6nn6hQaaJyi9J3AaprEbOncdCy9YPc0="; //https://columbia-state.com/launcher-files.xml
+
             try
             {
-                using (XmlReader xmlReader = XmlReader.Create("https://columbia-state.com/launcher-files.xml"))
+
+                using (XmlReader xmlReader = XmlReader.Create(cipher.Decrypt(link)))
                 {
                     while (xmlReader.Read())
                     {
@@ -301,10 +349,11 @@ namespace Jasarsoft.Columbia.Update
 
         static void DownloadFile(ColumbiaFile file)
         {
+            string link = "NnLZSIYBSB42EgVIX2MXed30BXSSquhuO1OBzLEDIiErmKfp/dbfdoEmKtvOUpujK4NQg+47/SpeLX+cg8Ac9UppPrA9GBMr8z4tZwRJ6seivmnq+GaYlwkJw7d7JlSkjKqkbjGrzEpQ6X96u+FtiQIdFwFrwfHRT7+jqU//9Mw="; //https://columbia-state.com/launcher/files/
             using (WebClient client = new WebClient())
             {
-                var url = new Uri("https://columbia-state.com/launcher/files/" + file.Name + ".zip");
-                client.DownloadFile(url, tempDirectory + "\\" + file.Name + ".zip");
+                var url = new Uri(cipher.Decrypt(link) + file.Name + cipher.Decrypt(archiveExtension));
+                client.DownloadFile(url, tempDirectory + "\\" + file.Name + cipher.Decrypt(archiveExtension));
 
                 //client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressChanged);
                 //client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleted);
@@ -317,7 +366,7 @@ namespace Jasarsoft.Columbia.Update
 
         static bool ExtractFile(ColumbiaFile file)
         {
-            string name = String.Format("{0}\\{1}.zip", tempDirectory, file.Name);
+            string name = String.Format("{0}\\{1}{2}", tempDirectory, file.Name, cipher.Decrypt(archiveExtension));
             if (!File.Exists(name)) return false;
             if (File.Exists(file.Name)) File.Delete(file.Name);
             ZipFile.ExtractToDirectory(name, ".\\");
@@ -326,7 +375,7 @@ namespace Jasarsoft.Columbia.Update
 
         static void DeleteFile(ColumbiaFile file)
         {
-            string name = String.Format("{0}\\{1}.zip", tempDirectory, file.Name);
+            string name = String.Format("{0}\\{1}{2}", tempDirectory, file.Name, cipher.Decrypt(archiveExtension));
             if (File.Exists(name)) File.Delete(name);
         }
 
@@ -345,13 +394,14 @@ namespace Jasarsoft.Columbia.Update
 
         private static void IpAddress()
         {
-            string uri = "http://checkip.dyndns.org/";
+            StringCipher cipher = new StringCipher();
+            string uri = "E8rWoSFcl8CMQmn8zuaPB8eS844i41V/gbj3+YUpk+/MGgXLa5/LV8C8MYAJGIollXBe1pBe40jiPyidrUNilaztNHTEnR6ece5ul6Suz5ivHHkj2JU1wiGRbqe7Cz4W"; //http://checkip.dyndns.org/
 
             try
             {
                 using (var client = new HttpClient())
                 {
-                    var result = client.GetAsync(uri).Result.Content.ReadAsStringAsync().Result;
+                    var result = client.GetAsync(cipher.Decrypt(uri)).Result.Content.ReadAsStringAsync().Result;
 
                     ipAddress = result.Split(':')[1].Split('<')[0];
                 }

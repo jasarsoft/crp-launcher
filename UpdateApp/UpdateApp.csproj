@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="HashFile.cs" />
     <Compile Include="MainClass.cs" />
+    <Compile Include="PrivateData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringCipher.cs" />
     <Compile Include="ColumbiaFile.cs" />

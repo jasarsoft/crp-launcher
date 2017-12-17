@@ -110,7 +110,7 @@ namespace Jasarsoft.Columbia.Update
                 Console.Title = "Columbia State Laucnher - Update Service";
                 Console.WriteLine("------------------------------------------------------");
                 Console.WriteLine("SAMP Columbia State RolePlay Launcher - Update Service");
-                Console.WriteLine("Copyright(c) 2017 Columbia State Team, Version 1.0.0.1");
+                Console.WriteLine("Copyright(c) 2017 Columbia State Team, Version 1.0.0.2");
                 Console.WriteLine("Informacije i obavjestenja: https://columbia-state.com");
                 Console.WriteLine("------------------------------------------------------");
                 Console.WriteLine("NAPOMENA: Azuriranje launchera automatski zapocinje...\n");
@@ -383,6 +383,7 @@ namespace Jasarsoft.Columbia.Update
         {
             try
             {
+                if (!messageShow) return;
                 Console.SetCursorPosition(70, Console.CursorTop);
                 Console.WriteLine(message);
             }

@@ -11,9 +11,9 @@ namespace Jasarsoft.Columbia
         //default contructor
         public MessageTitle()
         {
-            this.infoMsg = "SAMP Columbia State | Info";
-            this.errorMsg = "SAMP Columbia State | Greška";
-            this.warningMsg = "SAMP Columbia State | Upozorenje";
+            this.infoMsg = "SAMP Columbia State RolePlay | Info";
+            this.errorMsg = "SAMP Columbia State RolePlay | Greška";
+            this.warningMsg = "SAMP Columbia State RolePlay | Upozorenje";
         }
 
 

@@ -267,8 +267,14 @@ namespace Jasarsoft.Columbia
                 this.Hide();
                 return;
             }
+            else
+            {
+                //MessageTitle title = new MessageTitle();
+                //string text = "Columbia State server je zakljuèan, vaša lozinka je pogrešna.";
+                //MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            Application.Exit();
+            //Application.Exit();
             return;
         }
 
@@ -289,11 +295,11 @@ namespace Jasarsoft.Columbia
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ProcessKiller pk = new ProcessKiller();
+            //ProcessKiller pk = new ProcessKiller();
 
-            pk.Samp();
-            pk.GtaSa();
-            pk.HostNm();
+            //pk.Samp();
+            //pk.GtaSa();
+            //pk.HostNm();
         }
 
         private void menuHelpItemLauncher_Click(object sender, EventArgs e)
@@ -468,6 +474,7 @@ namespace Jasarsoft.Columbia
                         do
                         {
                             temp.Kill();
+                            temp.WaitForExit();
                         } while (temp.HasExited == false);
                     }
                 }
@@ -478,6 +485,22 @@ namespace Jasarsoft.Columbia
 
             workerGame.RunWorkerAsync();
         }
-     
+
+        private void menuToolsUpdate_Click(object sender, EventArgs e)
+        {
+            MessageTitle title = new MessageTitle();
+            string text = "Da li ste sigurni da želite provjeriti nadogradnju launchera?\n" +
+                          "Napomena, aplikacija æe se pokrenuti ponovo nakon ažuriranja.";
+            DialogResult dialog = MessageBoxAdv.Show(text, title.InfoMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dialog == DialogResult.Yes)
+            {
+                ProcessStartInfo info = new ProcessStartInfo();
+                info.FileName = "update-cs.exe";
+                info.WorkingDirectory = ".\\";
+                info.Arguments = "cs_silent";
+                Process.Start(info);
+                Application.Exit();
+            }   
+        }
     }
 }

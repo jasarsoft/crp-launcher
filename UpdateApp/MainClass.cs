@@ -34,7 +34,7 @@ namespace Jasarsoft.Columbia.Update
 
         private static bool messageShow = false;
         private const string modeShow = "qMnecXIek9uvqT1kkRrdImyhVkKLKynehXdLAT/ea2s5wubQlFmAWqexMXJvooyqA5+9qjpzFYk8N/mUpMB4rIRdOqGh2fj7uwvYL4q/A4fQ/B8RrxisGrrIDz5CNWXF"; //cs_show
-        private const string modeSilent = "OE605a2s7zg7O9YeMiHqplyB7K3ToWRMCu79Xno4P88FOsSXrWJhDsXUk0C6/MFB5MwJHbrfSBNmWkBryQAt1rU2jNs7hZW48K2hnsU4AdWTaE3vXVOF7fMHh+WVAUSI"; //cs_silent 
+        private const string modeSilent = "6+37Xpr7Ij/N7wPYg3U2M9rFrwNPm86YGI0EGiCwl6Hgx0en6lxQfTuxK416epvmZMxBthTT1dTNcuiEDge2Tt1PKSjNVCfYq5RORDWWzHhndpn8xuVVDaxKSDhrEPgW"; //cs_silent14 
 
         private const string archiveExtension = "KNlp73VxSNGk0e8TWqdopHozwPhdgMd63f3pKVTikkNJRNN7xnGQ1q8BDC8Of+IKWUd3UoUhS6D4pmNwixK0ML8xq5TQ6s5vCAQNolQJIi1z4GoXlTLfOG/h7Irp3p2O"; //.zip
 

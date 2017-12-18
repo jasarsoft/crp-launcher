@@ -40,23 +40,39 @@ namespace Jasarsoft.Columbia.Update
 
         static int Main(string[] args)
         {
-            
             //pogretanje procesa da dobijanje ip adrese
-            //Thread t = new Thread(new ThreadStart(IpAddress));
-            //t.Priority = ThreadPriority.Lowest;
-            //t.IsBackground = true;
-            //t.Start();
-
+            Trace.TraceInformation("Pokretanje pozadinskog procesa za dobijanje javne ip adrese");
+            Thread t = new Thread(new ThreadStart(IpAddress));
+            t.Priority = ThreadPriority.Lowest;
+            t.IsBackground = true;
+            t.Start();
+            Trace.TraceInformation("Proces je startovan.");
+            
             if (args.Length == 0)
+            {
+                Trace.TraceInformation("Aplikacija je pokrenuta bez argumenta.");
                 return 1;
+            }
             else if (args[0] == cipher.Decrypt(modeShow))
+            {
+                Trace.TraceInformation("Aplikacija je pokrenuta sa argumentom prikaza.");
                 messageShow = true;
+            }
             else if (args[0] == cipher.Decrypt(modeSilent))
+            {
+                Trace.TraceInformation("Aplikacija je pokrenuta sa argumentom ne prikaza.");
                 messageShow = false;
+            }
             else
+            {
+                Trace.TraceInformation("Aplikacija je pokrenuta sa trecim argumentom");
                 return ColumbiaRun("1");
+            }
 
+            Trace.TraceInformation("Poziv metode za ispis poruke Header.");
             MessageHeader();
+
+            Trace.TraceInformation("Poziv metode za ispis poruke o preuzimanju meta podataka.");
             MessageInfo("Spajanje na servis za preuzimanje meta podataka...");
             if (!ReadBase()) return ColumbiaRun("2");
 
@@ -105,18 +121,22 @@ namespace Jasarsoft.Columbia.Update
             if (!RegistryWrite()) return ColumbiaRun("9");
 
             MessageSuccess();
-            return ColumbiaRun("0");
+            ColumbiaRun("0", ipAddress);
+            return 0;
         }
 
-        static int ColumbiaRun(string arg)
+        static int ColumbiaRun(string value, string address = "0")
         {
+            if (messageShow) return 0;
+
             if(File.Exists("columbia.exe"))
             {
-                ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = "columbia.exe";
-                info.WorkingDirectory = ".\\";
-                info.Arguments = arg;
-                Process.Start(info);
+                Process process = new Process();
+                process.StartInfo.FileName = "columbia.exe";
+                process.StartInfo.WorkingDirectory = ".\\";
+                process.StartInfo.UseShellExecute = true;
+                process.StartInfo.Arguments = value + " " + address;
+                process.Start();
             }
 
             return 0;
@@ -259,19 +279,19 @@ namespace Jasarsoft.Columbia.Update
                                 {
                                     if(xmlReader.Name == "File" && xmlReader.HasAttributes)
                                     {
-                                        dataFileList.Add(new ColumbiaFile(xmlReader.GetAttribute("name"), xmlReader.GetAttribute("hash"), Int64.Parse(xmlReader.GetAttribute("size"))));
-#if DEBUG
-                                        Console.WriteLine(xmlReader.GetAttribute("name") + " " + xmlReader.GetAttribute("hash") + " " + xmlReader.GetAttribute("size"));
-#endif
-                                        }
+                                        string name = xmlReader.GetAttribute("name");
+                                        string hash = xmlReader.GetAttribute("hash");
+                                        long size = Int64.Parse(xmlReader.GetAttribute("size"));
+
+                                        Trace.TraceInformation("ReadBase(); Xml File: name={0}; hash={1}; size:{2}", name, hash, size.ToString());
+                                        dataFileList.Add(new ColumbiaFile(name, hash, size));
+                                    }
                                     if(xmlReader.Name == "Launcher" && xmlReader.HasAttributes)
                                     {
                                         launcherVersion = xmlReader.GetAttribute("version");
                                         launcherUpdate = Int32.Parse(xmlReader.GetAttribute("update"));
                                         launcherNumber = Int32.Parse(xmlReader.GetAttribute("number"));
-#if DEBUG
-                                        Console.WriteLine(String.Format("Launcher - version: {0}; update: {1}; number: {2}", launcherVersion, launcherUpdate, launcherNumber));
-#endif
+                                        Trace.TraceInformation("ReadBase(); Xml Launcher: version={0}; update={1}; number={2}", launcherVersion, launcherUpdate, launcherNumber);
                                     }
                                         
                                     break;
@@ -284,6 +304,7 @@ namespace Jasarsoft.Columbia.Update
                 }
 
                 Write("OK");
+                Trace.TraceInformation("ReadBase(); return true;");
                 return true;
             }
             catch (Exception)
@@ -319,16 +340,21 @@ namespace Jasarsoft.Columbia.Update
 
         static void ReadFiles()
         {
+            Trace.WriteLine("Ulaz u metodu ReadFiles");
             sizeFiles = 0;
             numberFiles = 0;
-            
+
+            Trace.TraceInformation("ReadFiles(); Ukupno datoteka za procitat {0}", dataFileList.Count);
             foreach(ColumbiaFile file in dataFileList)
             {
+                Trace.TraceInformation("Provjera hash vrijednosti za fajl: {0}", file.Name);
                 if (HashFile.GetMD5(file.Name) != file.Hash)
                 {
                     numberFiles++;
                     sizeFiles += file.Size;
                     updateFileList.Add(new ColumbiaFile(file.Name, file.Hash, file.Size));
+                    Trace.TraceInformation("Hash vrijednost za datotku {0} nije ispravna.", file.Name);
+                    Trace.TraceInformation("Hash datoteke: {0}; Hash baze: {1}", file.Hash, HashFile.GetMD5(file.Name));
                 }
             }
             //poruka nakon zavrsene provjere
@@ -339,7 +365,12 @@ namespace Jasarsoft.Columbia.Update
         {
             try
             {
-                foreach (ColumbiaFile file in updateFileList) DownloadFile(file);
+                foreach (ColumbiaFile file in updateFileList)
+                {
+                    DownloadFile(file);
+                    Trace.TraceInformation(String.Format("Skidanje datoteke: {0}", file.Name));
+                }
+                 
                 Write("OK");
                 return true;
             }
@@ -354,7 +385,12 @@ namespace Jasarsoft.Columbia.Update
         {
             try
             {
-                foreach (ColumbiaFile file in updateFileList) ExtractFile(file);
+                foreach (ColumbiaFile file in updateFileList)
+                {
+                    ExtractFile(file);
+                    Trace.TraceInformation(String.Format("Raspakivanje datoteke: {0}", file.Name));
+                }
+                    
                 Write("OK");
                 return true;
             }
@@ -429,20 +465,24 @@ namespace Jasarsoft.Columbia.Update
 
         private static void IpAddress()
         {
+            Trace.TraceInformation("Ulaz u metodu IpAddress");
             StringCipher cipher = new StringCipher();
             string uri = "E8rWoSFcl8CMQmn8zuaPB8eS844i41V/gbj3+YUpk+/MGgXLa5/LV8C8MYAJGIollXBe1pBe40jiPyidrUNilaztNHTEnR6ece5ul6Suz5ivHHkj2JU1wiGRbqe7Cz4W"; //http://checkip.dyndns.org/
 
             try
             {
+                Trace.TraceInformation("Zahtjev za dobijanje ip addrese.");
                 using (var client = new HttpClient())
                 {
                     var result = client.GetAsync(cipher.Decrypt(uri)).Result.Content.ReadAsStringAsync().Result;
-
+                    Trace.TraceInformation("Vrijednost: {0}", result);
                     ipAddress = result.Split(':')[1].Split('<')[0];
+                    Trace.TraceInformation("IP Adresa: {0}", ipAddress);
                 }
             }
             catch (Exception)
             {
+                Trace.TraceError("Greška u zahtjevu dobijanja ip adrese.");
                 ipAddress = null;
             }
         }

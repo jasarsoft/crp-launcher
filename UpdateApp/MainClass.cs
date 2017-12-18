@@ -189,11 +189,13 @@ namespace Jasarsoft.Columbia.Update
             UpdateRegistry reg = new UpdateRegistry();
             reg.UpdateValue = launcherUpdate.ToString();
             reg.VersionValue = launcherVersion.ToString();
+            if (!reg.Check()) reg.Create();
             if (reg.Write())
             {
                 Write("OK");
                 return true;
             }
+            MessageError();
             return false;
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Diagnostics;
 
 
 namespace Jasarsoft.Columbia
@@ -290,14 +291,14 @@ namespace Jasarsoft.Columbia
         {
             if (!this.Check()) return false;
 
-            for (int i = 1; i < name.Length; i++ )
+            //provjera počinje od 4te datoteke
+            for (int i = 3; i < name.Length; i++ )
             {
                 if (HashFile.GetMD5(this.name[i]) != this.hash[i])
                 {
-                    //System.Windows.Forms.MessageBox.Show(name[i]);
+                    Trace.TraceInformation("Library.Valid(); File: {0}; Hash: {1}; Base: {2}", name[i], HashFile.GetMD5(name[i]), hash[i]);
                     return false;
-                }
-                    
+                }    
             }
 
             return true;   

@@ -169,16 +169,37 @@ namespace Jasarsoft.Columbia
                 if(HashFile.GetMD5("columbia.exe") != lan.Hash)
                 {
                     MessageTitle title = new MessageTitle();
-                    string text = "Columbia State Launcher nije validan.";
-                    MessageBox.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    string message = "Vaša verzija Columbia State Launchera nije posljednja.\n" +
+                                     "Da li želite sada ažurirati launcher na zadnju verziju?\n" +
+                                     "Napomena, aplikacija treba biti na zadnjoj verziji za pristup serveru.";
+                    if(DialogResult.Yes == MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error))
+                    {
+                        if (File.Exists(".\\update-cs.exe"))
+                        {
+                            Process process = new Process();
+                            process.StartInfo.FileName = "update-cs.exe";
+                            process.StartInfo.Arguments = "cs_silent14";
+                            process.StartInfo.WorkingDirectory = ".\\";
+                            process.StartInfo.UseShellExecute = false;
+                            process.Start();
+                        }
+                        else
+                        {
+                            message = "Servis Columbia State Launcher Update trenutno ne postoji.\n" +
+                                      "Ovaj korak će biti implemnetiran u novijim ažuriranjima launchera.";
+
+                            MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     return;
                 }
             }
             else
             {
                 MessageTitle title = new MessageTitle();
-                string text = "Konekcija sa bazom podataka nije moguća.";
-                MessageBox.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                string message = "Nažalost došlo je do greške pri spajanju sa bazom podataka.\n" +
+                                 "Provjerite svoju internet konekciju ili kontaktirajte administraciju.";
+                MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
@@ -191,7 +212,8 @@ namespace Jasarsoft.Columbia
                 MessageTitle title = new MessageTitle();
                 if(args[0] == "0")
                 {
-                    message = "Ažuriranje Columbia State Launchera je uspješno urađeno.";
+                    message = "Ažuriranje Columbia State Launchera je uspješno urađeno.\n" +
+                              "Želimo vam ugodno korištenje, sve primjedbe pišite na forumu.";
                     MessageBoxAdv.Show(message, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

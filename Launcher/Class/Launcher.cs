@@ -131,8 +131,38 @@ namespace Jasarsoft.Columbia
         /// </summary>
         [STAThread]
         static void Main(string[] args)
-        {            
+        {
 #if !DEBUG
+            Library lib = new Library();
+            if (!lib.Valid())
+            {
+                MessageTitle title = new MessageTitle();
+                string message = "Biblioteke datoteka od Columbia State Launchera nisu isparavne.\n" +
+                                 "Da li želite pokreniti servis ažuriranja i nadomjestiti ispravnim?\n" +
+                                 "Napomena, aplikacija ne može biti pokrenuta dok ne budu datoteke validne.";
+
+                if (MessageBox.Show(message, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.No) return;
+                //pokretanje sistema ažuriranja
+                if(File.Exists(".\\update-cs.exe"))
+                {
+                    Process process = new Process();
+                    process.StartInfo.FileName = "update-cs.exe";
+                    process.StartInfo.Arguments = "cs_silent14";
+                    process.StartInfo.WorkingDirectory = ".\\";
+                    process.StartInfo.UseShellExecute = false;
+                    process.Start();
+                }
+                else
+                {
+                    message = "Servis Columbia State Launcher Update trenutno ne postoji.\n" +
+                              "Ovaj korak će biti implemnetiran u novijim ažuriranjima launchera.";
+
+                    MessageBox.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+                return;
+            }
+
             MySqlLauncher lan = new MySqlLauncher();
             if (lan.Read())
             {
@@ -148,15 +178,6 @@ namespace Jasarsoft.Columbia
             {
                 MessageTitle title = new MessageTitle();
                 string text = "Konekcija sa bazom podataka nije moguća.";
-                MessageBox.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-
-            Library lib = new Library();
-            if (!lib.Valid())
-            {
-                MessageTitle title = new MessageTitle();
-                string text = "Columbia State Launcher biblioteke nisu validne.";
                 MessageBox.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }

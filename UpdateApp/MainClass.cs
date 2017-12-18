@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace Jasarsoft.Columbia.Update
 {
@@ -102,6 +103,9 @@ namespace Jasarsoft.Columbia.Update
                 
 
             MessageSuccess();
+            UpdateRegistry reg = new UpdateRegistry();
+            reg.UpdateValue = launcherUpdate.ToString();
+            reg.VersionValue = launcherVersion.ToString();
             return ColumbiaRun("0");
         }
 

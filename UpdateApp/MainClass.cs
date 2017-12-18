@@ -100,12 +100,11 @@ namespace Jasarsoft.Columbia.Update
 
             MessageInfo("Validacija novih preuzeti datoteka...");
             if (!CheckFiles()) return ColumbiaRun("8");
-                
+
+            MessageInfo("Zapis u registar vrijednosti ažuriranja...");
+            if (!RegistryWrite()) return ColumbiaRun("9");
 
             MessageSuccess();
-            UpdateRegistry reg = new UpdateRegistry();
-            reg.UpdateValue = launcherUpdate.ToString();
-            reg.VersionValue = launcherVersion.ToString();
             return ColumbiaRun("0");
         }
 
@@ -183,6 +182,19 @@ namespace Jasarsoft.Columbia.Update
                 Console.Write("\nUpozorenje, servis trenutno nije dostupan molimo vas pokusajte kasnije.");
                 Console.ReadKey();
             }
+        }
+
+        static bool RegistryWrite()
+        {
+            UpdateRegistry reg = new UpdateRegistry();
+            reg.UpdateValue = launcherUpdate.ToString();
+            reg.VersionValue = launcherVersion.ToString();
+            if (reg.Write())
+            {
+                Write("OK");
+                return true;
+            }
+            return false;
         }
 
         static bool PathPrepare()

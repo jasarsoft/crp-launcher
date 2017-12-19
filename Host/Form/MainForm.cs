@@ -231,24 +231,21 @@ namespace Jasarsoft.Columbia.Host
         {
             if (e.Cancelled)
             {
-                ColumbiaKiller();
-                SanAndreasKiller();
-                workerColumbia.CancelAsync();
+                ProcessKiller killer = new ProcessKiller();
+
+                killer.Samp();
+                killer.SanAndreas();
+                
+                //workerColumbia.CancelAsync();
                 return;
             }
 
             this.workerStream.RunWorkerAsync();
         }
 
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
-
-
         private void workerColumbia_DoWork(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(500);
+            Thread.Sleep(5000);
             Process[] process = Process.GetProcessesByName("columbia");
             if (process.Length != 1) e.Cancel = true;
         }
@@ -257,13 +254,22 @@ namespace Jasarsoft.Columbia.Host
         {
             if (e.Cancelled)
             {
-                SanAndreasKiller();
-                workerStream.CancelAsync();
+                ProcessKiller killer = new ProcessKiller();
+
+                killer.Samp();
+                killer.SanAndreas();
+                
+                //workerStream.CancelAsync();
                 Application.Exit();
                 return;
             }
 
             workerColumbia.RunWorkerAsync();
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            this.Hide();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -296,70 +302,6 @@ namespace Jasarsoft.Columbia.Host
             MessageBoxAdv.MetroColorTable.CaptionBarColor = Color.Firebrick;
             MessageBoxAdv.MetroColorTable.CloseButtonColor = Color.WhiteSmoke;
             MessageBoxAdv.MetroColorTable.CloseButtonHoverColor = Color.RoyalBlue;
-        }
-
-        private void SampKiller()
-        {
-            Process[] allProcess = Process.GetProcessesByName("gtasamp");
-            if (allProcess.Length > 0)
-            {
-                foreach (Process tempProcess in allProcess)
-                {
-                    do
-                    {
-                        tempProcess.Kill();
-                        tempProcess.WaitForExit();
-                    } while (tempProcess.HasExited == false);
-                }
-            }
-        }
-
-        private void SanAndreasKiller()
-        {
-            Process[] allProcess = Process.GetProcessesByName("gtasa");
-            if (allProcess.Length > 0)
-            {
-                foreach (Process tempProcess in allProcess)
-                {
-                    do
-                    {
-                        tempProcess.Kill();
-                        tempProcess.WaitForExit();
-                    } while (tempProcess.HasExited == false);
-                }
-            }
-        }
-
-        private void ColumbiaKiller()
-        {
-            Process[] allProcess = Process.GetProcessesByName("columbia");
-            if (allProcess.Length > 0)
-            {
-                foreach (Process tempProcess in allProcess)
-                {
-                    do
-                    {
-                        tempProcess.Kill();
-                        tempProcess.WaitForExit();
-                    } while (tempProcess.HasExited == false);
-                }
-            }
-        }
-
-        private void HostKiller()
-        {
-            Process[] allProcess = Process.GetProcessesByName("host-cs");
-            if (allProcess.Length > 0)
-            {
-                foreach (Process tempProcess in allProcess)
-                {
-                    do
-                    {
-                        tempProcess.Kill();
-                        tempProcess.WaitForExit();
-                    } while (tempProcess.HasExited == false);
-                }
-            }
         }
     }
 }

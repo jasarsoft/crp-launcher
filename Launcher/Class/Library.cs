@@ -19,6 +19,8 @@ namespace Jasarsoft.Columbia
                 @".\host-cs.exe",
                 @".\update-cs.exe",
                 @".\columbia.exe.config",
+                @".\host-cs.exe.config",
+                @".\update-cs.exe.config",
                 
                 //MySql Library
                 @".\MySql.Data.dll",
@@ -200,6 +202,8 @@ namespace Jasarsoft.Columbia
                 "41078C0BECB58C1DEFD7AEFAEC0DC8BE", //@".\host-cs.exe",
                 "F164DDB5C9A563E3184978CBBCDD8E29", // @".\update-cs.exe
                 "A11084C7193365FF484387AD6B27477F", //@".\columbia.exe.config",
+                "DDC25AEFCAE9826CCE1754C2C89E959D", //@".\host-cs.exe.config",
+                "DDC25AEFCAE9826CCE1754C2C89E959D", //@".\update-cs.exe.config",
                                 
                 //MySql Library
                 "17B4BDDED1D6D8F5B02D6A60C8BADF27", //@".\MySql.Data.dll",

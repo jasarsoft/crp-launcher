@@ -15,7 +15,6 @@ namespace Jasarsoft.Columbia.Host
     public partial class MainForm : Syncfusion.Windows.Forms.MetroForm
     {
         private string mode;
-        private ErrorResult errorResult;
         private List<string> fileList;
         private List<FileStream> fileStream;
         private StringCipher cipher;
@@ -30,11 +29,6 @@ namespace Jasarsoft.Columbia.Host
         private const string processHost = "XxHjZ+mej41bvZnWwOaE7h9zFKdtqQ2+L3VFm5RjrXmznQ8MCIV1A7gumVh/rw0PuYv8DtdIzRwSmwzcFeUrXIhIofUu3dGOMntBDW/yopyJybD38t5uZ1zMeMYMfYfQ"; //host-cs
         private const string processColumbia = "1/HpTNI78Z0B5A7s8izzMpXBTYe0NFTyMN/MAyjosdzqWDivfMc94Kw76EynJ+vjGuU+MJVJgkzcKdu0OrsT/kAFB9wmGAtcF/ewIrT3+G8D0A8srdvhz7KZ8hSFm9B9"; //columbia
 
-        private enum ErrorResult
-        {
-            Process,
-            MultiInstance
-        }
 
         public MainForm(string args)
         {
@@ -108,7 +102,7 @@ namespace Jasarsoft.Columbia.Host
                 return;
             }
 
-            Process[] columbia = Process.GetProcessesByName("columbia");
+            Process[] columbia = Process.GetProcessesByName(cipher.Decrypt(processColumbia));
             if (columbia.Length == 0)
             {
                 Process.Start(cipher.Decrypt(appColumbia));
@@ -246,7 +240,7 @@ namespace Jasarsoft.Columbia.Host
         private void workerColumbia_DoWork(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(5000);
-            Process[] process = Process.GetProcessesByName("columbia");
+            Process[] process = Process.GetProcessesByName(cipher.Decrypt(processColumbia));
             if (process.Length != 1) e.Cancel = true;
         }
 

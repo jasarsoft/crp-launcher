@@ -260,11 +260,16 @@ namespace Jasarsoft.Columbia
                 processInfo.Arguments = String.Format("{0} {1}", Launcher.Address, Launcher.Password);
                 Process.Start(processInfo);
 
-                Process.Start("host-cs.exe");
+                Process host = new Process();
+                host.StartInfo.FileName = "host-cs.exe";
+                host.StartInfo.Arguments = "cs_silent14";
+                host.StartInfo.WorkingDirectory = ".\\";
+                host.Start();
+
                 workerCheck.RunWorkerAsync();
-                workerHost.RunWorkerAsync();
                 workerGame.RunWorkerAsync();
-                this.Hide();
+                workerHost.RunWorkerAsync();
+                //this.Hide();
                 return;
             }
             else
@@ -434,18 +439,9 @@ namespace Jasarsoft.Columbia
         {
             if (e.Cancelled)
             {
-                Process[] process = Process.GetProcessesByName("gtasa");
-
-                if (process.Length > 0)
-                {
-                    foreach (Process temp in process)
-                    {
-                        do
-                        {
-                            temp.Kill();
-                        } while (temp.HasExited == false);
-                    }
-                }
+                SampKiller();
+                SanAndreasKiller();
+                HostKiller();
 
                 Application.Exit();
                 return;
@@ -466,18 +462,9 @@ namespace Jasarsoft.Columbia
         {
             if (e.Cancelled)
             {
-                Process[] process = Process.GetProcessesByName("host-cs");
-                if (process.Length > 0)
-                {
-                    foreach (Process temp in process)
-                    {
-                        do
-                        {
-                            temp.Kill();
-                            temp.WaitForExit();
-                        } while (temp.HasExited == false);
-                    }
-                }
+                SampKiller();
+                SanAndreasKiller();
+                HostKiller();
 
                 Application.Exit();
                 return;
@@ -497,10 +484,74 @@ namespace Jasarsoft.Columbia
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.FileName = "update-cs.exe";
                 info.WorkingDirectory = ".\\";
-                info.Arguments = "cs_silent";
+                info.Arguments = "cs_silent14";
                 Process.Start(info);
                 Application.Exit();
             }   
+        }
+
+        private void SampKiller()
+        {
+            Process[] allProcess = Process.GetProcessesByName("gtasamp");
+            if (allProcess.Length > 0)
+            {
+                foreach (Process tempProcess in allProcess)
+                {
+                    do
+                    {
+                        tempProcess.Kill();
+                        tempProcess.WaitForExit();
+                    } while (tempProcess.HasExited == false);
+                }
+            }
+        }
+
+        private void SanAndreasKiller()
+        {
+            Process[] allProcess = Process.GetProcessesByName("gtasa");
+            if (allProcess.Length > 0)
+            {
+                foreach (Process tempProcess in allProcess)
+                {
+                    do
+                    {
+                        tempProcess.Kill();
+                        tempProcess.WaitForExit();
+                    } while (tempProcess.HasExited == false);
+                }
+            }
+        }
+
+        private void ColumbiaKiller()
+        {
+            Process[] allProcess = Process.GetProcessesByName("columbia");
+            if (allProcess.Length > 0)
+            {
+                foreach (Process tempProcess in allProcess)
+                {
+                    do
+                    {
+                        tempProcess.Kill();
+                        tempProcess.WaitForExit();
+                    } while (tempProcess.HasExited == false);
+                }
+            }
+        }
+
+        private void HostKiller()
+        {
+            Process[] allProcess = Process.GetProcessesByName("host-cs");
+            if (allProcess.Length > 0)
+            {
+                foreach (Process tempProcess in allProcess)
+                {
+                    do
+                    {
+                        tempProcess.Kill();
+                        tempProcess.WaitForExit();
+                    } while (tempProcess.HasExited == false);
+                }
+            }
         }
     }
 }

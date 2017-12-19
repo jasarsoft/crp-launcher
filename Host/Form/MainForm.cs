@@ -48,10 +48,10 @@ namespace Jasarsoft.Columbia.Host
             if (Path.GetFileName(Application.ExecutablePath) != cipher.Decrypt(appHost))
             {
                 MessageTitle title = new MessageTitle();
-                ProcessKiller killer = new ProcessKiller();
+                //ProcessKiller killer = new ProcessKiller();
 
-                killer.Samp();
-                killer.SanAndreas();
+                //killer.Samp();
+                //killer.SanAndreas();
                 
                 string message = "Naziv Columbia State Host aplikacije je neovlašteno izmjenjen!\n" +
                                  "Svaka neovlaštena izmjena smatra se pokušajem nanoštenja štete istoj.\n" +
@@ -67,10 +67,10 @@ namespace Jasarsoft.Columbia.Host
             if (!File.Exists(cipher.Decrypt(appColumbia)))
             {
                 MessageTitle title = new MessageTitle();
-                ProcessKiller killer = new ProcessKiller();
+                //ProcessKiller killer = new ProcessKiller();
 
-                killer.Samp();
-                killer.SanAndreas();
+                //killer.Samp();
+                //killer.SanAndreas();
 
                 string message = "Glavna aplikacija Columbia State Launcher ne potoji ili je preimenovana.\n" +
                                  "Svaka neovlaštena izmjena smatra se pokušajem nanoštenja štete istoj.\n" +

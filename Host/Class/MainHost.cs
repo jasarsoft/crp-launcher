@@ -10,8 +10,9 @@ namespace Jasarsoft.Columbia.Host
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            
             StringCipher cipher = new StringCipher();
             string filename = "5rtZ18wWFTYO/vKvHJRZadRMQ8wumQfrPKfx6VniCZ5m+J1cH7fsfWlIi+hII2N6nmaepvnc8f2DGt31FcOflOtG8Gtj1t3v9rh8mDs7SA2L7WcR7EdH2ZW4V3jlUrLK"; ////Syncfusion.Shared.Base.dll
 
@@ -36,7 +37,14 @@ namespace Jasarsoft.Columbia.Host
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            if (args.Length > 0)
+            {
+                Application.Run(new MainForm(args[0]));
+            }
+            else
+            {
+                Application.Run(new MainForm("0"));
+            }
         }
     }
 }

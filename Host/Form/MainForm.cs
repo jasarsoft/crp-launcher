@@ -223,6 +223,23 @@ namespace Jasarsoft.Columbia.Host
 
         private void workerStream_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+#if DEBUG
+            Trace.TraceInformation("workerStream_RunWorkerCompleted(); Start;");
+            Trace.TraceInformation("workerStream_RunWorkerCompleted(); e.Cancelled = {0}", e.Cancelled);
+            if (e.Cancelled)
+            {
+                ProcessKiller killer = new ProcessKiller();
+
+                killer.Samp();          Trace.TraceInformation("workerStream_RunWorkerCompleted(); Call killer.Samp();");
+                killer.SanAndreas();    Trace.TraceInformation("workerStream_RunWorkerCompleted(); Call killer.SanAndreas();");
+
+                //workerColumbia.CancelAsync();
+                return;
+            }
+
+            this.workerStream.RunWorkerAsync();
+            Trace.TraceInformation("workerStream_RunWorkerCompleted(); Call workerStream.RunWorkerAsync()");
+#endif
             if (e.Cancelled)
             {
                 ProcessKiller killer = new ProcessKiller();
@@ -239,13 +256,43 @@ namespace Jasarsoft.Columbia.Host
 
         private void workerColumbia_DoWork(object sender, DoWorkEventArgs e)
         {
+#if DEBUG
+            Trace.TraceInformation("workerColumbai_DoWork(); Ulaz i spavanje 5s");
+            Thread.Sleep(5000);
+            Trace.TraceInformation("workerColumbia_DoWork(); Zavrseno spavanje");
+            
+            Process[] process = Process.GetProcessesByName(cipher.Decrypt(processColumbia));
+            Trace.TraceInformation("workerColumbia_DoWork(); Procesa columbia ima {0}", process.Length);
+            if (process.Length != 1)
+            {
+                e.Cancel = true;
+                Trace.TraceError("workerColumbia_DoWork(); process.Lenght != 1; e.Cancel = true;");
+            }
+            Trace.TraceInformation("workerColumbia_DoWork(); Kraj");
+#else
             Thread.Sleep(5000);
             Process[] process = Process.GetProcessesByName(cipher.Decrypt(processColumbia));
             if (process.Length != 1) e.Cancel = true;
+#endif
         }
 
         private void workerColumbia_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+#if DEBUG
+            Trace.TraceInformation("workerColumbia_RunWorkerCompleted(); Start;");
+            Trace.TraceInformation("workerColumbia_RunWorkerCompleted(); e.Cancel = {0}", e.Cancelled);
+            if (e.Cancelled)
+            {
+                ProcessKiller killer = new ProcessKiller();
+
+                killer.Samp();          Trace.TraceInformation("workerColumbia_RunWorkerCompleted(); Call killer.Samp();");
+                killer.SanAndreas();    Trace.TraceInformation("workerColumbia_RunWorkerCompleted(); Call killer.SanAndreas();");
+
+                //workerStream.CancelAsync();
+                Application.Exit();     Trace.TraceInformation("workerColumbia_RunWorkerCompleted(); Call Application.Exit();");
+                return;
+            }
+#else
             if (e.Cancelled)
             {
                 ProcessKiller killer = new ProcessKiller();
@@ -259,11 +306,15 @@ namespace Jasarsoft.Columbia.Host
             }
 
             workerColumbia.RunWorkerAsync();
+#endif
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
             this.Hide();
+#if DEBUG
+            Trace.TraceInformation("MainForm_Shown(); Called");
+#endif
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -280,6 +331,9 @@ namespace Jasarsoft.Columbia.Host
 
         private void MessageBoxSettings()
         {
+#if DEBUG
+            Trace.TraceInformation("MessageBoxSettings(); Start;");
+#endif
             MessageBoxAdv.MessageBoxStyle = MessageBoxAdv.Style.Metro;
             MessageBoxAdv.MetroColorTable.OKButtonBackColor = Color.Firebrick;
             MessageBoxAdv.MetroColorTable.OKButtonForeColor = Color.WhiteSmoke;
@@ -296,6 +350,9 @@ namespace Jasarsoft.Columbia.Host
             MessageBoxAdv.MetroColorTable.CaptionBarColor = Color.Firebrick;
             MessageBoxAdv.MetroColorTable.CloseButtonColor = Color.WhiteSmoke;
             MessageBoxAdv.MetroColorTable.CloseButtonHoverColor = Color.RoyalBlue;
+#if DEBUG
+            Trace.TraceInformation("MessageBoxSettings(); End;");
+#endif
         }
     }
 }

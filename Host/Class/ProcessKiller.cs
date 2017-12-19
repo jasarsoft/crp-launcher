@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Diagnostics;
 
 
@@ -21,9 +22,18 @@ namespace Jasarsoft.Columbia.Host
         }
 
 
-        private void Killer(string processName)
+        private void Kill(object processName)
         {
-            Process[] allProcess = Process.GetProcessesByName(processName);
+#if TRACE
+            Trace.TraceInformation("Ulaz u metodu Killer; ProcessKiller;");
+#endif
+            if(processName == null)
+            {
+                Trace.TraceError("Greška u argumentu processName; ProcessKiller.Kill();");
+                throw new ArgumentNullException("ProcessKiller.Kill(); Argument 'processName' ne moze biti null.");
+            }
+                
+            Process[] allProcess = Process.GetProcessesByName(Convert.ToString(processName));
             if (allProcess.Length > 0)
             {
                 foreach (Process tempProcess in allProcess)
@@ -32,39 +42,52 @@ namespace Jasarsoft.Columbia.Host
                     {
                         tempProcess.Kill();
                         tempProcess.WaitForExit();
+#if TRACE
+                        Trace.TraceInformation("Process {0} je ubijen.", tempProcess.ProcessName);
+#endif
                     } while (tempProcess.HasExited == false);
                 }
             }
+#if TRACE
+            else
+                Trace.TraceInformation("ProcessKiller.Kill(); Nema processa: {0}", processName);
+#endif
 
-            //provjera
-            allProcess = Process.GetProcessesByName(processName);
+            //dodatna provjera
+            allProcess = Process.GetProcessesByName(Convert.ToString(processName));
             if (allProcess.Length > 0)
             {
-                string msg = "Zatvaranje procesa '" + processName + "' nije uspješno izvršeno.\n";
-                msg += "Kontaktirajte administraciju na forumu o vašoj pogrešsci";
-                throw new MethodAccessException(msg);
-            }
-            
+                string message = "Zatvaranje procesa '" + processName + "' nije uspješno izvršeno.\n" + 
+                                 "Kontaktirajte administraciju na forumu o vašoj pogrešsci";
+                throw new MethodAccessException(message);
+            } 
         }
 
         public void Samp()
         {
-            this.Killer(this.samp);
+            Thread thread = new Thread(Kill);
+            thread.Start(samp);
+#if TRACE
+            if (thread.IsAlive) Trace.TraceInformation("ProcessKiller.Samp(); Thread.Start(); OK");
+#endif
         }
 
         public void SanAndreas()
         {
-            this.Killer(this.gta);
+            Thread thread = new Thread(Kill);
+            thread.Start(this.gta);
         }
 
         public void Columbia()
         {
-            this.Killer(this.columbia);
+            Thread thread = new Thread(Kill);
+            thread.Start(this.columbia);
         }
 
         public void Host()
         {
-            this.Killer(this.host);
+            Thread thread = new Thread(Kill);
+            thread.Start(this.host);
         }
     }
 }

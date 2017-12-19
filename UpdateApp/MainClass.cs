@@ -9,7 +9,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Diagnostics;
-using Microsoft.Win32;
 
 namespace Jasarsoft.Columbia.Update
 {
@@ -37,6 +36,8 @@ namespace Jasarsoft.Columbia.Update
         private const string modeSilent = "6+37Xpr7Ij/N7wPYg3U2M9rFrwNPm86YGI0EGiCwl6Hgx0en6lxQfTuxK416epvmZMxBthTT1dTNcuiEDge2Tt1PKSjNVCfYq5RORDWWzHhndpn8xuVVDaxKSDhrEPgW"; //cs_silent14 
 
         private const string archiveExtension = "KNlp73VxSNGk0e8TWqdopHozwPhdgMd63f3pKVTikkNJRNN7xnGQ1q8BDC8Of+IKWUd3UoUhS6D4pmNwixK0ML8xq5TQ6s5vCAQNolQJIi1z4GoXlTLfOG/h7Irp3p2O"; //.zip
+
+        private const string appColumbia = "lYimDIzBdJeAOkOtHUIvl4wgQeIff81rcGRiOvhCQazK8kMqIQaayRxKMVi1MCcTi71+OU40QaDJsUYYnvBttV1rBItazVhZ7aTsC12ENTgWzsNjMK5HL7psI8HEQ394"; //columbia.exe
 
         static int Main(string[] args)
         {
@@ -129,10 +130,10 @@ namespace Jasarsoft.Columbia.Update
         {
             if (messageShow) return 0;
 
-            if(File.Exists("columbia.exe"))
+            if(File.Exists(cipher.Decrypt(appColumbia)))
             {
                 Process process = new Process();
-                process.StartInfo.FileName = "columbia.exe";
+                process.StartInfo.FileName = cipher.Decrypt(appColumbia);
                 process.StartInfo.WorkingDirectory = ".\\";
                 process.StartInfo.UseShellExecute = true;
                 process.StartInfo.Arguments = value + " " + address;

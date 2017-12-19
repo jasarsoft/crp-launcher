@@ -100,7 +100,7 @@ namespace Jasarsoft.Columbia.Host
 
                 string message = "Glavna aplikacija Columbia State Launcher ne potoji ili je preimenovana.\n" +
                                  "Svaka neovlaštena izmjena smatra se pokušajem nanoštenja štete istoj.\n" +
-                                 "Napomena, nažalost aplikacija se iz sigurnostnih razloga se gasi.";
+                                 "Napomena, launcher nije potpun i aplikacija se iz sigurnostnih razloga gasi.";
 
                 MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
 

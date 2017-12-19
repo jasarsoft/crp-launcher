@@ -92,16 +92,6 @@ namespace Jasarsoft.Columbia.Host
 
             if (mode != cipher.Decrypt(runMode))
             {
-                Thread t1 = new Thread(new ThreadStart(SampKiller));
-                t1.Priority = ThreadPriority.Lowest;
-                t1.IsBackground = true;
-                t1.Start();
-
-                Thread t2 = new Thread(new ThreadStart(SanAndreasKiller));
-                t2.Priority = ThreadPriority.Lowest;
-                t2.IsBackground = true;
-                t2.Start();
-
                 MessageTitle title = new MessageTitle();
                 string message = "Aplikaciju Columbia State Host ne pokreæete direktno Vi.\n" +
                                  "Isto narušava trenutni rad pa se pokretanje neæe dozovliti.";

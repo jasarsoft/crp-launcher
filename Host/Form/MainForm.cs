@@ -20,6 +20,9 @@ namespace Jasarsoft.Columbia.Host
         private List<FileStream> fileStream;
         private StringCipher cipher;
 
+        private readonly List<int> skipId;
+        private readonly string[] skipFiles;
+
         private const string runMode = "6+37Xpr7Ij/N7wPYg3U2M9rFrwNPm86YGI0EGiCwl6Hgx0en6lxQfTuxK416epvmZMxBthTT1dTNcuiEDge2Tt1PKSjNVCfYq5RORDWWzHhndpn8xuVVDaxKSDhrEPgW"; //cs_silent14 
         private const string appHost = "zIDXfr0Hq/BxlxwjMy0DSv0g+92mKGERfI7c3FWFuyOPm78JMmAstEBS2IlKjTtZoqCN5FwOi1t7kLIufAYFKk88Kbpe94oAu1dLD3ZBi02PyM31CxBwyc5lxh0IQJFf"; //host-cs.exe
         private const string appColumbia = "lYimDIzBdJeAOkOtHUIvl4wgQeIff81rcGRiOvhCQazK8kMqIQaayRxKMVi1MCcTi71+OU40QaDJsUYYnvBttV1rBItazVhZ7aTsC12ENTgWzsNjMK5HL7psI8HEQ394"; //columbia.exe
@@ -42,6 +45,26 @@ namespace Jasarsoft.Columbia.Host
             this.fileList = new List<string>(Directory.GetFiles(@".\", "*.*", SearchOption.AllDirectories));
             this.mode = args;
             MessageBoxSettings();
+
+            this.skipFiles = new string[]
+            {
+                "VHUD_debug.log",
+                "modloader\\modloader.log"
+            };
+
+            this.skipId = new List<int>();
+
+            for(int i = 0; i < fileList.Count; i++)
+            {
+                for(int j = 0; j < skipFiles.Length; j++)
+                {
+                    if (fileList[i].Contains(skipFiles[j]))
+                    {
+                        skipId.Add(i);
+                        Trace.TraceInformation("Preskakanje streama; ID: {0}; File: {1};", i, fileList[i]);
+                    }  
+                }
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -151,10 +174,44 @@ namespace Jasarsoft.Columbia.Host
 
         private void workerStream_DoWork(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
 
-            this.fileStream.Clear();
-            foreach (string name in this.fileList)
+            bool skip = false;
+            //this.fileStream.Clear();
+            for(int i = 0; i < fileList.Count; i++)
+            {
+                for(int j = 0; j < skipId.Count; j++)
+                {
+                    if (i == skipId[j])
+                    {
+                        skip = true;
+                        break;
+                    }
+                }
+                
+                if(File.Exists(fileList[i]))
+                {
+                    if (skip) continue;
+#if !DEBUG
+                    Thread.Sleep(100);
+                    fileStream[i].Close();
+                    this.fileStream.Remove(fileStream[i]);
+                    this.fileStream.Add(new FileStream(fileList[i], FileMode.Open, FileAccess.Read, FileShare.Read));
+#else
+                    fileStream[i].Close(); Trace.TraceInformation("Stream na datoteku je zatvorena. ({0})", fileList[i]);
+                    this.fileStream.Remove(fileStream[i]); Trace.TraceInformation("Stream je uklonjen. ({0})", fileList[i]);
+                    this.fileStream.Add(new FileStream(fileList[i], FileMode.Open, FileAccess.Read, FileShare.Read));
+                    Trace.TraceInformation("Stream je dodat. ({0})", fileList[i]);
+#endif
+                }
+                else
+                {
+                    e.Cancel = true;
+                    break;
+                }
+            }
+
+            /*foreach (string name in this.fileList)
             {
                 if (File.Exists(name))
                 {
@@ -167,7 +224,7 @@ namespace Jasarsoft.Columbia.Host
                     e.Cancel = true;
                     break;
                 }
-            }
+            }*/
         }
 
         private void workerStream_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

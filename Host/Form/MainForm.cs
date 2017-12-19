@@ -24,6 +24,9 @@ namespace Jasarsoft.Columbia.Host
         private const string appHost = "zIDXfr0Hq/BxlxwjMy0DSv0g+92mKGERfI7c3FWFuyOPm78JMmAstEBS2IlKjTtZoqCN5FwOi1t7kLIufAYFKk88Kbpe94oAu1dLD3ZBi02PyM31CxBwyc5lxh0IQJFf"; //host-cs.exe
         private const string appColumbia = "lYimDIzBdJeAOkOtHUIvl4wgQeIff81rcGRiOvhCQazK8kMqIQaayRxKMVi1MCcTi71+OU40QaDJsUYYnvBttV1rBItazVhZ7aTsC12ENTgWzsNjMK5HL7psI8HEQ394"; //columbia.exe
 
+        private const string processHost = "XxHjZ+mej41bvZnWwOaE7h9zFKdtqQ2+L3VFm5RjrXmznQ8MCIV1A7gumVh/rw0PuYv8DtdIzRwSmwzcFeUrXIhIofUu3dGOMntBDW/yopyJybD38t5uZ1zMeMYMfYfQ"; //host-cs
+        private const string processColumbia = "1/HpTNI78Z0B5A7s8izzMpXBTYe0NFTyMN/MAyjosdzqWDivfMc94Kw76EynJ+vjGuU+MJVJgkzcKdu0OrsT/kAFB9wmGAtcF/ewIrT3+G8D0A8srdvhz7KZ8hSFm9B9"; //columbia
+
         private enum ErrorResult
         {
             Process,
@@ -82,8 +85,8 @@ namespace Jasarsoft.Columbia.Host
                 return;
             }
 
-            Process[] nmProcess = Process.GetProcessesByName("columbia");
-            if (nmProcess.Length == 0)
+            Process[] columbia = Process.GetProcessesByName("columbia");
+            if (columbia.Length == 0)
             {
                 Process.Start(cipher.Decrypt(appColumbia));
                 Application.Exit();
@@ -102,31 +105,23 @@ namespace Jasarsoft.Columbia.Host
                 return;
             }
 
-            if (nmProcess.Length > 1)
+            //provera da li je app columbia (launcher) pokrenuta vise puta
+            //sama app columbia takodje pri prokretanju provjera svoje instance procesa
+            //tako da ova provjera nije potrebna dok je ima u columbia app
+            if (columbia.Length > 1)
             {
-                //ProcessKiller pk = new ProcessKiller();
                 MessageTitle title = new MessageTitle();
+                ProcessKiller killer = new ProcessKiller();
 
-                //pk.Samp();
-                //pk.SanAndreas();
-                //pk.Columbia();
-                Thread t1 = new Thread(new ThreadStart(SampKiller));
-                t1.Priority = ThreadPriority.Lowest;
-                t1.IsBackground = true;
-                t1.Start();
-
-                Thread t2 = new Thread(new ThreadStart(SanAndreasKiller));
-                t2.Priority = ThreadPriority.Lowest;
-                t2.IsBackground = true;
-                t2.Start();
-
-                Thread t3 = new Thread(new ThreadStart(HostKiller));
-                t3.Priority = ThreadPriority.Lowest;
-                t3.IsBackground = true;
-                t3.Start();
+#if TRACE
+                Trace.TraceError("Process '{0}' je pokrenut u više instanci.", columbia.ToString());
+                Trace.TraceInformation("Zatvaranje (ubijanje) procesa '{0}';", columbia.ToString());
+#endif
+                killer.Columbia(); //zatvaranje procesa columbia.exe
 
                 string message = "Aplikacija Columbia State Launcher je pokrenut sa više instanci.\n" +
-                                 "Isto narušava trenutni rad pa se novo pokretanje neæe dozvoliti.";
+                                 "Isto narušava trenutni rad pa se novo pokretanje neæe dozvoliti.\n" +
+                                 "Napomena, svi procesi Columbia State Launchera æe biti uništeni.";
                 
                 MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
@@ -134,7 +129,7 @@ namespace Jasarsoft.Columbia.Host
                 return;
             }
 
-            Process[] hosts = Process.GetProcessesByName("host-cs");
+            Process[] hosts = Process.GetProcessesByName(cipher.Decrypt(processHost));
             if (hosts.Length == 1)
             {
                 this.workerStream.RunWorkerAsync();
@@ -143,12 +138,13 @@ namespace Jasarsoft.Columbia.Host
             else
             {
                 MessageTitle title = new MessageTitle();
-                string message = "Aplikaciju Columbia State Host ne pokreæete direktno Vi.\n" +
-                                 "Isto narušava trenutni rad pa se pokretanje neæe dozovliti.";
+                string message = "Aplikacija Columbia State Host veæ je pokrenuta od strane launchera.\n" +
+                                 "Ista je specijalno napravljena za pozadinske kontrole samog launchera\n" +
+                                 "praæenje njegovog rada u trenutnom vremenu te zaštitu igraèa i modifikacije.";
 
                 MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
-                Application.Exit();
+                //Application.Exit();
                 return;
             }  
         }

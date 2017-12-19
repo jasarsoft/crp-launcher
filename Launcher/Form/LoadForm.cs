@@ -70,8 +70,8 @@ namespace Jasarsoft.Columbia
         private void workerLoad_DoWork(object sender, DoWorkEventArgs e)
         {
             mainForm = new MainForm();
-
-#if(!DEBUG)
+            e.Result = ErrorResult.None;
+#if !DEBUG
             Process[] process = Process.GetProcessesByName("columbia");
             if (process.Length > 1)
             {
@@ -85,19 +85,6 @@ namespace Jasarsoft.Columbia
                 return;
             }
 #endif
-            //Process[] hostNm = Process.GetProcessesByName("host-nm");
-            //if (hostNm.Length > 0)
-            //{
-            //    foreach (Process proc in hostNm)
-            //    {
-            //        do
-            //        {
-            //            proc.Kill();
-            //        } while (proc.HasExited == false);
-            //    }
-            //}
-
-            //Process.Start("host-nm.exe");
 
             Network net = new Network();
             if (!net.Available())
@@ -105,7 +92,7 @@ namespace Jasarsoft.Columbia
                 e.Result = ErrorResult.Network;
                 return;
             }
-            e.Result = ErrorResult.None;
+            
 
             Server s = new Server();
             if (s.Read())
@@ -120,8 +107,6 @@ namespace Jasarsoft.Columbia
                 Launcher.Forum = s.Forum;
                 Launcher.YouTube = s.YouTube;
                 Launcher.Facebook = s.Facebook;
-                
-                e.Result = ErrorResult.None;
             }
             else
             {
@@ -147,8 +132,6 @@ namespace Jasarsoft.Columbia
                     bf.Hash.CopyTo(Launcher.Hash);
                     bf.Link.CopyTo(Launcher.Link);
                     bf.Url.CopyTo(Launcher.Url);
-
-                    e.Result = ErrorResult.None;
                 }
                 else
                 {
@@ -158,7 +141,7 @@ namespace Jasarsoft.Columbia
             }
 
             DataFile dataFile = new DataFile();
-#if(!DEBUG)
+#if !DEBUG
             Library dll = new Library();
             this.unknownFiles = new List<string>();
             dataFile.ReadUnknown(Launcher.Name, dll.Name);
@@ -176,8 +159,8 @@ namespace Jasarsoft.Columbia
                 
                 foreach (int missed in dataFile.MissedFiles)
                 {
-#if DEBUG
-                    //MessageBox.Show(Launcher.Name[missed]);
+#if !DEBUG
+                    Trace.TraceInformation("workerLoad_DoWork(); Missed file ({0}): {1}", missed, Launcher.Name[missed]);
 #endif
                     this.missedFiles.Add(missed);
                 }
@@ -194,27 +177,33 @@ namespace Jasarsoft.Columbia
 
             if (e.Result.ToString() == ErrorResult.Work.ToString())
             {
-                string text = "Imate veæ pokrenutu instancu Columbia State launchera.\nPokretanje više instanci moda nije dozvoljeno i nepreporuèljivo je.";
+                string text = "Instanca aplikacije Columbia State Launcher-a je veæ pokrenuta.\n" + 
+                              "Pokretanje više instanci nije dozvoljeno i ista neæe biti startovana.";
+
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 Application.Exit();
                 return;
             }
             else if(e.Result.ToString() == ErrorResult.Service.ToString())
             {
-                string text = "Prijava na servis Columbia State moda nije uspjesno izvrsena.\nPokušajte ponovo ili evidentirajte vašu grešku na forum.";
+                string text = "Prijava na servis Columbia State moda nije uspješno izvršena.\n" + 
+                              "Pokušajte ponovo ili evidentirajte vašu grešku na forum.";
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }
             else if (e.Result.ToString() == ErrorResult.Edit.ToString())
             {
-                ProcessKiller pk = new ProcessKiller();
-                
-                pk.Samp();
-                pk.GtaSa();
-                pk.HostNm();
+                ProcessKiller killer = new ProcessKiller();
 
-                string text = "Columbia State launcher je neovlašteno izmjenjen!";
+                killer.Samp();
+                killer.SanAndreas();
+                killer.Host();
+
+                string text = "Naziv Columbia State Launcher aplikacije je neovlašteno izmjenjen!\n" +
+                              "Svaka neovlaštena izmjena smatra se pokušajem nanoštenja štete istoj.\n" +
+                              "Napomena, nažalost aplikacija se iz sigurnostnih razloga neæe pokrenuti.";
+
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
                 Application.Exit();
@@ -236,21 +225,32 @@ namespace Jasarsoft.Columbia
             }
             else if (e.Result.ToString() == ErrorResult.Unknown.ToString())
             {
-                string text = String.Format("Igra sadrži {0} nepoznatih fajlova.\nDa li želite ukloniti sve strane fajlove?", this.unknownFiles.Count);
+                long size = 0;
+                foreach(string file in unknownFiles)
+                {
+                    if(System.IO.File.Exists(file))
+                        size += new System.IO.FileInfo(file).Length;
+                }
 
-                if (MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error) == System.Windows.Forms.DialogResult.Yes)
+                string message = String.Format("Vaša modifikacija sadrži {0} nepoznatih datoteka, velièine {1:0.00} MB.\n", unknownFiles.Count, size / 1048576.0) +
+                                               "Da li želite iste obrisati sada i nastaviti sa uèitavanem launcher-a?\n" +
+                                               "Napomena, aplikacija se neæe uèitati dok postoje strane nepredviðene datoteke.";
+
+                if (System.Windows.Forms.DialogResult.Yes == MessageBoxAdv.Show(message, title.WarningMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                 {
                     try
                     {
                         foreach (string name in this.unknownFiles) System.IO.File.Delete(name);
 
-                        text = "Nepoznati fajlovi su uspješno uklonjeni, pokrenite ponovo aplikaciju.";
-                        MessageBoxAdv.Show(text, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        message = "Nepoznate datoteke su uspješno uklonjene, launcher æe se ponovo uèitati.";
+                        MessageBoxAdv.Show(message, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.workerLoad.RunWorkerAsync();
+                        return;
                     }
                     catch (Exception)
                     {
-                        text = "Nepoznati fajlovi nisu uspješno izbrisani, uèinite ruèno uklanjanje!";
-                        MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        message = "Nepoznate datoteke nisu uspješno izbrisane, uèinite mehanièki uklanjanje!"
+                        MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -259,15 +259,30 @@ namespace Jasarsoft.Columbia
             }
             else if (e.Result.ToString() == ErrorResult.Missed.ToString())
             {
-                string text = String.Format("Otkriveno je {0} nedostajeæih fajlova od igre.\nDa li želite sada skinuti potrebne fajlove?", this.missedFiles.Count);
+                long size = 0;
+                foreach (int id in missedFiles)
+                {
+                    if (System.IO.File.Exists(Launcher.Name[id]))
+                        size += new System.IO.FileInfo(Launcher.Name[id]).Length;
+                }
 
-                if (MessageBoxAdv.Show(text, title.WarningMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
+                string message = String.Format("Vašoj modifikaciji nedostaje {0} datoteka, ukupne velièine {1:0.00} MB.\n", missedFiles.Count, size / 1048576.0) +
+                                               "Da li želite iste skinuti sada i nastaviti sa uèitavanem launcher-a?\n" +
+                                               "Napomena, aplikacija se neæe uèitati dok sve datoteke ne budu ažurirane.";
+
+                if (System.Windows.Forms.DialogResult.Yes == MessageBoxAdv.Show(message, title.WarningMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
                 {
                     DownloadForm dw = new DownloadForm();
                     foreach (int index in this.missedFiles) dw.Id.Add(index);
                     
                     if (dw.ShowDialog(this) == System.Windows.Forms.DialogResult.Abort)
                     {
+                        message = "Nažalost skidanje novih datoteka nije uspješno izvršeno do kraja.\n" +
+                                  "Columbia State Launcher ne može nastaviti sa daljnjim uèitavanjem.\n" +
+                                  "Potražiti na forumu upustvo za pogrešku ovog tipa ili evidentirajte istu.";
+
+                        MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Process.Start("https://columbia-state.com/");
                         Application.Exit();
                         return;
                     }
@@ -281,7 +296,7 @@ namespace Jasarsoft.Columbia
 
             if (Launcher.Working == false)
             {
-                string text = "Columbia State server je trenutno u procesu nadogradnje, pokušajte kasnije!";
+                string text = "Columbia State Server je trenutno u procesu nadogradnje, pokušajte kasnije!";
                 MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Application.Exit();
@@ -295,9 +310,9 @@ namespace Jasarsoft.Columbia
         {
             ProcessKiller pk = new ProcessKiller();
 
-            pk.Samp();
-            pk.GtaSa();
-            pk.HostNm();
+            //pk.Samp();
+            //pk.GtaSa();
+            //pk.HostNm();
         }
     }
 }

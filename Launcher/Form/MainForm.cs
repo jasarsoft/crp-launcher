@@ -78,11 +78,20 @@ namespace Jasarsoft.Columbia
         private void workerCheck_DoWork(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(3000);
-            if (!library.Check())
+            foreach(string file in Launcher.Name)
             {
-                e.Cancel = true;
-                return;
+                Thread.Sleep(100);
+                if (!File.Exists(file))
+                {
+                    e.Cancel = true;
+                    return;
+                }
             }
+            //if (!library.Check())
+            //{
+            //    e.Cancel = true;
+            //    return;
+            //}
 
             Thread.Sleep(3000);
             if (dataFile.CheckUnknown(Launcher.Name, library.Name))
@@ -115,8 +124,8 @@ namespace Jasarsoft.Columbia
                                  "Napomena, izmjene modifikacije nisu dozvoljene od strane korisnika.";
                 
                 MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                workerGame.CancelAsync();
-                workerHost.CancelAsync();
+                //workerGame.CancelAsync();
+                //workerHost.CancelAsync();
                 Application.Exit();
                 return;
             }

@@ -75,7 +75,7 @@ namespace Jasarsoft.Columbia
         }
 
 
-        private void workerCheck_DoWork(object sender, DoWorkEventArgs e)
+        private void WorkerCheck_DoWork(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(3000);
             foreach(string file in Launcher.Name)
@@ -108,7 +108,7 @@ namespace Jasarsoft.Columbia
             }
         }
 
-        private void workerCheck_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void WorkerCheck_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
@@ -139,7 +139,7 @@ namespace Jasarsoft.Columbia
             Application.Exit();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void ButtonLogin_Click(object sender, EventArgs e)
         {
             if (this.textName.Text.Length < 4)
             {
@@ -301,12 +301,12 @@ namespace Jasarsoft.Columbia
             return;
         }
 
-        private void buttonLogin_MouseHover(object sender, EventArgs e)
+        private void ButtonLogin_MouseHover(object sender, EventArgs e)
         {
             this.buttonLogin.BackColor = Color.DarkBlue;
         }
 
-        private void buttonLogin_MouseLeave(object sender, EventArgs e)
+        private void ButtonLogin_MouseLeave(object sender, EventArgs e)
         {
             this.buttonLogin.BackColor = Color.Firebrick;
         }
@@ -325,36 +325,36 @@ namespace Jasarsoft.Columbia
             //pk.HostNm();
         }
 
-        private void menuHelpItemLauncher_Click(object sender, EventArgs e)
+        private void MenuHelpItemLauncher_Click(object sender, EventArgs e)
         {
             AboutForm al = new AboutForm();
 
             al.ShowDialog(this);
         }
 
-        private void menuHelpItemRules_Click(object sender, EventArgs e)
+        private void MenuHelpItemRules_Click(object sender, EventArgs e)
         {
             RulesForm rf = new RulesForm();
 
             rf.ShowDialog(this);
         }
 
-        private void menuLinkItemForum_Click(object sender, EventArgs e)
+        private void MenuLinkItemForum_Click(object sender, EventArgs e)
         {
             Process.Start(Launcher.Forum);
         }
 
-        private void menuLinkItemYouTube_Click(object sender, EventArgs e)
+        private void MenuLinkItemYouTube_Click(object sender, EventArgs e)
         {
             Process.Start(Launcher.YouTube);
         }
 
-        private void menuLinkItemFacebook_Click(object sender, EventArgs e)
+        private void MenuLinkItemFacebook_Click(object sender, EventArgs e)
         {
             Process.Start(Launcher.Facebook);
         }
 
-        private void menuLinkItemTeamSpeak_Click(object sender, EventArgs e)
+        private void MenuLinkItemTeamSpeak_Click(object sender, EventArgs e)
         {
             RegistryKey localKey32 = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry32);
 
@@ -407,38 +407,38 @@ namespace Jasarsoft.Columbia
             Process.Start("https://www.teamspeak.com/teamspeak3.html");
         }
 
-        private void menuFileExit_Click(object sender, EventArgs e)
+        private void MenuFileExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void menuFileAdmin_Click(object sender, EventArgs e)
+        private void MenuFileAdmin_Click(object sender, EventArgs e)
         {
             LoginForm lf = new LoginForm(this.textName.Text);
 
             lf.ShowDialog(this);
         }
 
-        private void menuFileClient_Click(object sender, EventArgs e)
+        private void MenuFileClient_Click(object sender, EventArgs e)
         {
-            buttonLogin_Click(sender, e);
+            ButtonLogin_Click(sender, e);
         }
 
-        private void menuToolsCheck_Click(object sender, EventArgs e)
+        private void MenuToolsCheck_Click(object sender, EventArgs e)
         {
             CheckForm cf = new CheckForm();
 
             cf.ShowDialog(this);
         }
 
-        private void menuToolsDownload_Click(object sender, EventArgs e)
+        private void MenuToolsDownload_Click(object sender, EventArgs e)
         {
             UpdateForm uf = new UpdateForm();
 
             uf.ShowDialog(this);
         }
 
-        private void menuHelpItemNovaMahala_Click(object sender, EventArgs e)
+        private void MenuHelpItemNovaMahala_Click(object sender, EventArgs e)
         {
             DescriptionForm anm = new DescriptionForm();
 
@@ -446,14 +446,14 @@ namespace Jasarsoft.Columbia
         }
 
 
-        private void workerHost_DoWork(object sender, DoWorkEventArgs e)
+        private void WorkerHost_DoWork(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(1000);
             Process[] process = Process.GetProcessesByName("host-cs");
             if (process.Length != 1) e.Cancel = true;
         }
 
-        private void workerHost_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void WorkerHost_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
@@ -471,14 +471,14 @@ namespace Jasarsoft.Columbia
         }
 
 
-        private void workerGame_DoWork(object sender, DoWorkEventArgs e)
+        private void WorkerGame_DoWork(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(5000);
             Process[] process = Process.GetProcessesByName("gtasa");
             if (process.Length != 1) e.Cancel = true;
         }
 
-        private void workerGame_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void WorkerGame_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
@@ -495,7 +495,7 @@ namespace Jasarsoft.Columbia
             workerGame.RunWorkerAsync();
         }
 
-        private void menuToolsUpdate_Click(object sender, EventArgs e)
+        private void MenuToolsUpdate_Click(object sender, EventArgs e)
         {
             MessageTitle title = new MessageTitle();
             string text = "Da li ste sigurni da želite provjeriti nadogradnju launchera?\n" +

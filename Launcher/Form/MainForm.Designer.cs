@@ -178,7 +178,7 @@ namespace Jasarsoft.Columbia
             this.menuFileClient.Size = new System.Drawing.Size(110, 22);
             this.menuFileClient.Text = "&Prijava";
             this.menuFileClient.ToolTipText = "Prijavite se kao klijent";
-            this.menuFileClient.Click += new System.EventHandler(this.menuFileClient_Click);
+            this.menuFileClient.Click += new System.EventHandler(this.MenuFileClient_Click);
             // 
             // menuFileAdmin
             // 
@@ -187,7 +187,7 @@ namespace Jasarsoft.Columbia
             this.menuFileAdmin.Size = new System.Drawing.Size(110, 22);
             this.menuFileAdmin.Text = "&Admin";
             this.menuFileAdmin.ToolTipText = "Prijavite se kao admin";
-            this.menuFileAdmin.Click += new System.EventHandler(this.menuFileAdmin_Click);
+            this.menuFileAdmin.Click += new System.EventHandler(this.MenuFileAdmin_Click);
             // 
             // menuFileSeparator
             // 
@@ -200,7 +200,7 @@ namespace Jasarsoft.Columbia
             this.menuFileExit.Size = new System.Drawing.Size(110, 22);
             this.menuFileExit.Text = "&Izlaz";
             this.menuFileExit.ToolTipText = "Zatvorite SAMP NovaMahala Launcer";
-            this.menuFileExit.Click += new System.EventHandler(this.menuFileExit_Click);
+            this.menuFileExit.Click += new System.EventHandler(this.MenuFileExit_Click);
             // 
             // menuItemTools
             // 
@@ -219,7 +219,7 @@ namespace Jasarsoft.Columbia
             this.menuToolsCheck.Size = new System.Drawing.Size(152, 22);
             this.menuToolsCheck.Text = "&Provjera";
             this.menuToolsCheck.ToolTipText = "Provjerite valjanost trenutni fajlova";
-            this.menuToolsCheck.Click += new System.EventHandler(this.menuToolsCheck_Click);
+            this.menuToolsCheck.Click += new System.EventHandler(this.MenuToolsCheck_Click);
             // 
             // menuToolsDownload
             // 
@@ -228,7 +228,7 @@ namespace Jasarsoft.Columbia
             this.menuToolsDownload.Size = new System.Drawing.Size(152, 22);
             this.menuToolsDownload.Text = "&Ažuriranje";
             this.menuToolsDownload.ToolTipText = "Ažurirajte potrebne fajlove najnovim";
-            this.menuToolsDownload.Click += new System.EventHandler(this.menuToolsDownload_Click);
+            this.menuToolsDownload.Click += new System.EventHandler(this.MenuToolsDownload_Click);
             // 
             // menuToolsSeparator
             // 
@@ -241,7 +241,7 @@ namespace Jasarsoft.Columbia
             this.menuToolsUpdate.Size = new System.Drawing.Size(152, 22);
             this.menuToolsUpdate.Text = "&Nadogradnja";
             this.menuToolsUpdate.ToolTipText = "Nadogradite Launcher novom verzijom";
-            this.menuToolsUpdate.Click += new System.EventHandler(this.menuToolsUpdate_Click);
+            this.menuToolsUpdate.Click += new System.EventHandler(this.MenuToolsUpdate_Click);
             // 
             // menuItemLink
             // 
@@ -260,7 +260,7 @@ namespace Jasarsoft.Columbia
             this.menuLinkItemForum.Size = new System.Drawing.Size(144, 22);
             this.menuLinkItemForum.Text = "Fo&rum";
             this.menuLinkItemForum.ToolTipText = "Službeni forum za klijent diskusije";
-            this.menuLinkItemForum.Click += new System.EventHandler(this.menuLinkItemForum_Click);
+            this.menuLinkItemForum.Click += new System.EventHandler(this.MenuLinkItemForum_Click);
             // 
             // menuLinkItemYouTube
             // 
@@ -268,7 +268,7 @@ namespace Jasarsoft.Columbia
             this.menuLinkItemYouTube.Size = new System.Drawing.Size(144, 22);
             this.menuLinkItemYouTube.Text = "&YouTube";
             this.menuLinkItemYouTube.ToolTipText = "Posjetite službeni YouTube kanal";
-            this.menuLinkItemYouTube.Click += new System.EventHandler(this.menuLinkItemYouTube_Click);
+            this.menuLinkItemYouTube.Click += new System.EventHandler(this.MenuLinkItemYouTube_Click);
             // 
             // menuLinkItemFacebook
             // 
@@ -276,7 +276,7 @@ namespace Jasarsoft.Columbia
             this.menuLinkItemFacebook.Size = new System.Drawing.Size(144, 22);
             this.menuLinkItemFacebook.Text = "&Facebook";
             this.menuLinkItemFacebook.ToolTipText = "Posjetite službenu Facebook Fan stranicu";
-            this.menuLinkItemFacebook.Click += new System.EventHandler(this.menuLinkItemFacebook_Click);
+            this.menuLinkItemFacebook.Click += new System.EventHandler(this.MenuLinkItemFacebook_Click);
             // 
             // menuLinkItemTeamSpeak
             // 
@@ -284,7 +284,7 @@ namespace Jasarsoft.Columbia
             this.menuLinkItemTeamSpeak.Size = new System.Drawing.Size(144, 22);
             this.menuLinkItemTeamSpeak.Text = "&TeamSpeak 3";
             this.menuLinkItemTeamSpeak.ToolTipText = "Ovorite TeamSpeak i prijavite se na NovaMahala-u";
-            this.menuLinkItemTeamSpeak.Click += new System.EventHandler(this.menuLinkItemTeamSpeak_Click);
+            this.menuLinkItemTeamSpeak.Click += new System.EventHandler(this.MenuLinkItemTeamSpeak_Click);
             // 
             // menuItemHelp
             // 
@@ -303,7 +303,7 @@ namespace Jasarsoft.Columbia
             this.menuHelpItemRules.Size = new System.Drawing.Size(155, 22);
             this.menuHelpItemRules.Text = "&RolePlay";
             this.menuHelpItemRules.ToolTipText = "Opæenita RolePlay pravila i njihovi opisi";
-            this.menuHelpItemRules.Click += new System.EventHandler(this.menuHelpItemRules_Click);
+            this.menuHelpItemRules.Click += new System.EventHandler(this.MenuHelpItemRules_Click);
             // 
             // menuHelpSeparator
             // 
@@ -316,7 +316,7 @@ namespace Jasarsoft.Columbia
             this.menuHelpItemLauncher.Size = new System.Drawing.Size(155, 22);
             this.menuHelpItemLauncher.Text = "&Launcher";
             this.menuHelpItemLauncher.ToolTipText = "Tehnièke informacije o Launcher-u";
-            this.menuHelpItemLauncher.Click += new System.EventHandler(this.menuHelpItemLauncher_Click);
+            this.menuHelpItemLauncher.Click += new System.EventHandler(this.MenuHelpItemLauncher_Click);
             // 
             // menuHelpItemNovaMahala
             // 
@@ -324,7 +324,7 @@ namespace Jasarsoft.Columbia
             this.menuHelpItemNovaMahala.Size = new System.Drawing.Size(155, 22);
             this.menuHelpItemNovaMahala.Text = "&Columbia State";
             this.menuHelpItemNovaMahala.ToolTipText = "O nastanku i historiji NovaMahala-e";
-            this.menuHelpItemNovaMahala.Click += new System.EventHandler(this.menuHelpItemNovaMahala_Click);
+            this.menuHelpItemNovaMahala.Click += new System.EventHandler(this.MenuHelpItemNovaMahala_Click);
             // 
             // buttonLogin
             // 
@@ -340,15 +340,15 @@ namespace Jasarsoft.Columbia
             this.buttonLogin.Size = new System.Drawing.Size(340, 56);
             this.buttonLogin.TabIndex = 3;
             this.buttonLogin.Text = "PRIJAVI SE";
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
-            this.buttonLogin.MouseLeave += new System.EventHandler(this.buttonLogin_MouseLeave);
-            this.buttonLogin.MouseHover += new System.EventHandler(this.buttonLogin_MouseHover);
+            this.buttonLogin.Click += new System.EventHandler(this.ButtonLogin_Click);
+            this.buttonLogin.MouseLeave += new System.EventHandler(this.ButtonLogin_MouseLeave);
+            this.buttonLogin.MouseHover += new System.EventHandler(this.ButtonLogin_MouseHover);
             // 
             // workerCheck
             // 
             this.workerCheck.WorkerSupportsCancellation = true;
-            this.workerCheck.DoWork += new System.ComponentModel.DoWorkEventHandler(this.workerCheck_DoWork);
-            this.workerCheck.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.workerCheck_RunWorkerCompleted);
+            this.workerCheck.DoWork += new System.ComponentModel.DoWorkEventHandler(this.WorkerCheck_DoWork);
+            this.workerCheck.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.WorkerCheck_RunWorkerCompleted);
             // 
             // pictureLogo
             // 
@@ -362,14 +362,14 @@ namespace Jasarsoft.Columbia
             // workerHost
             // 
             this.workerHost.WorkerSupportsCancellation = true;
-            this.workerHost.DoWork += new System.ComponentModel.DoWorkEventHandler(this.workerHost_DoWork);
-            this.workerHost.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.workerHost_RunWorkerCompleted);
+            this.workerHost.DoWork += new System.ComponentModel.DoWorkEventHandler(this.WorkerHost_DoWork);
+            this.workerHost.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.WorkerHost_RunWorkerCompleted);
             // 
             // workerGame
             // 
             this.workerGame.WorkerSupportsCancellation = true;
-            this.workerGame.DoWork += new System.ComponentModel.DoWorkEventHandler(this.workerGame_DoWork);
-            this.workerGame.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.workerGame_RunWorkerCompleted);
+            this.workerGame.DoWork += new System.ComponentModel.DoWorkEventHandler(this.WorkerGame_DoWork);
+            this.workerGame.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.WorkerGame_RunWorkerCompleted);
             // 
             // MainForm
             // 

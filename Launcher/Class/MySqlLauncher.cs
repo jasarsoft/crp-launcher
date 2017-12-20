@@ -6,7 +6,9 @@ namespace Jasarsoft.Columbia
 {
     public class MySqlLauncher
     {
-        private string hash;
+        private string hashLauncher;
+        private string hashHost;
+        private string hashUpdate;
 
         private MySqlConnection mysql;
 
@@ -14,16 +16,27 @@ namespace Jasarsoft.Columbia
         //default constructor
         public MySqlLauncher()
         {
-            this.hash = "";            
+            this.hashLauncher = "";
+            this.hashHost = "";
+            this.hashUpdate = "";          
         }
 
 
         //properties
-        public string Hash
+        public string HashLauncher
         {
-            get { return this.hash; }
+            get { return this.hashLauncher; }
         }
 
+        public string HashHost
+        {
+            get { return this.hashHost; }
+        }    
+
+        public string HashUpdate
+        {
+            get { return this.hashUpdate; }
+        }
 
         public bool Open()
         {
@@ -75,7 +88,9 @@ namespace Jasarsoft.Columbia
 
                 while (reader.Read())
                 {
-                    this.hash = reader["hash"].ToString();
+                    this.hashLauncher = reader["hash_launcher"].ToString();
+                    this.hashHost = reader["hash_host"].ToString();
+                    this.hashUpdate = reader["hash_update"].ToString();
                 }
 
                 reader.Close();

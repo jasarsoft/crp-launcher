@@ -30,7 +30,7 @@ namespace Jasarsoft.Columbia.Host
         private const string processColumbia = "1/HpTNI78Z0B5A7s8izzMpXBTYe0NFTyMN/MAyjosdzqWDivfMc94Kw76EynJ+vjGuU+MJVJgkzcKdu0OrsT/kAFB9wmGAtcF/ewIrT3+G8D0A8srdvhz7KZ8hSFm9B9"; //columbia
 
 
-        public MainForm(string args)
+        public MainForm(string args = null)
         {
             InitializeComponent();
 

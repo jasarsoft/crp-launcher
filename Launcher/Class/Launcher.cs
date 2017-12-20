@@ -133,6 +133,9 @@ namespace Jasarsoft.Columbia
         static void Main(string[] args)
         {
 #if !DEBUG
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             Library lib = new Library();
             if (!lib.Valid())
             {
@@ -166,12 +169,12 @@ namespace Jasarsoft.Columbia
             MySqlLauncher lan = new MySqlLauncher();
             if (lan.Read())
             {
-                if(HashFile.GetMD5("columbia.exe") != lan.Hash)
+                if(HashFile.GetMD5("columbia.exe") != lan.HashLauncher || HashFile.GetMD5("host-cs.exe") != lan.HashHost)
                 {
                     MessageTitle title = new MessageTitle();
                     string message = "Vaša verzija Columbia State Launchera nije posljednja.\n" +
                                      "Da li želite sada ažurirati launcher na zadnju verziju?\n" +
-                                     "Napomena, aplikacija treba biti na zadnjoj verziji za pristup serveru.";
+                                     "Napomena, za pristpu našem serveru aplikacija treba biti najnovija.";
                     if(DialogResult.Yes == MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error))
                     {
                         if (File.Exists(".\\update-cs.exe"))
@@ -192,6 +195,18 @@ namespace Jasarsoft.Columbia
                         }
                     }
                     return;
+                }
+                else if (HashFile.GetMD5("update-cs.exe") != lan.HashUpdate)
+                {
+                    MessageTitle title = new MessageTitle();
+                    string message = "Vaša verzija Columbia State Update servisa nije posljednja.\n" +
+                                     "Da li želite sada ažurirati update servis na zadnju verziju?\n" +
+                                     "Napomena, za pristpu našem serveru servis treba biti najnoviji.";
+
+                    MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    message = "Implementacija u novim ažuriranjem Columbia State Launcher-a.";
+                    MessageBoxAdv.Show(message, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else

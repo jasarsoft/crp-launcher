@@ -249,7 +249,7 @@ namespace Jasarsoft.Columbia
                     }
                     catch (Exception)
                     {
-                        message = "Nepoznate datoteke nisu uspješno izbrisane, uèinite mehanièki uklanjanje!"
+                        message = "Nepoznate datoteke nisu uspješno izbrisane, uèinite mehanièki uklanjanje!";
                         MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }

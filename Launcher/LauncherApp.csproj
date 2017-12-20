@@ -239,6 +239,7 @@
     <Compile Include="Class\GDrive\GDrivePrivate.cs" />
     <Compile Include="Class\GDrive\GoogleApi.cs" />
     <Compile Include="Class\ErrorFile.cs" />
+    <Compile Include="ExternApp.cs" />
     <Compile Include="Form\FileForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +321,7 @@
     <Compile Include="Form\UpdateForm.Designer.cs">
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class\UpdateApp.cs" />
     <EmbeddedResource Include="Form\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
       <SubType>Designer</SubType>

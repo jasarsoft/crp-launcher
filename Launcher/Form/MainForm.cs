@@ -104,8 +104,17 @@ namespace Jasarsoft.Columbia
             if (e.Cancelled)
             {
                 MessageTitle title = new MessageTitle();
-                string text = "Otkrivene su neke izmjene na igri tokom rada.\nAplikacija æe se zatvoriti iz sigurnosnih razloga.";
-                MessageBoxAdv.Show(text, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                ProcessKiller killer = new ProcessKiller();
+
+                killer.Samp();
+                killer.SanAndreas();
+                killer.Host();
+
+                string message = "Greška, otkriveni su pokušaji izmjene modifikacije tokom rada.\n" +
+                                 "Columbia State Launcher æe se zatovriti iz sigurnosnih razloga.\n" +
+                                 "Napomena, izmjene modifikacije nisu dozvoljene od strane korisnika.";
+                
+                MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 workerGame.CancelAsync();
                 workerHost.CancelAsync();
                 Application.Exit();
@@ -439,9 +448,11 @@ namespace Jasarsoft.Columbia
         {
             if (e.Cancelled)
             {
-                SampKiller();
-                SanAndreasKiller();
-                HostKiller();
+                ProcessKiller killer = new ProcessKiller();
+
+                killer.Samp();
+                killer.SanAndreas();
+                killer.Host();
 
                 Application.Exit();
                 return;
@@ -462,9 +473,11 @@ namespace Jasarsoft.Columbia
         {
             if (e.Cancelled)
             {
-                SampKiller();
-                SanAndreasKiller();
-                HostKiller();
+                ProcessKiller killer = new ProcessKiller();
+
+                killer.Samp();
+                killer.SanAndreas();
+                killer.Host();
 
                 Application.Exit();
                 return;
@@ -488,70 +501,6 @@ namespace Jasarsoft.Columbia
                 Process.Start(info);
                 Application.Exit();
             }   
-        }
-
-        private void SampKiller()
-        {
-            Process[] allProcess = Process.GetProcessesByName("gtasamp");
-            if (allProcess.Length > 0)
-            {
-                foreach (Process tempProcess in allProcess)
-                {
-                    do
-                    {
-                        tempProcess.Kill();
-                        tempProcess.WaitForExit();
-                    } while (tempProcess.HasExited == false);
-                }
-            }
-        }
-
-        private void SanAndreasKiller()
-        {
-            Process[] allProcess = Process.GetProcessesByName("gtasa");
-            if (allProcess.Length > 0)
-            {
-                foreach (Process tempProcess in allProcess)
-                {
-                    do
-                    {
-                        tempProcess.Kill();
-                        tempProcess.WaitForExit();
-                    } while (tempProcess.HasExited == false);
-                }
-            }
-        }
-
-        private void ColumbiaKiller()
-        {
-            Process[] allProcess = Process.GetProcessesByName("columbia");
-            if (allProcess.Length > 0)
-            {
-                foreach (Process tempProcess in allProcess)
-                {
-                    do
-                    {
-                        tempProcess.Kill();
-                        tempProcess.WaitForExit();
-                    } while (tempProcess.HasExited == false);
-                }
-            }
-        }
-
-        private void HostKiller()
-        {
-            Process[] allProcess = Process.GetProcessesByName("host-cs");
-            if (allProcess.Length > 0)
-            {
-                foreach (Process tempProcess in allProcess)
-                {
-                    do
-                    {
-                        tempProcess.Kill();
-                        tempProcess.WaitForExit();
-                    } while (tempProcess.HasExited == false);
-                }
-            }
         }
     }
 }

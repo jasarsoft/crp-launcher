@@ -181,7 +181,7 @@ namespace Jasarsoft.Columbia
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.progressLoad);
             this.Controls.Add(this.pictureLogo);
-            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

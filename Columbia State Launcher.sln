@@ -23,6 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Download GUI", "Test D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateApp", "UpdateApp\UpdateApp.csproj", "{5422A8F1-7C43-44DC-A02D-061A3D218FE6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8E22E09-646B-4EA0-A916-4E162E4D5F1E}"
+	ProjectSection(SolutionItems) = preProject
+		changelog.txt = changelog.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

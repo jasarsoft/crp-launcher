@@ -321,7 +321,8 @@
     <Compile Include="Form\UpdateForm.Designer.cs">
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class\UpdateApp.cs" />
+    <Compile Include="UpdateApp.cs" />
+    <Compile Include="UserStats.cs" />
     <EmbeddedResource Include="Form\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
       <SubType>Designer</SubType>

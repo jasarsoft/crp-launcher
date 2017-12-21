@@ -1,0 +1,23 @@
+
+v1.0.0.1
+- dodana provjera za korisnicko pocetno postaljveno korisnicko ime pri prijavi;
+- ispravljen bug o nezatvaranju igre pri otkrivenoj gresci u real-time;
+- dinamicke provjere za externe aplikacije preko baze;
+- ispravljen bug na formi validacije Wait kursora;
+- promjena poruka u load-u;
+- novi algoritam pozadinskog zatvaranja igre;
+
+v1.0.0.0 Beta Build 2
+- implementiran je sistem samostalnog ažuriranja aplikacije;
+- doraðen je naèin zaštite u real-time-eu;
+- izmjenjene su poruke o grešci sa moguænošæu otklanjanja iste;
+- uraðena nova implementacija download-a sistema
+- dodan dinamicki slideshow pri downloadu;
+- ispravljen je algoritam provjere datoteka u validaciji;
+- ostali sitne izmjene na konceptu thread i oom entiteta;
+
+v1.0.0.0 Alpha
+- prva inicijalizacija launchera;
+- download preko google drive api-ja;
+- dianmicke datoteke moda iz baze;
+- izgled formi na Syncfusion WinForms kontrolama;

@@ -141,6 +141,17 @@ namespace Jasarsoft.Columbia
 
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
+            if(this.textName.Text.ToLower() == this.textName.Text.ToLower())
+            {
+                MessageTitle title = new MessageTitle();
+
+                string message = "Korisnièko ime ne može biti poèetno postaljeno (Ime_Prezime).\n" +
+                                 "Unesite vaše korisnièko za prijavu na server formata 'Ime_Prezime'.";
+
+                MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (this.textName.Text.Length < 4)
             {
                 MessageTitle title = new MessageTitle();

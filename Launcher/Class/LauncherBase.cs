@@ -7,6 +7,7 @@ namespace Jasarsoft.Columbia
 {
     public class LauncherBase
     {
+        private int slideNumber;
         private string hashLauncher;
         private string hashUpdate;
 
@@ -24,6 +25,7 @@ namespace Jasarsoft.Columbia
 
         private struct LauncherColumn
         {
+            public const string Slide = "slide";
             public const string Launcher = "launcher";
             public const string Update = "update";
             public const string Title = "title";
@@ -36,6 +38,10 @@ namespace Jasarsoft.Columbia
         }
 #endif
 
+        public int SlideNumber
+        {
+            get { return this.slideNumber; }
+        }
 
         //properties
         public string HashLauncher
@@ -71,7 +77,8 @@ namespace Jasarsoft.Columbia
                 MySqlDataReader reader = sqlCommand.ExecuteReader();
 
                 reader.Read();
-                
+
+                this.slideNumber = Convert.ToInt32(reader[LauncherColumn.Slide].ToString());
                 this.hashLauncher = reader[LauncherColumn.Launcher].ToString();
                 this.hashUpdate = reader[LauncherColumn.Update].ToString();
 #if LAUNCHER_INFO

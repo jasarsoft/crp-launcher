@@ -177,6 +177,7 @@ namespace Jasarsoft.Columbia
             LauncherBase lan = new LauncherBase();
             if (lan.Read())
             {
+                Launcher.SlideShow = lan.SlideNumber;
                 if(HashFile.GetMD5("columbia.exe") != lan.HashLauncher)
                 {
                     MessageTitle title = new MessageTitle();

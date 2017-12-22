@@ -50,7 +50,7 @@ namespace Jasarsoft.Columbia
 
 
         //methods
-        public void Read()
+        public bool Read()
         {
             BaseConst cb = new BaseConst();
             PrivateData pd = new PrivateData();
@@ -70,29 +70,30 @@ namespace Jasarsoft.Columbia
                 sqlCommand= new MySqlCommand(query, sqlConnection);
                 MySqlDataReader reader = sqlCommand.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    this.hashLauncher = reader[LauncherColumn.Launcher].ToString();
-                    this.hashUpdate = reader[LauncherColumn.Update].ToString();
+                reader.Read();
+                
+                this.hashLauncher = reader[LauncherColumn.Launcher].ToString();
+                this.hashUpdate = reader[LauncherColumn.Update].ToString();
 #if LAUNCHER_INFO
-                    this.titleLauncher = reader[LauncherColumn.Title].ToString();
-                    this.typeLauncher = reader[LauncherColumn.Type].ToString();
-                    this.dateLauncher = reader[LauncherColumn.Date].ToString();
-                    this.licenseLauncher = reader[LauncherColumn.License].ToString();
-                    this.copyrightLauncher = reader[LauncherColumn.Copyright].ToString();
-                    this.developerLauncher = reader[LauncherColumn.Developer].ToString();
-                    this.descriptionLauncher = reader[LauncherColumn.Description].ToString();
+                this.titleLauncher = reader[LauncherColumn.Title].ToString();
+                this.typeLauncher = reader[LauncherColumn.Type].ToString();
+                this.dateLauncher = reader[LauncherColumn.Date].ToString();
+                this.licenseLauncher = reader[LauncherColumn.License].ToString();
+                this.copyrightLauncher = reader[LauncherColumn.Copyright].ToString();
+                this.developerLauncher = reader[LauncherColumn.Developer].ToString();
+                this.descriptionLauncher = reader[LauncherColumn.Description].ToString();
 #endif
-                }
-
                 reader.Close();
                 sqlConnection.Close();
+
+                return true;
             }
             catch (MySqlException ex)
             {
-                string message = "Došlo je do greške pri pokušaju čitanja launcher podataka iz baze.\n" +
+                return false;
+                /*string message = "Došlo je do greške pri pokušaju čitanja launcher podataka iz baze.\n" +
                                  "Greška: " + ex.Message;
-                throw new Exception(message);
+                throw new Exception(message);*/
             }
         }
     }

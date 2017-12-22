@@ -174,10 +174,10 @@ namespace Jasarsoft.Columbia
                 return;
             }
 
-            MySqlLauncher lan = new MySqlLauncher();
+            LauncherBase lan = new LauncherBase();
             if (lan.Read())
             {
-                if(HashFile.GetMD5("columbia.exe") != lan.HashLauncher || HashFile.GetMD5("host-cs.exe") != lan.HashHost)
+                if(HashFile.GetMD5("columbia.exe") != lan.HashLauncher)
                 {
                     MessageTitle title = new MessageTitle();
                     string message = "Vaša verzija Columbia State Launchera nije posljednja.\n" +

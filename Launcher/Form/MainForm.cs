@@ -71,13 +71,14 @@ namespace Jasarsoft.Columbia
                 this.textPassword.Enabled = false;
                 this.textPassword.Text = "0123456789";
             }
-
+#if DEBUG
             UserStats stats = new UserStats();
 
             stats.UserName = textName.Text;
             stats.IpAddress();
             stats.Read();
             stats.Send();
+#endif
         }
 
 

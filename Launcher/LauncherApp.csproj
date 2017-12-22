@@ -252,7 +252,7 @@
     <Compile Include="Class\ProcessKiller.cs" />
     <Compile Include="Class\RolePlay.cs" />
     <Compile Include="Class\SampRegistry.cs" />
-    <Compile Include="Class\Server.cs" />
+    <Compile Include="Class\ServerBase.cs" />
     <Compile Include="Class\StringCipher.cs" />
     <Compile Include="Form\DescriptionForm.cs">
       <SubType>Form</SubType>

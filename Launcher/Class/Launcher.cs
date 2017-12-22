@@ -24,8 +24,9 @@ namespace Jasarsoft.Columbia
         private static string teampspeak;
         private static string website;
         private static string forum;
-        private static string youtube;
         private static string facebook;
+        private static string youtube;
+        private static string email;
         
 
         public static bool[] Valid
@@ -113,18 +114,25 @@ namespace Jasarsoft.Columbia
             set { forum = value; }
         }
 
-        public static string YouTube
-        {
-            get { return youtube; }
-            set { youtube = value; }
-        }
-
         public static string Facebook
         {
             get { return facebook; }
             set { facebook = value; }
         }
 
+
+        public static string YouTube
+        {
+            get { return youtube; }
+            set { youtube = value; }
+        }
+
+        public static string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+        
 
         /// <summary>
         /// The main entry point for the application.

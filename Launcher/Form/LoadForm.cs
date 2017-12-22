@@ -94,12 +94,11 @@ namespace Jasarsoft.Columbia
             }
             
 
-            Server s = new Server();
+            ServerBase s = new ServerBase();
             if (s.Read())
             {
                 Launcher.Locked = s.Locked;
                 Launcher.Working = s.Working;
-                Launcher.SlideShow = s.SlideShow;
                 Launcher.Address = s.Address;
                 Launcher.Password = s.Password;
                 Launcher.Teamspeak = s.Teamspeak;

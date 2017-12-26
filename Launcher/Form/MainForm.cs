@@ -521,12 +521,14 @@ namespace Jasarsoft.Columbia
             DialogResult dialog = MessageBoxAdv.Show(text, title.InfoMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if(dialog == DialogResult.Yes)
             {
-                ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = "update-cs.exe";
-                info.WorkingDirectory = ".\\";
-                info.Arguments = "cs_silent14";
-                Process.Start(info);
-                Application.Exit();
+                ColumbiaUpdate update = new ColumbiaUpdate();
+
+                if (update.DownloadFile())
+                {
+                    update.RunFile();
+                    Application.Exit();
+                }
+                //Application.Exit();
             }   
         }
     }

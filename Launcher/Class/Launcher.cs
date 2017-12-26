@@ -161,25 +161,12 @@ namespace Jasarsoft.Columbia
                                  "Napomena, launcher ne može biti pokrenuta ako datoteke nisu validne.";
 
                 if (DialogResult.No == MessageBox.Show(message, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Stop)) return;
-                string temp = String.Format("{0}\\Columbia State", Path.GetTempPath());
-                string link = "https://columbia-state.com/launcher/update-cs.exe";
-                if (!Directory.Exists(temp)) Directory.CreateDirectory(temp);
-                using (WebClient client = new WebClient())
-                {
-                    var url = new Uri(link);
-                    client.DownloadFile(url, temp + "\\update-cs.exe");
-                }
 
-                //pokretanje sistema ažuriranja
-                if (File.Exists(temp + "\\update-cs.exe"))
-                {
-                    //Process process = new Process();
-                    //process.StartInfo.FileName = "update-cs.exe";
-                    //process.StartInfo.Arguments = "/VERYSILENT";
-                    //process.StartInfo.WorkingDirectory = temp;
-                    //process.StartInfo.UseShellExecute = true;
+                ColumbiaUpdate update = new ColumbiaUpdate();
 
-                    Process.Start(temp + "\\update-cs.exe");
+                if(update.DownloadFile())
+                {
+                    update.RunFile();
                     Application.Exit();
                     return;
                 }
@@ -206,14 +193,12 @@ namespace Jasarsoft.Columbia
                                      "Napomena, za pristpu našem serveru aplikacija treba biti najnovija.";
                     if(DialogResult.Yes == MessageBoxAdv.Show(message, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Error))
                     {
-                        if (File.Exists(".\\update-cs.exe"))
+                        ColumbiaUpdate update = new ColumbiaUpdate();
+
+                        if (update.DownloadFile())
                         {
-                            Process process = new Process();
-                            process.StartInfo.FileName = "update-cs.exe";
-                            process.StartInfo.Arguments = "cs_silent14";
-                            process.StartInfo.WorkingDirectory = ".\\";
-                            process.StartInfo.UseShellExecute = false;
-                            process.Start();
+                            update.RunFile();
+                            Application.Exit();
                         }
                         else
                         {
@@ -225,7 +210,7 @@ namespace Jasarsoft.Columbia
                     }
                     return;
                 }
-                else if (HashFile.GetMD5("update-cs.exe") != lan.HashUpdate)
+                /*else if (HashFile.GetMD5("update-cs.exe") != lan.HashUpdate)
                 {
                     MessageTitle title = new MessageTitle();
                     string message = "Vaša verzija Columbia State Update servisa nije posljednja.\n" +
@@ -236,7 +221,7 @@ namespace Jasarsoft.Columbia
 
                     message = "Implementacija u novim ažuriranjem Columbia State Launcher-a.";
                     MessageBoxAdv.Show(message, title.InfoMsg, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                }*/
             }
             else
             {

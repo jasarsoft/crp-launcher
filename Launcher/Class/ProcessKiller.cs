@@ -15,8 +15,8 @@ namespace Jasarsoft.Columbia
 
         public ProcessKiller()
         {
-            this.gta = "gtasa";
-            this.samp = "gtasamp";
+            this.gta = "gta_sa";
+            this.samp = "samp";
             this.host = "host-cs";
             this.columbia = "columbia";
         }

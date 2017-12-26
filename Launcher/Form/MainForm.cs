@@ -243,7 +243,7 @@ namespace Jasarsoft.Columbia
             //    return;
             //}
 
-            Process[] sampRun = Process.GetProcessesByName("gtasamp");
+            Process[] sampRun = Process.GetProcessesByName("samp");
             if (sampRun.Length > 0)
             {
                 MessageTitle title = new MessageTitle();
@@ -252,7 +252,7 @@ namespace Jasarsoft.Columbia
                 return;
             }
 
-            Process[] gtaRun = Process.GetProcessesByName("gtasa");
+            Process[] gtaRun = Process.GetProcessesByName("gta_sa");
             if (gtaRun.Length > 0)
             {
                 MessageTitle title = new MessageTitle();
@@ -291,7 +291,7 @@ namespace Jasarsoft.Columbia
                 GC.Collect();
 
                 ProcessStartInfo processInfo = new ProcessStartInfo();
-                processInfo.FileName = "gtasamp.exe";
+                processInfo.FileName = "samp.exe";
                 processInfo.WorkingDirectory = @".\";
                 processInfo.Arguments = String.Format("{0} {1}", Launcher.Address, Launcher.Password);
                 Process.Start(processInfo);
@@ -306,7 +306,7 @@ namespace Jasarsoft.Columbia
                 workerGame.RunWorkerAsync();
                 workerHost.RunWorkerAsync();
                 //this.Hide();
-                return;
+                //return;
             }
             else
             {
@@ -492,7 +492,7 @@ namespace Jasarsoft.Columbia
         private void WorkerGame_DoWork(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(5000);
-            Process[] process = Process.GetProcessesByName("gtasa");
+            Process[] process = Process.GetProcessesByName("gta_sa");
             if (process.Length != 1) e.Cancel = true;
         }
 

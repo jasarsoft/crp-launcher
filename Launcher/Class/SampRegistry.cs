@@ -146,7 +146,7 @@ namespace Jasarsoft.Columbia
         public void Default()
         {
             this.PlayerName = "Ime_Prezime";
-            this.pathName = Directory.GetCurrentDirectory() + @"\gtasa.exe";
+            this.pathName = Directory.GetCurrentDirectory() + @"\gta_sa.exe";
         }
     }
 }

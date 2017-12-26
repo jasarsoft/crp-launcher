@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Syncfusion.Windows.Forms;
+using System.Net;
 
 namespace Jasarsoft.Columbia
 {
     internal static class Launcher
     {
+        private static List<ColumbiaFile> columbiaFiles;
         private static bool[] valid;
         private static string[] name;
         private static long[] size;
@@ -28,6 +30,12 @@ namespace Jasarsoft.Columbia
         private static string youtube;
         private static string email;
         
+
+        public static List<ColumbiaFile> ColumbiaFiles
+        {
+            get { return columbiaFiles; }
+            set { columbiaFiles = value; }
+        }
 
         public static bool[] Valid
         {
@@ -150,18 +158,30 @@ namespace Jasarsoft.Columbia
                 MessageTitle title = new MessageTitle();
                 string message = "Biblioteke datoteka od Columbia State Launchera nisu isparavne.\n" +
                                  "Da li želite pokreniti servis ažuriranja i nadomjestiti ispravnim?\n" +
-                                 "Napomena, aplikacija ne može biti pokrenuta dok ne budu datoteke validne.";
+                                 "Napomena, launcher ne može biti pokrenuta ako datoteke nisu validne.";
 
-                if (MessageBox.Show(message, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.No) return;
-                //pokretanje sistema ažuriranja
-                if(File.Exists(".\\update-cs.exe"))
+                if (DialogResult.No == MessageBox.Show(message, title.ErrorMsg, MessageBoxButtons.YesNo, MessageBoxIcon.Stop)) return;
+                string temp = String.Format("{0}\\Columbia State", Path.GetTempPath());
+                string link = "https://columbia-state.com/launcher/update-cs.exe";
+                if (!Directory.Exists(temp)) Directory.CreateDirectory(temp);
+                using (WebClient client = new WebClient())
                 {
-                    Process process = new Process();
-                    process.StartInfo.FileName = "update-cs.exe";
-                    process.StartInfo.Arguments = "cs_silent14";
-                    process.StartInfo.WorkingDirectory = ".\\";
-                    process.StartInfo.UseShellExecute = false;
-                    process.Start();
+                    var url = new Uri(link);
+                    client.DownloadFile(url, temp + "\\update-cs.exe");
+                }
+
+                //pokretanje sistema ažuriranja
+                if (File.Exists(temp + "\\update-cs.exe"))
+                {
+                    //Process process = new Process();
+                    //process.StartInfo.FileName = "update-cs.exe";
+                    //process.StartInfo.Arguments = "/VERYSILENT";
+                    //process.StartInfo.WorkingDirectory = temp;
+                    //process.StartInfo.UseShellExecute = true;
+
+                    Process.Start(temp + "\\update-cs.exe");
+                    Application.Exit();
+                    return;
                 }
                 else
                 {

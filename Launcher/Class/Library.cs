@@ -17,7 +17,7 @@ namespace Jasarsoft.Columbia
                 //application
                 @".\columbia.exe",
                 @".\host-cs.exe",
-                @".\update-cs.exe",
+                //@".\update-cs.exe",
                 @".\columbia.exe.config",
                 @".\host-cs.exe.config",
                 @".\update-cs.exe.config",
@@ -199,8 +199,8 @@ namespace Jasarsoft.Columbia
             {
                 //application
                 "", //@".\columbia.exe",
-                "41078C0BECB58C1DEFD7AEFAEC0DC8BE", //@".\host-cs.exe",
-                "F164DDB5C9A563E3184978CBBCDD8E29", // @".\update-cs.exe
+                "87F57BD7D5BEEC62E0CCB29323CD6926", //@".\host-cs.exe",
+                //"F164DDB5C9A563E3184978CBBCDD8E29", // @".\update-cs.exe
                 "A11084C7193365FF484387AD6B27477F", //@".\columbia.exe.config",
                 "DDC25AEFCAE9826CCE1754C2C89E959D", //@".\host-cs.exe.config",
                 "DDC25AEFCAE9826CCE1754C2C89E959D", //@".\update-cs.exe.config",
@@ -296,11 +296,13 @@ namespace Jasarsoft.Columbia
             if (!this.Check()) return false;
 
             //provjera počinje od 4te datoteke
-            for (int i = 3; i < name.Length; i++ )
+            for (int i = 1; i < name.Length; i++ )
             {
                 if (HashFile.GetMD5(this.name[i]) != this.hash[i])
                 {
+#if TRACE
                     Trace.TraceInformation("Library.Valid(); File: {0}; Hash: {1}; Base: {2}", name[i], HashFile.GetMD5(name[i]), hash[i]);
+#endif
                     return false;
                 }    
             }

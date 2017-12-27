@@ -15,8 +15,8 @@ namespace Jasarsoft.Columbia.Host
 
         public ProcessKiller()
         {
-            this.gta = "gtasa";
-            this.samp = "gtasamp";
+            this.gta = "gta_sa";
+            this.samp = "samp";
             this.host = "host-cs";
             this.columbia = "columbia";
         }
@@ -29,7 +29,9 @@ namespace Jasarsoft.Columbia.Host
 #endif
             if(processName == null)
             {
+#if TRACE
                 Trace.TraceError("Greška u argumentu processName; ProcessKiller.Kill();");
+#endif
                 throw new ArgumentNullException("ProcessKiller.Kill(); Argument 'processName' ne moze biti null.");
             }
                 

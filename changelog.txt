@@ -6,6 +6,8 @@ v1.0.0.1
 - ispravljen bug na formi validacije Wait kursora;
 - promjena poruka u load-u;
 - novi algoritam pozadinskog zatvaranja igre;
+- vraæene glavne aplikacije GTA i SAMP na poèetne postavke;
+- novi sistem update-jta launchera;
 
 v1.0.0.0 Beta Build 2
 - implementiran je sistem samostalnog ažuriranja aplikacije;
@@ -19,5 +21,5 @@ v1.0.0.0 Beta Build 2
 v1.0.0.0 Alpha
 - prva inicijalizacija launchera;
 - download preko google drive api-ja;
-- dianmicke datoteke moda iz baze;
+- dinamicke datoteke moda iz baze;
 - izgled formi na Syncfusion WinForms kontrolama;

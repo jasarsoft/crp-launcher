@@ -40,9 +40,11 @@ namespace Jasarsoft.Columbia
         public bool DownloadFile()
         {
             Network net = new Network();
-            string link = "https://columbia-state.com/launcher/update-cs.exe";
+            StringCipher cipher = new StringCipher();
 
-            if(!net.Available())
+            string link = cipher.Decrypt("ZHPmbjDm8XrXd4Uu1A9ZoI24g19b9xrr7FWJHBkjXzMEZVC2a6vDjFgW0YOBihsyQaMqBJLWw2sqp9pK+YTxzUCK4dcZYiw+5JAAUpyVT6Iy5bpvYSyaXUbIvOAeSC230MEiL5nmxuc3ZXnrrcFoL4L4xSu5C6M8R85uiQ0bDrk=");
+
+            if (!net.Available())
             {
                 throw new Exception("Vaša internet konekcija ne radi ili je trenutno prekinuta.");
             }

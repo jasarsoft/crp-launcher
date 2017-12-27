@@ -480,9 +480,12 @@ namespace Jasarsoft.Columbia
 
 
             //WebClient client = new WebClient();
+
+            StringCipher cipher = new StringCipher();
+
             for (int i = 1; i < 4; i++)
             {
-                string address = String.Format("https://columbia-state.com/launcher/screenshots/{0}.png", i);
+                string address = String.Format("{0}{1}.png", i, cipher.Decrypt("jMMkUnP2v0pfVULgEcH6RJYfa5NVHXRqSJKK0pAfsVZi9YLPfEXWNA8epLcmfo+tiliEsRsWe1zvXo8w32CVmsRLXBERiU/O5C+PZjHReBYDOAZg/Tf12AE7J1oWAm3aAWP//SYdcHW5Pp7qoJBhykVFrCSIMhmB0OHFSCCOBYc="));
                 using (var client = new WebClient())
                 {
                     Stream stream = client.OpenRead(address);

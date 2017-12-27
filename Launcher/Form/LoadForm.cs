@@ -22,6 +22,7 @@ namespace Jasarsoft.Columbia
     public partial class LoadForm : Syncfusion.Windows.Forms.MetroForm
     {
         MainForm mainForm;
+        StringCipher cipher;
         
         List<int> missedFiles;
         List<string> unknownFiles;
@@ -40,7 +41,7 @@ namespace Jasarsoft.Columbia
 
         public LoadForm()
         {
-            InitializeComponent();
+            InitializeComponent();            
 
             MessageBoxAdv.MessageBoxStyle = MessageBoxAdv.Style.Metro;
             MessageBoxAdv.MetroColorTable.OKButtonBackColor = Color.Firebrick;
@@ -70,16 +71,17 @@ namespace Jasarsoft.Columbia
         private void workerLoad_DoWork(object sender, DoWorkEventArgs e)
         {
             mainForm = new MainForm();
+            cipher = new StringCipher();
             e.Result = ErrorResult.None;
 #if !DEBUG
-            Process[] process = Process.GetProcessesByName("columbia");
+            Process[] process = Process.GetProcessesByName(cipher.Decrypt("VFgdNbbJOfagMQCF5Gvd4Xnly0xKmGGLL3KIaFQMF/XV5UV7t9t+9GJSeIf0epK4QLFz1OL9sNtNNGYlm6KrKZ97X1PtwcDytGTb3B4AnudHPvBL6ZF9qcrzP20GRdCa"));
             if (process.Length > 1)
             {
                 e.Result = ErrorResult.Work;
                 return;
             }
 
-            if (Path.GetFileName(Application.ExecutablePath) != "columbia.exe")
+            if (Path.GetFileName(Application.ExecutablePath) != cipher.Decrypt("tC52bg9OTb+QTRtPuKP9YvM2yNaI/6IPNJ+5jibKIcSi6l3fYcESAtXU2Acz0S9MHiYhKATuKo51GKRG1MCrW3aFiZY5mivawmNQAGLewZoecroi+QoihQCnnBXgPDkT"))
             {
                 e.Result = ErrorResult.Edit;
                 return;
@@ -228,7 +230,11 @@ namespace Jasarsoft.Columbia
                 foreach(string file in unknownFiles)
                 {
                     if(System.IO.File.Exists(file))
-                        size += new System.IO.FileInfo(file).Length;
+                    {
+                        FileInfo info = new FileInfo(file);
+                        size += info.Length;
+                        //size += new System.IO.FileInfo(file).Length;
+                    }
                 }
 
                 string message = String.Format("Vaša modifikacija sadrži {0} nepoznatih datoteka, velièine {1:0.00} MB.\n", unknownFiles.Count, size / 1048576.0) +
@@ -307,7 +313,7 @@ namespace Jasarsoft.Columbia
 
         private void LoadForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ProcessKiller pk = new ProcessKiller();
+            //ProcessKiller pk = new ProcessKiller();
 
             //pk.Samp();
             //pk.GtaSa();

@@ -148,7 +148,7 @@ namespace Jasarsoft.Columbia
 
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
-            if(this.textName.Text.ToLower() == this.textName.Text.ToLower())
+            if(this.textName.Text.ToLower() == "ime_prezime")
             {
                 MessageTitle title = new MessageTitle();
 

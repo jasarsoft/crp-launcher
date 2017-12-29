@@ -236,8 +236,9 @@ namespace Jasarsoft.Columbia
                         //size += new System.IO.FileInfo(file).Length;
                     }
                 }
+                double total = size / 1048576.0;
 
-                string message = String.Format("Vaša modifikacija sadrži {0} nepoznatih datoteka, velièine {1:0.00} MB.\n", unknownFiles.Count, size / 1048576.0) +
+                string message = String.Format("Vaša modifikacija sadrži {0} nepoznatih datoteka, velièine {1:0.00} MB.\n", unknownFiles.Count, total) +
                                                "Da li želite iste obrisati sada i nastaviti sa uèitavanem launcher-a?\n" +
                                                "Napomena, aplikacija se neæe uèitati dok postoje strane nepredviðene datoteke.";
 
